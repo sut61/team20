@@ -1,4 +1,4 @@
-package sut.se.project.demo.entity;
+package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package team20.se61.sut.Entity
+package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
 import javax.persistence.*;
@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name="Prefix")
-public class PrefixEntity {
+@Table(name="Store")
+public class Store {
     @Id
     @GeneratedValue
     private  Long prefixid;

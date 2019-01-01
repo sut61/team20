@@ -1,4 +1,4 @@
-package com.sut.se.g20;
+package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
 
