@@ -11,17 +11,17 @@ import javax.persistence.GeneratedValue;
 @ToString
 @EqualsAndHashCode
 //@NoArgsConstructor
-@Table(name="Prefix")
-public class PrefixEntity {
+@Table(name="Sex")
+public class SexEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long prefixid;
-    private @NonNull String prefix;
+    private  Long sexid;
+    private @NonNull String sex;
 
-    public PrefixEntity(){}
+    public SexEntity(){}
 
-    public PrefixEntity(String prefix){
-        this.prefix=prefix;
+    public SexEntity(String sex){
+        this.sex=sex;
     }
 
 }
