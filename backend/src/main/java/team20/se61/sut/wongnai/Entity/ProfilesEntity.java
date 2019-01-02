@@ -28,7 +28,7 @@ public class ProfilesEntity {
     @JoinColumn(name="prefixid",insertable = true)
     private @NonNull PrefixEntity prefix;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy="Profiles")
+   @OneToOne(cascade = CascadeType.ALL, mappedBy="Profiles")
     @JoinColumn(name = "contactid", insertable = true)
     @NonNull
     private ContactEntity contactEntity;
