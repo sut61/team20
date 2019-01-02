@@ -7,5 +7,3 @@
   5. B5908622 Miss. Rattanamanee  Jongsuebsitthi
   6. B5913862 Mr. Suriya          Siangsai
   7. B5910779 Mr. Komchan         Khumphai
-
-
