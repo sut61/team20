@@ -18,5 +18,10 @@ public class ContactEntity {
     private  Long contactid;
     private @NonNull String address;
     private @NonNull String telephonenumber;
+    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER,targetEntity = ProfilesEntity.class)
+    @JoinColumn(name = "profilesid", insertable = true)
+    @NonNull
+    private ProfilesEntity profilesEntity;
+
 
 }

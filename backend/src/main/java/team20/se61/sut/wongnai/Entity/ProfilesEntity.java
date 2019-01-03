@@ -28,9 +28,6 @@ public class ProfilesEntity {
     @JoinColumn(name="prefixid",insertable = true)
     private @NonNull PrefixEntity prefix;
 
-   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER,targetEntity = ContactEntity.class)
-    @JoinColumn(name = "contactid", insertable = true)
-    @NonNull
-    private ContactEntity contactEntity;
+
 
 }
