@@ -17,7 +17,7 @@ public class ProfilesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long profilesid;
     private @NonNull String name;
-    private @NonNull String email;
+    private @NonNull @Column(unique = true) String email;
     private @NonNull String password;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = SexEntity.class)
@@ -27,7 +27,5 @@ public class ProfilesEntity {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = PrefixEntity.class)
     @JoinColumn(name="prefixid",insertable = true)
     private @NonNull PrefixEntity prefix;
-
-
 
 }

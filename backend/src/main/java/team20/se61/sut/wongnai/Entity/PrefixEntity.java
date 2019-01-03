@@ -16,7 +16,7 @@ public class PrefixEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long prefixid;
-    private @NonNull String prefix;
+    private @NonNull @Column(unique = true)  String prefix;
 
     public PrefixEntity(){}
 

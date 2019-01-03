@@ -16,12 +16,13 @@ public class SexEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long sexid;
-    private @NonNull String sex;
+    private @NonNull @Column(unique = true) String sex;
 
     public SexEntity(){}
 
     public SexEntity(String sex){
         this.sex=sex;
+
     }
 
 }
