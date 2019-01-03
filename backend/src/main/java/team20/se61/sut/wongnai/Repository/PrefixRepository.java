@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface PrefixRepository extends JpaRepository<PrefixEntity, Long> {
-    PrefixEntity findByPresix(String prefix);
+    PrefixEntity findByPrefix(String prefix);
 
 }
