@@ -1,0 +1,11 @@
+.image{
+    height:40em; 
+    background-size:cover;
+    width:auto;
+    background-image:url('C:\cygwin\home\User\team20\frontend\src\app\image\welcome3.jpg');
+    background-position:50% 50%;
+  }
+
+  .center{
+      margin: auto;
+  }
