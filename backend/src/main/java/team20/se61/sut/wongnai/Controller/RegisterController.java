@@ -70,7 +70,7 @@ public class RegisterController {
                 return "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
             }
 
-            if(validationUniqeTelephonenumber(address,telephonenumber)!=true){
+            if(validationUniqeTelephonenumber(address,telephonenumber,email)!=true){
 
                 return "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
             }
@@ -80,12 +80,13 @@ public class RegisterController {
         return message;
     }
 
-    ProfilesEntity profilesEntity = new ProfilesEntity();
+
     public boolean validationUniqeEmail(String prefix,String sex,String name,String passworg,String email){
 
         try{
             PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
             SexEntity sexEntity = sexRepository.findBySex(sex);
+            ProfilesEntity profilesEntity = new ProfilesEntity();
             profilesEntity.setPrefix(prefixEntity);
             profilesEntity.setSex(sexEntity);
             profilesEntity.setEmail(email);
@@ -101,17 +102,20 @@ public class RegisterController {
        return true;
     }
 
-    public boolean validationUniqeTelephonenumber(String address,String telephonenumber){
+    public boolean validationUniqeTelephonenumber(String address,String telephonenumber,String email){
+        long profilesid=0;
         try{
             ContactEntity contactEntity = new ContactEntity();
             contactEntity.setAddress(address);
             contactEntity.setTelephonenumber(telephonenumber);
+            ProfilesEntity profilesEntity = profilesRepository.findByEmail(email);
+            profilesid = profilesEntity.getProfilesid();
             contactEntity.setProfilesEntity(profilesEntity);
             contactRepository.save(contactEntity);
         }
 
         catch (Exception e){
-            profilesRepository.delete(profilesEntity);
+            profilesRepository.deleteById(profilesid);
             return false;
         }
 
@@ -143,6 +147,10 @@ public class RegisterController {
 
         try{
             SexEntity sexEntity = sexRepository.findBySex(sex);
+            if(sexEntity.getSex()=="") {
+                message = "ไม่มีเพศในฐานข้อมูล";
+                return false;
+            }
         }
         catch (Exception e){
             message = "ไม่มีเพศในฐานข้อมูล";
@@ -155,6 +163,10 @@ public class RegisterController {
 
         try{
             PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
+            if(prefixEntity.getPrefix()==""){
+                message = "ไม่มีคำนำหน้าในฐานข้อมูล";
+                return false;
+            }
         }
         catch (Exception e){
             message = "ไม่มีคำนำหน้าในฐานข้อมูล";

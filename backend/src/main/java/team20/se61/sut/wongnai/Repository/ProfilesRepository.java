@@ -6,5 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface ProfilesRepository extends JpaRepository<ProfilesEntity,Long> {
+    ProfilesEntity findByEmail(String email);
 
 }

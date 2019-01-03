@@ -20,7 +20,7 @@ public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long contactid;
-    private @NonNull @Column(unique = true) String address;
+    private @NonNull  String address;
     private @NonNull @Column(unique = true) String telephonenumber;
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "profilesid", insertable = true,unique = true)
