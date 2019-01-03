@@ -226,7 +226,7 @@ public class RegisterController {
 
         String EMAIL = email.toUpperCase();
         int last = email.length();
-        if (EMAIL.charAt(last-4)!='.'||EMAIL.charAt(last-3)!='C'||EMAIL.charAt(last-2)!='0'||EMAIL.charAt(last-1)!='M'){
+        if (EMAIL.charAt(last-4)!='.'||EMAIL.charAt(last-3)!='C'||EMAIL.charAt(last-2)!='O'||EMAIL.charAt(last-1)!='M'){
 
             message = "email ต้องลงท้ายด้วย .com หรือ .COM";
             return false;
