@@ -65,26 +65,57 @@ public class RegisterController {
         }
         else{
 
+            if(validationUniqeEmail(prefix,sex,name,passworg,email)!=true){
+
+                return "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
+            }
+
+            if(validationUniqeTelephonenumber(address,telephonenumber)!=true){
+
+                return "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
+            }
+
+        }
+        message = "บันทึกเรียบร้อย";
+        return message;
+    }
+
+    ProfilesEntity profilesEntity = new ProfilesEntity();
+    public boolean validationUniqeEmail(String prefix,String sex,String name,String passworg,String email){
+
+        try{
             PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
             SexEntity sexEntity = sexRepository.findBySex(sex);
-            ProfilesEntity profilesEntity = new ProfilesEntity();
             profilesEntity.setPrefix(prefixEntity);
             profilesEntity.setSex(sexEntity);
             profilesEntity.setEmail(email);
             profilesEntity.setPassword(passworg);
             profilesEntity.setName(name);
             profilesRepository.save(profilesEntity);
+        }
+
+        catch (Exception e){
+            return false;
+        }
+
+       return true;
+    }
+
+    public boolean validationUniqeTelephonenumber(String address,String telephonenumber){
+        try{
             ContactEntity contactEntity = new ContactEntity();
             contactEntity.setAddress(address);
             contactEntity.setTelephonenumber(telephonenumber);
             contactEntity.setProfilesEntity(profilesEntity);
             contactRepository.save(contactEntity);
-
-
-
         }
-        message = "บันทึกเรียบร้อย";
-        return message;
+
+        catch (Exception e){
+            profilesRepository.delete(profilesEntity);
+            return false;
+        }
+
+        return true;
     }
 
     public boolean validation(String email,String  passworg,String  name,
