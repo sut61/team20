@@ -91,8 +91,131 @@ public class RegisterController {
                               String telephonenumber,String address,String prefix,
                               String sex){
 
-        return validationSex()&&validationPrefix()&&validationEmail()&&
-        validationName()&&validationAddress()&&validationTelephonenumber()&&validationPassword();
+        if(validationEmail(email)==false)
+              return false;
+        if(validationPassword(passworg)==false)
+            return false;
+        if(validationPrefix(prefix)==false)
+            return false;
+        if(validationName(name)==false)
+            return false;
+        if(validationSex(sex)==false)
+            return false;
+        if(validationAddress(address)==false)
+            return false;
+        if(validationTelephonenumber(telephonenumber)==false)
+            return false;
+        return true;
+    }
+
+    public boolean validationSex(String sex){
+
+        try{
+            SexEntity sexEntity = sexRepository.findBySex(sex);
+        }
+        catch (Exception e){
+            message = "ไม่มีเพศในฐานข้อมูล";
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validationPrefix(String prefix){
+
+        try{
+            PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
+        }
+        catch (Exception e){
+            message = "ไม่มีคำนำหน้าในฐานข้อมูล";
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validationTelephonenumber(String telephonenumber){
+        if(telephonenumber.length()<9||telephonenumber.length()>12){
+            message = "เบอร์โทรศัพท์ต้องมีความยาว 9 -12 ตัวอักษร";
+            return false;
+        }
+
+        if (telephonenumber.charAt(0)!='+'&&(!Character.isDigit(telephonenumber.charAt(0)))){
+            message = "เบอร์โทรศัพท์ตัวแรกต้องมีเป็นตัวเลขหรือ + เท่านั้น";
+            return false;
+        }
+
+        for(int i=1;i<telephonenumber.length();i++){
+            if(!Character.isDigit(telephonenumber.charAt(i))){
+                message = "เบอร์โทรศัพท์ต้องเป็นตัวเลขเท่านั้น และตัวแรกสามารถเป็น + ได้";
+                return false;
+            }
+
+        }
+            return true;
+    }
+
+    public boolean validationPassword(String password){
+
+        if(password.length()<8){
+            message = "รหัสผ่านต้องมีความยาว ไม่น้อยกว่า 8 อักษร";
+            return  false;
+        }
+
+        return true;
+    }
+    public boolean validationAddress(String address){
+
+        if(address.length()<20){
+            message = "ที่อยู่ต้องมีความยาว ไม่น้อยกว่า 20 อักษร";
+            return  false;
+        }
+
+        return true;
+    }
+
+    public boolean validationName(String name){
+        for(int i=0;i<name.length();i++){
+            if((name.charAt(i)<'a'||name.charAt(i)>'z')&&(name.charAt(i)<'A'||name.charAt(i)>'Z')
+                    &&(name.charAt(i)<'ก'||name.charAt(i)>'ฮ')
+                    &&(name.charAt(i)<'่'||name.charAt(i)>'๋')
+                    &&name.charAt(i)!='ุ'&&name.charAt(i)!='ู'&&name.charAt(i)!='ไ'&&name.charAt(i)!='ึ'
+                    &&name.charAt(i)!='ำ'&&name.charAt(i)!='โ'&&name.charAt(i)!='เ'&&name.charAt(i)!='็'
+                    &&name.charAt(i)!='า'&&name.charAt(i)!='แ'&&name.charAt(i)!='ิ'&&name.charAt(i)!='ื'
+                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'){
+                message = "ชื่อและนามสกุลต้องไม่มีอักษรพิเศษ";
+                return false;
+
+            }
+        }
+
+        return  true;
+    }
+
+    public boolean validationEmail(String email){
+
+
+        String EMAIL = email.toUpperCase();
+        int last = email.length();
+        if (EMAIL.charAt(last-4)!='.'||EMAIL.charAt(last-3)!='C'||EMAIL.charAt(last-2)!='0'||EMAIL.charAt(last-1)!='M'){
+
+            message = "email ต้องลงท้ายด้วย .com หรือ .COM";
+            return false;
+        }
+
+        int count=0;
+
+        for(int i=0;i<EMAIL.length();i++){
+            if(EMAIL.charAt(i)=='@')
+                count++;
+        }
+
+
+        if(count!=1){
+
+            message="email ต้องมี @ 1 อักษร";
+            return false;
+        }
+
+        return true;
     }
 }
 
