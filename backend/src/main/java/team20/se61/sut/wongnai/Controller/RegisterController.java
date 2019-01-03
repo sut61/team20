@@ -22,11 +22,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
+
 @EnableAutoConfiguration
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class RegisterController {
-
+    String message;
     @Autowired
     private ProfilesRepository profilesRepository;
     @Autowired
@@ -47,21 +48,51 @@ public class RegisterController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/addprofiles")
     @ResponseBody
-    public void newProfiles(@RequestBody() Map<String, Object> body) {
-        ProfilesEntity profilesEntity = new ProfilesEntity();
-        PrefixEntity prefixEntity = prefixRepository.findByPrefix(body.get("prefix").toString());
-        SexEntity sexEntity = sexRepository.findBySex(body.get("sex").toString());
-        ContactEntity contactEntity = contactRepository.findByAllergy(body.get("allergy").toString());
-        profilesEntity.setPrefix(prefixEntity);
-        profilesEntity.setFirstname(body.get("fname").toString());
-        profilesEntity.setLastname(body.get("lname").toString());
-        profilesEntity.setTelephonenumber(body.get("tel").toString());
-        profilesEntity.setSex(sexEntity);
-        profilesEntity.setDisease(diseaseEntity);
-        profilesRepository.save(profilesEntity);
+    public String newProfiles(@RequestBody() Map<String, Object> body) {
 
+        String email = body.get("email").toString();
+        String passworg = body.get("password").toString();
+        String name = body.get("name").toString();
+        String telephonenumber = body.get("telephonenumber").toString();
+        String address = body.get("address").toString();
+        String prefix = body.get("prefix").toString();
+        String sex = body.get("sex").toString();
+
+        if(validation(email, passworg, name,telephonenumber,address,prefix,sex )!=true){
+            return message;
+        }
+        else{
+
+            PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
+            SexEntity sexEntity = sexRepository.findBySex(sex);
+            ProfilesEntity profilesEntity = new ProfilesEntity();
+            profilesEntity.setPrefix(prefixEntity);
+            profilesEntity.setSex(sexEntity);
+            profilesEntity.setEmail(email);
+            profilesEntity.setPassword(passworg);
+            profilesEntity.setName(name);
+            profilesRepository.save(profilesEntity);
+            ContactEntity contactEntity = new ContactEntity();
+            contactEntity.setAddress(address);
+            contactEntity.setTelephonenumber(telephonenumber);
+            contactEntity.setProfilesEntity(profilesEntity);
+            contactRepository.save(contactEntity);
+
+
+
+        }
+        message = "บันทึกเรียบร้อย";
+        return message;
+    }
+
+    public boolean validation(String email,String  passworg,String  name,
+                              String telephonenumber,String address,String prefix,
+                              String sex){
+
+        return validationSex()&&validationPrefix()&&validationEmail()&&
+        validationName()&&validationAddress()&&validationTelephonenumber()&&validationPassword();
     }
 }
 
