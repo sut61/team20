@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 @ToString
 @EqualsAndHashCode
 //@NoArgsConstructor
-@Table(name="Profiles")
+@Table(name="Contact")
 public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
