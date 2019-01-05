@@ -28,10 +28,17 @@ export class RegisterComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    this.registerservice.save(form).catch((err: HttpErrorResponse) => {
-      // simple logging, but you can do a lot more, see below
-      Windows.alert(err.error);
-    });
+    this.registerservice.save(form).subscribe(
+      data => {
+          alert('บันทึกเรียบร้อย');
+          console.log('Post Request is successful', data);
+
+      },
+      error => {
+          console.log('Rrror', error);
+          alert('ไม่สามารถบันทึกได้ server ผิดพลาดหรือมีข้อมูลอยู่แล้ว(เบอร์โทรนี้ลงทะเบียนแล้ว)');
+      }
+  );
   }
 
   clear(){

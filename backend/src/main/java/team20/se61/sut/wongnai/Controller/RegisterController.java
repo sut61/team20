@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -50,8 +51,8 @@ public class RegisterController {
 
     @PostMapping("/addprofiles")
     @ResponseBody
-    public String newProfiles(@RequestBody() Map<String, Object> body) {
-
+    public Map<String, String> newProfiles(@RequestBody() Map<String, Object> body) {
+        HashMap<String,String> map = new HashMap<>();
         String email = body.get("email").toString();
         String passworg = body.get("password").toString();
         String name = body.get("name").toString();
@@ -61,23 +62,29 @@ public class RegisterController {
         String sex = body.get("sex").toString();
 
         if(validation(email, passworg, name,telephonenumber,address,prefix,sex )!=true){
-            return message;
+            map.put("messege",message);
+            return map;
         }
         else{
 
             if(validationUniqeEmail(prefix,sex,name,passworg,email)!=true){
 
-                return "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
+                message = "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
+                map.put("messege",message);
+                return map;
             }
 
             if(validationUniqeTelephonenumber(address,telephonenumber,email)!=true){
 
-                return "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
+                message = "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
+                map.put("messege",message);
+                return map;
             }
 
         }
         message = "บันทึกเรียบร้อย";
-        return message;
+        map.put("messege",message);
+            return map;
     }
 
 
