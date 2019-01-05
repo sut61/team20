@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService} from '../shared/register/register.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { RegisterService} from '../shared/register/register.service';
 })
 export class RegisterComponent implements OnInit {
 
-
+  message ="";
   register : any =  {};
   constructor(private registerservice: RegisterService) { }
   prefixs: Array<any>;
@@ -23,6 +24,13 @@ export class RegisterComponent implements OnInit {
     this.registerservice.getsex().subscribe(data => {
       this.sexs = data;
       console.log(this.sexs);
+    });
+  }
+
+  save(form: NgForm) {
+    this.registerservice.save(form).catch((err: HttpErrorResponse) => {
+      // simple logging, but you can do a lot more, see below
+      Windows.alert(err.error);
     });
   }
 

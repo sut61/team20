@@ -11,8 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge';
-
-import { RegisterService} from '../shared/register/register.service';
+import { RegisterService} from './shared/register/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { RegisterService} from '../shared/register/register.service';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatBadgeModule,
-    MatSelectModule 
+    MatSelectModule,
+    HttpClientModule
      
   ],
   providers: [RegisterService],
