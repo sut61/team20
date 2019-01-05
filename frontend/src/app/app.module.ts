@@ -7,24 +7,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  {
-    path: 'welcome',
-    component: WelcomeComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  }
-];
 
 @NgModule({
   declarations: [
@@ -35,14 +21,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
