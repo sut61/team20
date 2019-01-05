@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { RegisterService} from '../shared/register/register.service';
+
 
 @Component({
   selector: 'app-register',
@@ -10,14 +11,29 @@ export class RegisterComponent implements OnInit {
 
 
   register : any =  {};
-  constructor() { }
-
+  constructor(private registerservice: RegisterService) { }
+  prefixs: Array<any>;
+  sexs: Array<any>;
   ngOnInit() {
+    this.registerservice.getprefix().subscribe(data => {
+      this.prefixs = data;
+      console.log(this.prefixs);
+    });
+
+    this.registerservice.getsex().subscribe(data => {
+      this.sexs = data;
+      console.log(this.sexs);
+    });
   }
 
   clear(){
-      this.register = {};
-      
+      this.register.email = "";
+      this.register.password = "";
+      this.register.prefix = "";
+      this.register.name = "";
+      this.register.telephonenumber = "";
+      this.register.sex = "";
+      this.register.address = "";
 
   }
 

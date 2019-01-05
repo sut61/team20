@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge';
 
+import { RegisterService} from '../shared/register/register.service';
 
 
 @NgModule({
@@ -32,9 +33,10 @@ import {MatBadgeModule} from '@angular/material/badge';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatBadgeModule,
-    MatSelectModule   
+    MatSelectModule 
+     
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
