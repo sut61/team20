@@ -183,11 +183,7 @@ public class RegisterController {
     }
 
     public boolean validationTelephonenumber(String telephonenumber){
-        if(telephonenumber.length()<9||telephonenumber.length()>12){
-            message = "เบอร์โทรศัพท์ต้องมีความยาว 9 -12 ตัวอักษร";
-            return false;
-        }
-
+        
         if (telephonenumber.charAt(0)!='+'&&(!Character.isDigit(telephonenumber.charAt(0)))){
             message = "เบอร์โทรศัพท์ตัวแรกต้องมีเป็นตัวเลขหรือ + เท่านั้น";
             return false;
@@ -200,6 +196,11 @@ public class RegisterController {
             }
 
         }
+        if(telephonenumber.length()<9||telephonenumber.length()>12){
+            message = "เบอร์โทรศัพท์ต้องมีความยาว 9 -12 ตัวอักษร";
+            return false;
+        }
+
             return true;
     }
 
@@ -230,7 +231,7 @@ public class RegisterController {
                     &&name.charAt(i)!='ุ'&&name.charAt(i)!='ู'&&name.charAt(i)!='ไ'&&name.charAt(i)!='ึ'
                     &&name.charAt(i)!='ำ'&&name.charAt(i)!='โ'&&name.charAt(i)!='เ'&&name.charAt(i)!='็'
                     &&name.charAt(i)!='า'&&name.charAt(i)!='แ'&&name.charAt(i)!='ิ'&&name.charAt(i)!='ื'
-                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'){
+                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'&&name.charAt(i)!=' '){
                 message = "ชื่อและนามสกุลต้องไม่มีอักษรพิเศษ";
                 return false;
 

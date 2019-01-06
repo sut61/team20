@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService} from '../shared/register/register.service';
 import { NgForm } from '@angular/forms';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Component({
@@ -10,11 +11,12 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  message ="";
+ 
   register : any =  {};
   constructor(private registerservice: RegisterService) { }
   prefixs: Array<any>;
   sexs: Array<any>;
+   message ="";
   ngOnInit() {
     this.registerservice.getprefix().subscribe(data => {
       this.prefixs = data;
@@ -30,13 +32,16 @@ export class RegisterComponent implements OnInit {
   save(form: NgForm) {
     this.registerservice.save(form).subscribe(
       data => {
-          alert('บันทึกเรียบร้อย');
-          console.log('Post Request is successful', data);
+          this.message = JSON.stringify(data);
+          
+          alert(this.message);
+          
 
+      console.log(data);
       },
       error => {
-          console.log('Rrror', error);
-          alert('ไม่สามารถบันทึกได้ server ผิดพลาดหรือมีข้อมูลอยู่แล้ว(เบอร์โทรนี้ลงทะเบียนแล้ว)');
+          console.log('Error', error);
+          alert('ไม่สามารถบันทึกได้ server ผิดพลาด');
       }
   );
   }
