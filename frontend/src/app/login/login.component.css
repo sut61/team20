@@ -1,0 +1,16 @@
+.center {
+    margin: auto
+}
+
+.full-width {
+  width: 30%;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+	font-weight: 900;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0 0 0px;
+}

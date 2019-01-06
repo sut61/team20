@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RegisterService} from './shared/register/register.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ManuComponent } from './manu/manu.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     WelcomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ManuComponent
   ],
   imports: [
     BrowserModule,

@@ -62,7 +62,7 @@ public class RegisterController {
         String sex = body.get("sex").toString();
 
         if(validation(email, passworg, name,telephonenumber,address,prefix,sex )!=true){
-            map.put("messege",message);
+            map.put("message",message);
             return map;
         }
         else{
@@ -70,20 +70,20 @@ public class RegisterController {
             if(validationUniqeEmail(prefix,sex,name,passworg,email)!=true){
 
                 message = "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
-                map.put("messege",message);
+                map.put("message",message);
                 return map;
             }
 
             if(validationUniqeTelephonenumber(address,telephonenumber,email)!=true){
 
                 message = "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
-                map.put("messege",message);
+                map.put("message",message);
                 return map;
             }
 
         }
         message = "บันทึกเรียบร้อย";
-        map.put("messege",message);
+        map.put("message",message);
             return map;
     }
 
@@ -143,10 +143,11 @@ public class RegisterController {
             return false;
         if(validationSex(sex)==false)
             return false;
-        if(validationAddress(address)==false)
-            return false;
         if(validationTelephonenumber(telephonenumber)==false)
             return false;
+        if(validationAddress(address)==false)
+            return false;
+
         return true;
     }
 
@@ -220,10 +221,28 @@ public class RegisterController {
             return  false;
         }
 
-        return true;
+        for(int i=0;i<address.length();i++){
+            if((address.charAt(i)<'a'||address.charAt(i)>'z')&&(address.charAt(i)<'A'||address.charAt(i)>'Z')&&(!Character.isDigit(address.charAt(i)))
+                    &&(address.charAt(i)<'ก'||address.charAt(i)>'ฮ')
+                    &&(address.charAt(i)<'่'||address.charAt(i)>'๋')
+                    &&address.charAt(i)!='ุ'&&address.charAt(i)!='ู'&&address.charAt(i)!='ไ'&&address.charAt(i)!='ึ'&&address.charAt(i)!='\n'
+                    &&address.charAt(i)!='ำ'&&address.charAt(i)!='โ'&&address.charAt(i)!='เ'&&address.charAt(i)!='็'
+                    &&address.charAt(i)!='า'&&address.charAt(i)!='แ'&&address.charAt(i)!='ิ'&&address.charAt(i)!='ื'
+                    &&address.charAt(i)!='์'&&address.charAt(i)!='ี'&&address.charAt(i)!='ใ'&&address.charAt(i)!=' '&&address.charAt(i)!='.'&&address.charAt(i)!='/'){
+                message = "ที่อยู่ต้องไม่มีอักษรพิเศษ";
+                return false;
+
+            }
+        }
+
+        return  true;
+
+
     }
 
     public boolean validationName(String name){
+
+
         for(int i=0;i<name.length();i++){
             if((name.charAt(i)<'a'||name.charAt(i)>'z')&&(name.charAt(i)<'A'||name.charAt(i)>'Z')
                     &&(name.charAt(i)<'ก'||name.charAt(i)>'ฮ')

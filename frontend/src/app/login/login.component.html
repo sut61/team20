@@ -1,4 +1,51 @@
-<button mat-raised-button color="warn"
+<mat-toolbar color="primary" >
+  <div class ="center">
+    <span>
+      เข้าสู้ระบบเพื่อใช้งาน
+    </span>
+  </div>
+</mat-toolbar>
+
+
+<form #loginForm="ngForm" (ngSubmit)="save(loginterForm.value)">
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+
+  <div class = "container">
+  <mat-form-field class='full-width'>
+      <input  matInput placeholder='EMAIL' required name = "email" [(ngModel)]="login.email" type="email" >
+  </mat-form-field>
+  </div>
+
+  <div class = "container">
+  <mat-form-field class='full-width'>
+      <input  matInput placeholder='รหัสผ่าน' required name = "password" [(ngModel)]="login.password" type="password" >
+  </mat-form-field>
+  </div>
+
+  <br>
+  <br>
+  <br>
+<div class = "container">
+  <mat-card-actions>
+    <button mat-raised-button color="primary" 
+  
+    >เข้าสู้ระบบ</button>&nbsp;
+    <button mat-raised-button color="warn"
 matBadgePosition="before" matBadgeColor="accent" [routerLink]="['/register']">
   ลงทะเบียน
-</button>
+</button>&nbsp;
+    <a mat-raised-button color="accent"  routerLink="/welcome">หน้าแรก</a>
+  </mat-card-actions>
+  </div>
+
+  </form>
+

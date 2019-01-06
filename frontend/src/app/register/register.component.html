@@ -2,7 +2,7 @@
 <mat-toolbar color="primary" >
   <div class ="center">
     <span>
-      ลงทะเบียน
+      สมัครสมาชิกคนรีวิวร้านอาหาร
     </span>
   </div>
 </mat-toolbar>
@@ -14,20 +14,20 @@
 
         <div class = "container">
         <mat-form-field class='full-width'>
-            <input  matInput placeholder='EMAIL' name = "email" [(ngModel)]="register.email" type="email" >
+            <input  matInput placeholder='EMAIL' required name = "email" [(ngModel)]="register.email" type="email" >
         </mat-form-field>
         </div>
 
         <div class = "container">
         <mat-form-field class='full-width'>
-            <input  matInput placeholder='รหัสผ่าน' name = "password" [(ngModel)]="register.password" type="password" >
+            <input  matInput placeholder='รหัสผ่าน' required name = "password" [(ngModel)]="register.password" type="password" >
         </mat-form-field>
         </div>
 
 
         <div class = "container">
         <mat-form-field class='full-width'>
-                      <mat-select placeholder="คำนำหน้า" name = "prefix" [(ngModel)]="register.prefix">
+                      <mat-select placeholder="คำนำหน้า" required name = "prefix" [(ngModel)]="register.prefix">
               <mat-option  *ngFor="let prefix of prefixs" [value]="prefix.prefix">
                 {{prefix.prefix}}
               </mat-option>
@@ -37,13 +37,13 @@
 
         <div class = "container">
             <mat-form-field class='full-width'>
-                <input  matInput placeholder='ชื่อ นามสกุล' name = "name" [(ngModel)]="register.name" type="name" >
+                <input  matInput placeholder='ชื่อ นามสกุล'required  name = "name" [(ngModel)]="register.name" type="name" >
             </mat-form-field>
         </div>
 
         <div class = "container">
             <mat-form-field class='full-width'>
-                          <mat-select placeholder="เพศ" name = "sex" [(ngModel)]="register.sex">
+                          <mat-select placeholder="เพศ" required name = "sex" [(ngModel)]="register.sex">
                   <mat-option  *ngFor="let sex of sexs" [value]="sex.sex">
                     {{sex.sex}}
                   </mat-option>
@@ -53,13 +53,13 @@
 
             <div class = "container">
                 <mat-form-field class='full-width'>
-                    <input  matInput placeholder='เบอร์โทรศัพท์' name = "telephonenumber" [(ngModel)]="register.telephonenumber" type="tel" >
+                    <input  matInput placeholder='เบอร์โทรศัพท์' required name = "telephonenumber" [(ngModel)]="register.telephonenumber" type="tel" >
                 </mat-form-field>
             </div>
 
             <div class = "container">
                 <mat-form-field class='full-width'>
-                    <textarea  matInput placeholder='ที่อยู่' name = "address" [(ngModel)]="register.address" type="text" ></textarea>
+                    <textarea  matInput placeholder='ที่อยู่' required name = "address" [(ngModel)]="register.address" type="text" ></textarea>
                 </mat-form-field>
             </div>
 
