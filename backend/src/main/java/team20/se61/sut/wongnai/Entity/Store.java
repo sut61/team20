@@ -8,14 +8,32 @@ import javax.persistence.GeneratedValue;
 
 @Entity
 @Data
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-@Table(name="Store")
+
 public class Store {
     @Id
-    @GeneratedValue
-    private  Long prefixid;
-    //private @NonNull String prefix;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String branch;
+
+    @ManyToOne
+    PriceRange priceRange;
+
+    private String adddress;
+    private String hint;
+    private String province;
+    private String district;
+    private String subDistrict;
+    private String building;
+
+    private String phone;
+    private String email;
+    private String website;
+    private String time;
+
+    @ManyToOne
+    private String numberOfSeat;
+
+    private String image; // url
 
 }
