@@ -8,9 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ManuComponent } from './manu/manu.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  
+
   {
     path: 'welcome',
     component: WelcomeComponent
@@ -34,11 +35,13 @@ const routes: Routes = [
 ];
 
 
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
     CommonModule
   ],
+
 
   exports : [RouterModule]
 })

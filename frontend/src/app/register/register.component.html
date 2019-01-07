@@ -8,6 +8,7 @@
 </mat-toolbar>
 
 
+
 <form #registerForm="ngForm" (ngSubmit)="save(registerForm.value)">
 
         <br>
@@ -64,17 +65,18 @@
             </div>
 
             <div class = "container">
-              
+
               <mat-card-actions>
                 <button mat-raised-button color="primary" type="submit"
               [disabled]="!registerForm.form.valid"
                 >บันทึก</button>&nbsp;
-                <button mat-raised-button color="warn" 
+                <button mat-raised-button color="warn"
                          type="button" (click) = "clear()" type="button">ล้าง</button>&nbsp;
                 <a mat-raised-button color="accent"  routerLink="/welcome">หน้าแรก</a>
               </mat-card-actions>
-              
+
             </div>
+
 
 </form>
 
