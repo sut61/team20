@@ -2,15 +2,12 @@
   <div class ="center">
     <span>
       เข้าสู้ระบบเพื่อใช้งาน
-      <li><a routerLinkActive="active" routerLink="/welconme">Home</a></li>
-    <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
-    <li><a (click)="logout()">Logout</a></li>
     </span>
   </div>
 </mat-toolbar>
 
 
-<form #loginForm="ngForm" (ngSubmit)="save(loginterForm.value)">
+<form #loginForm="ngForm" (ngSubmit)="Login(loginForm.value)">
 
   <br>
   <br>
@@ -39,9 +36,11 @@
   <br>
 <div class = "container">
   <mat-card-actions>
-    <button mat-raised-button color="primary" 
-  
-    >เข้าสู้ระบบ</button>&nbsp;
+    <button mat-raised-button color="primary" type="submit"
+    [disabled]="!loginForm.form.valid"
+      >เข้าสู่ระบบ</button>&nbsp;
+      <button mat-raised-button color="warn" 
+                         type="button" (click) = "clear()" type="button">ล้าง</button>&nbsp;
     <button mat-raised-button color="warn"
 matBadgePosition="before" matBadgeColor="accent" [routerLink]="['/register']">
   ลงทะเบียน

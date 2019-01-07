@@ -2,7 +2,7 @@
     height:40em; 
     background-size:cover;
     width:auto;
-    background-image:url('C:\cygwin\home\User\team20\frontend\src\app\image\welcome3.jpg');
+    background-image:url('..\image\welcome3.jpg');
     background-position:50% 50%;
   }
 
