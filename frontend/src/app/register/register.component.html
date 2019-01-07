@@ -1,0 +1,80 @@
+
+<mat-toolbar color="primary" >
+  <div class ="center">
+    <span>
+      สมัครสมาชิกคนรีวิวร้านอาหาร
+    </span>
+  </div>
+</mat-toolbar>
+
+
+<form #registerForm="ngForm" (ngSubmit)="save(registerForm.value)">
+
+        <br>
+
+        <div class = "container">
+        <mat-form-field class='full-width'>
+            <input  matInput placeholder='EMAIL' required name = "email" [(ngModel)]="register.email" type="email" >
+        </mat-form-field>
+        </div>
+
+        <div class = "container">
+        <mat-form-field class='full-width'>
+            <input  matInput placeholder='รหัสผ่าน' required name = "password" [(ngModel)]="register.password" type="password" >
+        </mat-form-field>
+        </div>
+
+
+        <div class = "container">
+        <mat-form-field class='full-width'>
+                      <mat-select placeholder="คำนำหน้า" required name = "prefix" [(ngModel)]="register.prefix">
+              <mat-option  *ngFor="let prefix of prefixs" [value]="prefix.prefix">
+                {{prefix.prefix}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class = "container">
+            <mat-form-field class='full-width'>
+                <input  matInput placeholder='ชื่อ นามสกุล'required  name = "name" [(ngModel)]="register.name" type="name" >
+            </mat-form-field>
+        </div>
+
+        <div class = "container">
+            <mat-form-field class='full-width'>
+                          <mat-select placeholder="เพศ" required name = "sex" [(ngModel)]="register.sex">
+                  <mat-option  *ngFor="let sex of sexs" [value]="sex.sex">
+                    {{sex.sex}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class = "container">
+                <mat-form-field class='full-width'>
+                    <input  matInput placeholder='เบอร์โทรศัพท์' required name = "telephonenumber" [(ngModel)]="register.telephonenumber" type="tel" >
+                </mat-form-field>
+            </div>
+
+            <div class = "container">
+                <mat-form-field class='full-width'>
+                    <textarea  matInput placeholder='ที่อยู่' required name = "address" [(ngModel)]="register.address" type="text" ></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class = "container">
+              
+              <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit"
+              [disabled]="!registerForm.form.valid"
+                >บันทึก</button>&nbsp;
+                <button mat-raised-button color="warn" 
+                         type="button" (click) = "clear()" type="button">ล้าง</button>&nbsp;
+                <a mat-raised-button color="accent"  routerLink="/welcome">หน้าแรก</a>
+              </mat-card-actions>
+              
+            </div>
+
+</form>
+

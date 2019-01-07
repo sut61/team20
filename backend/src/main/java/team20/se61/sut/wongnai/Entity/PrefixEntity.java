@@ -6,16 +6,24 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
+
 @Entity
 @Data
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
+//@NoArgsConstructor
 @Table(name="Prefix")
 public class PrefixEntity {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long prefixid;
-    //private @NonNull String prefix;
+    private @NonNull @Column(unique = true)  String prefix;
+
+    public PrefixEntity(){}
+
+    public PrefixEntity(String prefix){
+        this.prefix=prefix;
+    }
 
 }
