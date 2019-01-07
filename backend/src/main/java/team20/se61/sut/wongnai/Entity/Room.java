@@ -1,30 +1,24 @@
 package team20.se61.sut.wongnai.Entity;
-import java.util.Set;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.*;
+
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-@Table(name = "Tag")
-public class Tag{
+@Table(name = "Room")
+public class Room{
     @Id
-    @SequenceGenerator(name="Tag_seq",sequenceName="Tag_seq")               
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Tag_seq")
+    @SequenceGenerator(name="Room_seq",sequenceName="Room_seq")               
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Room_seq")
     private long id;
     @Column(name="name",unique = true, nullable = true)
     private @NonNull String name;
-
-    public Tag(String name){
+    
+    public Room(String name){
         this.name = name;
     }
-    @ManyToMany(mappedBy = "tags")
-    @JsonBackReference
-    private Set<ReportProblem> reports;        
 }
