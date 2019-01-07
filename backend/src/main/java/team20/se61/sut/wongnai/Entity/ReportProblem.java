@@ -4,9 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.ArrayList;
-import java.util.Collection;
+
+import java.util.Set;
 import lombok.*;
 
 @Entity
@@ -26,7 +25,13 @@ public class ReportProblem{
     @JoinColumn(name= "roomId")     
     private Room room;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JsonIgnore 
-    private Collection<ReportTag> reportTag = new ArrayList<ReportTag>();
+    @ManyToMany
+    @JoinTable(name = "has_tag", joinColumns = @JoinColumn(name = "report_id", referencedColumnName = "id"), 
+    inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
+	private Set<Tag> tags;
+
+    public ReportProblem(String title, Set<Tag> tags){
+        this.title = title;
+        this.tags = tags;
+    }
 }
