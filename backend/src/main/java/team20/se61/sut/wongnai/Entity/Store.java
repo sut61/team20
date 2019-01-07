@@ -17,7 +17,7 @@ public class Store {
     private String branch;
 
     @ManyToOne
-    PriceRange priceRange;
+    private PriceRange priceRange;
 
     private String adddress;
     private String hint;
@@ -32,7 +32,7 @@ public class Store {
     private String time;
 
     @ManyToOne
-    private String numberOfSeat;
+    private NumberOfSeat numberOfSeat;
 
     private String image; // url
 
