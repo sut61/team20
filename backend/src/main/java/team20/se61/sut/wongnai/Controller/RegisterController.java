@@ -1,5 +1,6 @@
 package team20.se61.sut.wongnai.Controller;
 
+
 import team20.se61.sut.wongnai.Entity.ProfilesEntity;
 import team20.se61.sut.wongnai.Entity.SexEntity;
 import team20.se61.sut.wongnai.Entity.PrefixEntity;
@@ -8,6 +9,7 @@ import team20.se61.sut.wongnai.Repository.SexRepository;
 import team20.se61.sut.wongnai.Repository.PrefixRepository;
 import team20.se61.sut.wongnai.Repository.ContactRepository;
 import team20.se61.sut.wongnai.Repository.ProfilesRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,10 +26,13 @@ import java.util.stream.Collectors;
 
 
 
+
 @EnableAutoConfiguration
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class RegisterController {
+
+
     String message;
     @Autowired
     private ProfilesRepository profilesRepository;
@@ -288,6 +293,8 @@ public class RegisterController {
         return true;
     }
 }
+
+//Validation For TEST
 
 
 
