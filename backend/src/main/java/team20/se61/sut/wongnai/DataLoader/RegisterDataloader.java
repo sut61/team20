@@ -15,6 +15,7 @@ public class RegisterDataloader implements ApplicationRunner {
 
     @Autowired
     private PrefixRepository prefixRepository;
+
     @Autowired
     private SexRepository sexRepository;
 

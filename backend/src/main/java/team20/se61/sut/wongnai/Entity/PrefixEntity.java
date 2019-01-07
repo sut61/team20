@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
+
 @Entity
 @Data
 @ToString
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 //@NoArgsConstructor
 @Table(name="Prefix")
 public class PrefixEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long prefixid;

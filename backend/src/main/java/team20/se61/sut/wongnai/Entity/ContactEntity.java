@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
+
 @Entity
 @Data
 @ToString
@@ -17,6 +18,7 @@ import javax.persistence.GeneratedValue;
 @NoArgsConstructor
 @Table(name="Contact")
 public class ContactEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long contactid;
