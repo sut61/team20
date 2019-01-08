@@ -46,6 +46,8 @@ class RecipeController{
             hotRecipe.setFoodtype(foodType.get());
             hotRecipe.setMainingred(mainIngred.get());
             hotRecipe.setUrlPhoto(body.get("UrlPhoto").toString());
+            hotRecipe.setName(body.get("foodname").toString());
+            hotRecipe.setHowto(body.get("howto").toString());
             return recipeRespository.save(hotRecipe);
            
     }
