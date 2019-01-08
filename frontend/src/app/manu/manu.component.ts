@@ -8,7 +8,7 @@ import { LoginService } from '../shared/login/login.service';
 })
 export class ManuComponent implements OnInit {
 
-  name="";
+  name : Array<any>;
 
   constructor(private loginService:LoginService) { }
 
