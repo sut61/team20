@@ -46,7 +46,7 @@ import { LoginService} from './shared/login/login.service';
 
   ],
 
-  providers: [RegisterService],
+  providers: [RegisterService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
