@@ -233,7 +233,8 @@ public class RegisterController {
                     &&address.charAt(i)!='ุ'&&address.charAt(i)!='ู'&&address.charAt(i)!='ไ'&&address.charAt(i)!='ึ'&&address.charAt(i)!='\n'
                     &&address.charAt(i)!='ำ'&&address.charAt(i)!='โ'&&address.charAt(i)!='เ'&&address.charAt(i)!='็'
                     &&address.charAt(i)!='า'&&address.charAt(i)!='แ'&&address.charAt(i)!='ิ'&&address.charAt(i)!='ื'
-                    &&address.charAt(i)!='์'&&address.charAt(i)!='ี'&&address.charAt(i)!='ใ'&&address.charAt(i)!=' '&&address.charAt(i)!='.'&&address.charAt(i)!='/'){
+                    &&address.charAt(i)!='์'&&address.charAt(i)!='ี'&&address.charAt(i)!='ใ'&&address.charAt(i)!=' '&&address.charAt(i)!='.'&&address.charAt(i)!='/'
+                    &&address.charAt(i)!='ั'&&address.charAt(i)!='ะ'){
                 message = "ที่อยู่ต้องไม่มีอักษรพิเศษ";
                 return false;
 
