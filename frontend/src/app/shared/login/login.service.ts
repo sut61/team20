@@ -21,10 +21,5 @@ export class LoginService {
       result = this.http.get(this.email);
     return result;
   }
-  setName(name :any){
-    this.name=name;
-  }
-  getName():any{
-    return this.name;
-  }
+  
 }

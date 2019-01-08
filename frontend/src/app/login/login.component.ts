@@ -45,8 +45,8 @@ constructor(private loginservice: LoginService,private router : Router,private r
               data=>{
                       
                      console.log(data);
-                    this.loginservice.setName(data);
-                     alert('ยินดีต้อนรับ '+ this.loginservice.getName().name);
+                    
+                     alert('ยินดีต้อนรับ ');
                      
 
               }
