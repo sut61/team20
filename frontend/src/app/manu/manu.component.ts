@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../shared/login/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manu',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManuComponent implements OnInit {
 
-  constructor() { }
+  profiles : Observable<any>;
+
+  constructor(private loginService:LoginService) { }
+
 
   ngOnInit() {
+    this.loginService.getUser().subscribe(
+      data=>{
+            this.profiles=data;
+            console.log(this.profiles);
+            
+
+      }
+
+    );
   }
 
 }
