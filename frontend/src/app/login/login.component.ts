@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, Form } from '@angular/forms';
 import { LoginService } from '../shared/login/login.service';
+import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,10 @@ import { LoginService } from '../shared/login/login.service';
 export class LoginComponent implements OnInit {
 login : any = {};
 message="";
+
+user:string;
+profiles :any[];
+
 
 constructor(private loginservice: LoginService,private router : Router,private route: ActivatedRoute) { }
   ngOnInit() {
@@ -29,8 +34,28 @@ constructor(private loginservice: LoginService,private router : Router,private r
       data => {
           this.message = JSON.stringify(data);
           
-          if(this.message==='{"message":"false"}'){alert('EMAIL หรือ PASSWORD ไม่ถูกต้อง');}
-          if(this.message==='{"message":"true"}'){alert('ยินดีต้อนรับ'); this.gotoManu();}
+          if(this.message==='{"message":"false"}'){
+            
+            alert('EMAIL หรือ PASSWORD ไม่ถูกต้อง');
+          
+    
+          }
+          if(this.message==='{"message":"true"}'){
+            this.loginservice.getUser().subscribe(
+              data=>{
+                      
+                     console.log(data);
+                    this.loginservice.setName(data);
+                     alert('ยินดีต้อนรับ '+ this.loginservice.getName().name);
+                     
+
+              }
+
+            );
+            
+            
+            
+            this.gotoManu();}
           
         
       console.log(data);

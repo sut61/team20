@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../shared/login/login.service';
 
 @Component({
   selector: 'app-manu',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManuComponent implements OnInit {
 
-  constructor() { }
+  name="";
+
+  constructor(private loginService:LoginService) { }
 
   ngOnInit() {
+     this.name = this.loginService.getName()
   }
 
 }
