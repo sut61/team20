@@ -46,7 +46,7 @@ constructor(private loginservice: LoginService,private router : Router,private r
                       
                      console.log(data);
                     
-                     alert('ยินดีต้อนรับ ');
+                     
                      
 
               }
