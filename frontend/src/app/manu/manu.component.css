@@ -15,7 +15,7 @@
 
 .image{
     height:40em; 
-    background-size:cover;
+    background-size:auto;
     width:auto;
     background-image:url('..\image\welcome3.jpg');
     background-position:50% 50%;
