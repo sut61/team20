@@ -19,8 +19,8 @@ export class ManuComponent implements OnInit {
       data=>{
             this.profiles=data;
             console.log(this.profiles);
+            alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
             
-
       }
 
     );
