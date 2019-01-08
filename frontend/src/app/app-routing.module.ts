@@ -7,7 +7,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ManuComponent } from './manu/manu.component';
-
+import { MakefoodAddComponent } from './makefood-add/makefood-add.component';
+import { MakefoodListComponent } from './makefood-list/makefood-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -31,7 +32,13 @@ const routes: Routes = [
   {
     path: 'app',
     component:AppComponent
-  }
+  },
+  
+  { path: 'makefood-list',component : MakefoodListComponent },
+  { path: 'makefood-add', component : MakefoodAddComponent}
+
+
+
 ];
 
 

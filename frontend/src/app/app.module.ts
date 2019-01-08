@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { MakefoodListComponent } from './makefood-list/makefood-list.component';
+import { MakefoodAddComponent } from './makefood-add/makefood-add.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,9 @@ import { RegisterService} from './shared/register/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ManuComponent } from './manu/manu.component';
 import { LoginService} from './shared/login/login.service';
+import { environment } from '../environments/environment';
+import { AngularFireStorageModule,StorageBucket } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
 
 
 @NgModule({
@@ -25,7 +29,9 @@ import { LoginService} from './shared/login/login.service';
     WelcomeComponent,
     LoginComponent,
     RegisterComponent,
-    ManuComponent
+    ManuComponent,
+    MakefoodAddComponent,
+    MakefoodListComponent
   ],
 
 
@@ -41,7 +47,9 @@ import { LoginService} from './shared/login/login.service';
     AppRoutingModule,
     MatBadgeModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
 
 
   ],

@@ -1,0 +1,66 @@
+<section >
+
+
+  <h1 >เขียนสูตรอาหาร</h1>
+
+
+</section>
+
+<form >
+
+<div>
+  <mat-form-field >
+    <input placeholder="ชื่ออาหาร"  matInput  [(ngModel)]="foodname" type="string" [ngModelOptions]="{standalone: true}" >
+  </mat-form-field>
+</div>
+
+  <mat-form-field>
+    <mat-select  placeholder=" เมนูอาหาร "  [(ngModel)]="foodtypeid" type="number" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let FoodType of foodtypes" [value]="FoodType.idtype">
+        {{FoodType.nametype}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder=" แบบอาหาร " [(ngModel)]="cookingmethodid" type="number" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let CookingMethod of cookingmethods" [value]="CookingMethod.value">
+        {{CookingMethod.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder=" ส่วนประกอบหลัก " [(ngModel)]="mainingredid" type="number" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let  MainIngredients of mainingreds" [value]="MainIngredients.value">
+        {{MainIngredients.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div>
+  <input type="file" (change)="uploadFile($event)" />
+  <div>{{ uploadPercent | async }}</div>
+  <div *ngIf="downloadURL | async">
+    link: <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <h3>Results!</h3>
+    <img width="125" [src]="downloadURL | async"><br>
+  </div>
+</div>
+
+<div>
+  <mat-form-field  class="txtarray">
+    <textarea matInput placeholder="วิธีทำ" rows="15" [(ngModel)]="howto" type="string" [ngModelOptions]="{standalone: true}" ></textarea>
+  </mat-form-field>
+  
+</div>
+
+</form>
+
+<section>
+
+
+<button mat-fab color="primary" [routerLink]="['/makefood-list']">Save</button>
+
+
+</section>
