@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ManuComponent implements OnInit {
 
   profiles : any;
+  
 
   constructor(private loginService:LoginService,private  router :Router) { }
 
@@ -39,6 +40,8 @@ export class ManuComponent implements OnInit {
 
   Logout(){
     
+    
+
     this.loginService.logout().subscribe(
       data => {
           
