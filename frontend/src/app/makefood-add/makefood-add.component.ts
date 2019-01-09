@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from  "rxjs" ;
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { LoginService } from '../shared/login/login.service';
+import { Router } from '@angular/router';
 
 
 export interface FoodType { 
@@ -47,10 +49,26 @@ export class MakefoodAddComponent implements OnInit {
   downloadURL: Observable<string>;
   profileUrl: Observable<string | null>;
 
-  constructor(private httpClient: HttpClient,private storage: AngularFireStorage) {  const ref = this.storage.ref('test/');
+  constructor(private httpClient: HttpClient,private storage: AngularFireStorage,
+    private loginService:LoginService,private  router :Router) {  const ref = this.storage.ref('test/');
     console.log(ref);}
 
   ngOnInit() {
+    this.loginService.getUser().subscribe(
+      data=>{
+          try{
+            
+           
+           console.log(data.name)
+          }
+          catch(Err){
+              this.router.navigate(['/login']);
+          }
+            
+      }
+      
+
+    );
 
     this.httpClient.get("http://localhost:8080/FoodType").subscribe(
       body => {
