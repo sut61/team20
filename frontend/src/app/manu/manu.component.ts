@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ManuComponent implements OnInit {
 
-  profiles : Observable<any>;
+  profiles : any;
 
   constructor(private loginService:LoginService,private  router :Router) { }
 
