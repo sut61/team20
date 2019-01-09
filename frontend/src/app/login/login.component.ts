@@ -45,12 +45,8 @@ constructor(private loginservice: LoginService,private router : Router,private r
               data=>{
                       
                      console.log(data);
-                     localStorage.setItem('key',data.name);
-                    
-                     
-                     
-
-              }
+                                    
+            }
 
             );
             
@@ -70,8 +66,6 @@ constructor(private loginservice: LoginService,private router : Router,private r
     }
   
   
-  
-
   clear(){
     this.login.email = "";
     this.login.password = "";

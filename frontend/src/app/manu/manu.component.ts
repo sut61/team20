@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ManuComponent implements OnInit {
 
   profiles : any;
+  
 
   constructor(private loginService:LoginService,private  router :Router) { }
 
@@ -20,11 +21,12 @@ export class ManuComponent implements OnInit {
       data=>{
           try{
             this.profiles=data;
+           
             console.log(this.profiles);
-            //if(){}
-           // else{
+            
+           
             alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
-           // }
+           
           }
           catch(Err){
               this.router.navigate(['/login']);
@@ -36,4 +38,21 @@ export class ManuComponent implements OnInit {
     );
   }
 
+  Logout(){
+    
+    
+
+    this.loginService.logout().subscribe(
+      data => {
+          
+              this.router.navigate(['/login']);
+              console.log(data);
+    
+          }
+    );
+
+}
+  email(email: any): any {
+    throw new Error("Method not implemented.");
+  }
 }
