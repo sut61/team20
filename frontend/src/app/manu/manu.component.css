@@ -1,5 +1,11 @@
 
-
+.topright {
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	font-size: 18px;
+  }
+  
 .full-width {
   width: 30%;
 }
@@ -15,7 +21,7 @@
 
 .image{
     height:40em; 
-    background-size:auto;
+    background-size:cover;
     width:auto;
     background-image:url('..\image\welcome3.jpg');
     background-position:50% 50%;
@@ -25,6 +31,11 @@
       margin: auto;
   }
 
+
+.column{
+	margin: auto;
+	width:33.33%
+}
   @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 
 *

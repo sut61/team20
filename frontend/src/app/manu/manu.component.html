@@ -1,14 +1,13 @@
 <div class="image">
-<mat-toolbar color="primary" >
-    <div class ="center">
-      <span>
-        MANU
-      </span>
-    </div>
+
+<mat-toolbar color="primary" >  
+    <div class ="center">MANU </div>
+    <div class="topright">ผู้ใช้งาน<br>{{profiles.name}}</div>
+    
 </mat-toolbar>
 <mat-toolbar color="primary" >
     <div class ="center">
-      <span>
+      
         <button mat-raised-button color="warn" 
             type="button" routerLink="/login" type="button">ระบบที่หนึ่งสมมุติ</button>&nbsp;
 
@@ -17,12 +16,11 @@
 
             <button mat-raised-button color="warn" 
             type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;
-
-
-      </span>
+   
     </div>
 </mat-toolbar>
-<br><br><br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br>
 
     <div class="container">
     
@@ -33,7 +31,5 @@
         <span>A</span><span>I</span>
         
        </div>
-       
-  
 </div>
 
