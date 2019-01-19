@@ -22,7 +22,7 @@ export class ManuComponent implements OnInit {
           try{
             this.profiles=data;
            
-            console.log(this.profiles);
+            console.log(this.profiles.name);
             
            
             //alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);

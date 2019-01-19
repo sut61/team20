@@ -21,6 +21,7 @@ import { LoginService} from './shared/login/login.service';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule,StorageBucket } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AngularFireModule } from '@angular/fire';
     MatSelectModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatGridListModule
 
 
   ],

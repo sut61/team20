@@ -10,6 +10,7 @@ import { ManuComponent } from './manu/manu.component';
 import { MakefoodAddComponent } from './makefood-add/makefood-add.component';
 import { MakefoodListComponent } from './makefood-list/makefood-list.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
 
