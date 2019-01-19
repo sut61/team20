@@ -49,7 +49,7 @@ constructor(private loginservice: LoginService,private router : Router,private r
            
             console.log(this.profiles);
              this.gotoManu();
-            alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
+            alert("ยินดีต้อนรับ   "+this.profiles.prefix.prefix+this.profiles.name);
 
                                     
             }

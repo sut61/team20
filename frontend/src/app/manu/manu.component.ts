@@ -24,6 +24,7 @@ export class ManuComponent implements OnInit {
            
             console.log(this.profiles.name);
             
+            
            
             //alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
            
