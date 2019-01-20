@@ -14,4 +14,8 @@ public class PriceRange {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String range;
+
+    public PriceRange(String range){
+        this.range = range;
+    }
 }

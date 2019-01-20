@@ -14,4 +14,8 @@ public class NumberOfSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String choices;
+
+    public NumberOfSeat(String choices){
+        this.choices = choices;
+    }
 }
