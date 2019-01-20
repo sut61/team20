@@ -15,6 +15,8 @@ public class NumberOfSeat {
     private Long id;
     private String choices;
 
+    protected NumberOfSeat(){}
+
     public NumberOfSeat(String choices){
         this.choices = choices;
     }

@@ -15,6 +15,8 @@ public class PriceRange {
     private Long id;
     private String range;
 
+    protected PriceRange(){}
+
     public PriceRange(String range){
         this.range = range;
     }
