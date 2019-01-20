@@ -8,6 +8,7 @@ public class WongnaiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WongnaiApplication.class, args);
+		
 	}
 
 }

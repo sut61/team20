@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { Observable } from  "rxjs" ;
+import { Observable, observable } from  "rxjs" ;
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { finalize, subscribeOn, mergeAll, concatAll } from 'rxjs/operators';
 import { LoginService } from '../shared/login/login.service';
 import { Router } from '@angular/router';
 
@@ -40,26 +40,62 @@ export class MakefoodAddComponent implements OnInit {
 
   private foodname : string;
   private foodtypeid :number;
-  private  cookingmethodid:number;
-  private  mainingredid:number;
+  private cookingmethodid:number;
+  private mainingredid:number;
   private urlphoto : string;
   private howto: string;
+  private email:string;
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   profileUrl: Observable<string | null>;
 
   constructor(private httpClient: HttpClient,private storage: AngularFireStorage,
-    private loginService:LoginService,private  router :Router) {  const ref = this.storage.ref('test/');
+    private loginService:LoginService,private  router :Router)
+    {  const ref = this.storage.ref('test/');
     console.log(ref);}
+
+
+
+    addRecipe(){
+      
+      this.addRecipetoDB(this.foodname,this.foodtypeid,this.cookingmethodid,this.mainingredid,this.downloadURL,this.howto,this.email).subscribe(data =>{
+        console.log( "Update Success" , data) ;
+        alert('แก้ไขเรียบร้อย');
+        this.router.navigate(['/makefood-list']);
+
+      },
+      error =>{
+        console.log("Fail Success", error);
+        alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
+      })
+      
+   
+  }
+
+  addRecipetoDB(foodname : string, foodtypeid :number,cookingmethodid:number,mainingredid:number,downloadURL:  Observable<string>,howto: string,email:string){
+ 
+  
+     return this.httpClient.post('//localhost:8080/Recipe',{
+        'cookingMethod':cookingmethodid,
+        'foodType':foodtypeid,
+        'mainIngred':mainingredid,
+        'email':email,
+        'UrlPhoto':downloadURL,
+        'foodname':foodname,
+        'howto':howto
+      })
+
+  }
 
   ngOnInit() {
     this.loginService.getUser().subscribe(
       data=>{
           try{
             
-           
-           console.log(data.name)
+           this.email = data.email;
+           console.log(this.email)
+
           }
           catch(Err){
               this.router.navigate(['/login']);
@@ -126,8 +162,14 @@ export class MakefoodAddComponent implements OnInit {
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+        
      )
     .subscribe()
+    //this.urlphoto =this.downloadURL.pipe(concatAll()).subscribe() 
+
+  
   }
+
+ 
 
 }

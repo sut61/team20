@@ -44,7 +44,7 @@
   <div *ngIf="downloadURL | async">
     link: <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
     <h3>Results!</h3>
-    <img width="125" [src]="downloadURL | async"><br>
+    <img width="125" [src]="downloadURL | async" ><br>
   </div>
 </div>
 
@@ -60,7 +60,7 @@
 <section>
 
 
-<button mat-fab color="primary" [routerLink]="['/makefood-list']">Save</button>
-
+<button mat-fab color="primary" (click)= "addRecipe()">Save</button>
+<button mat-fab color="primary"  [routerLink]="['/makefood-list']">Cancel</button>
 
 </section>

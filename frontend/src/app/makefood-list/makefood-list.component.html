@@ -1,4 +1,18 @@
-<p>
-  makefood-list works!
-</p>
-<button mat-fab color="primary" [routerLink]="['/makefood-add']">Add</button>
+
+<mat-card>
+    <button mat-fab color="primary" [routerLink]="['/manu']">Menu</button>
+    <button mat-fab color="primary" [routerLink]="['/makefood-add']">Add</button>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let Recipe of Recipes">
+       
+        <img mat-list-avatar src="{{Recipe.urlPhoto}}" alt="{{Recipe.name}}">
+        <h3 mat-line>
+          <a mat-button [routerLink]="['/makefood-detail',Recipe.id]">{{Recipe.name}}</a>
+        </h3>
+    <br>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+</mat-card>

@@ -15,7 +15,7 @@ login : any = {};
 message="";
 
 user:string;
-profiles :any;
+profiles :any[];
 
 
 constructor(private loginservice: LoginService,private router : Router,private route: ActivatedRoute) { }
@@ -45,12 +45,6 @@ constructor(private loginservice: LoginService,private router : Router,private r
               data=>{
                       
                      console.log(data);
-                     this.profiles=data;
-           
-            console.log(this.profiles);
-             this.gotoManu();
-            alert("ยินดีต้อนรับ   "+this.profiles.prefix.prefix+this.profiles.name);
-
                                     
             }
 
@@ -58,7 +52,7 @@ constructor(private loginservice: LoginService,private router : Router,private r
             
             
             
-           }
+            this.gotoManu();}
           
         
       console.log(data);
