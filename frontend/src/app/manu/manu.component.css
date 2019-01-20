@@ -1,3 +1,10 @@
+.topright {
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	font-size: 18px;
+  }
+
 
 
 .full-width {
@@ -14,8 +21,8 @@
 }
 
 .image{
-    height:40em; 
-    background-size:auto;
+    height:40em;
+    background-size:cover;
     width:auto;
     background-image:url('..\image\welcome3.jpg');
     background-position:50% 50%;
@@ -182,7 +189,7 @@ a.repeat {
 }
 
 .block {
-	
+
 	margin: 20px;
 	float: right;
 }

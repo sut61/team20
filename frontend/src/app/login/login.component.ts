@@ -15,13 +15,13 @@ login : any = {};
 message="";
 
 user:string;
-profiles :any[];
+profiles :any;
 
 
 constructor(private loginservice: LoginService,private router : Router,private route: ActivatedRoute) { }
   ngOnInit() {
     this.clear();
-    
+
   }
 
   gotoManu(){
@@ -33,29 +33,32 @@ constructor(private loginservice: LoginService,private router : Router,private r
     this.loginservice.login(form).subscribe(
       data => {
           this.message = JSON.stringify(data);
-          
+
           if(this.message==='{"message":"false"}'){
-            
+
             alert('EMAIL หรือ PASSWORD ไม่ถูกต้อง');
-          
-    
+
+
           }
           if(this.message==='{"message":"true"}'){
             this.loginservice.getUser().subscribe(
               data=>{
-                      
-                     console.log(data);
-                                    
+                      this.profiles=data;
+                      alert("ยินดีต้อนรับ   "+this.profiles.prefix.prefix+this.profiles.name);
+                     this.gotoManu();
+
+
+
             }
 
             );
-            
-            
-            
-            this.gotoManu();}
-          
-        
-      console.log(data);
+
+
+
+            }
+
+
+
       },
       error => {
           console.log('Error', error);
@@ -64,12 +67,12 @@ constructor(private loginservice: LoginService,private router : Router,private r
 
       );
     }
-  
-  
+
+
   clear(){
     this.login.email = "";
     this.login.password = "";
-    
+
 
 }
 
