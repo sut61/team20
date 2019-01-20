@@ -21,7 +21,7 @@ import { LoginService} from './shared/login/login.service';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule,StorageBucket } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MakefoodDetailComponent } from './makefood-detail/makefood-detail.component';
 
 
 @NgModule({
@@ -32,7 +32,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     RegisterComponent,
     ManuComponent,
     MakefoodAddComponent,
-    MakefoodListComponent
+    MakefoodListComponent,
+    MakefoodDetailComponent
   ],
 
 
@@ -50,8 +51,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSelectModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule,
-    MatGridListModule
+    AngularFireStorageModule
 
 
   ],

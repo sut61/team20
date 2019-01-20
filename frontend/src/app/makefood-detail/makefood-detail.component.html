@@ -1,0 +1,19 @@
+<p>
+  makefood-detail works!
+  <button mat-fab color="primary"  [routerLink]="['/makefood-list']">Cancel</button>
+</p>
+
+<mat-card>
+<div>
+    {{Recipe.name}}
+</div>
+<br><br>
+    <img  width="500"  mat-list-avatar src="{{Recipe.urlPhoto}}">
+    <div>ประเภท:{{Recipe.cookingmethod.name}} , {{Recipe.foodtype.name}}</div>
+    <div>ส่วนประกอบหลัก:{{Recipe.mainingred.name}} </div>
+    <br>
+    <div>วิธีทำ </div>
+    <textarea  cols="50" rows="50" readonly>{{Recipe.howto}}</textarea>
+   
+
+</mat-card>

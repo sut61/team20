@@ -10,7 +10,6 @@ export class LoginService {
   Email = '//localhost:8080/getuser';
    name;
    
-   
 
   constructor(private http: HttpClient) { }
    checkout: {email :" ",password:" "};

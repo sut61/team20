@@ -20,10 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 class RecipeController{ 
 
         @Autowired private RecipeRespository recipeRespository;
-        @Autowired  private CookingMethodRespository cookingMethodRespository;
-        @Autowired  private FoodTypeRespository foodTypeRespository;
-        @Autowired  private MainIngredRespository mainIngredRespository;
- 
+        @Autowired private CookingMethodRespository cookingMethodRespository;
+        @Autowired private FoodTypeRespository foodTypeRespository;
+        @Autowired private MainIngredRespository mainIngredRespository;
+        @Autowired private ProfilesRepository profilesRepository;
+
         public RecipeController(RecipeRespository recipeRespository){
             this.recipeRespository=recipeRespository;
 
@@ -35,13 +36,24 @@ class RecipeController{
                     .collect(Collectors.toList());
         }
 
+        @GetMapping("/{id}")
+        public Optional<Recipe> findRecipe(@PathVariable Long id) {
+
+            return recipeRespository.findById(id); 
+
+    }
+
+
+
         @PostMapping()
         public Recipe addRecipe(Recipe hotRecipe, @RequestBody Map<String, Object> body) {
              
             Optional<CookingMethod> cookingMethod = cookingMethodRespository.findById(Long.valueOf(body.get("cookingMethod").toString()));
             Optional<FoodType> foodType = foodTypeRespository.findById(Long.valueOf(body.get("foodType").toString()));
             Optional<MainIngredients> mainIngred = mainIngredRespository.findById(Long.valueOf(body.get("mainIngred").toString()));
+            ProfilesEntity profilesEntity = profilesRepository.findByEmail(body.get("email").toString());
 
+            hotRecipe.setProfilles(profilesEntity);
             hotRecipe.setCookingmethod(cookingMethod.get());
             hotRecipe.setFoodtype(foodType.get());
             hotRecipe.setMainingred(mainIngred.get());
