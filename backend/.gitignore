@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/java,gradle,netbeans,intellij,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=java,gradle,netbeans,intellij,visualstudiocode
 
@@ -173,31 +172,3 @@ gradle-app.setting
 /.nb-gradle/
 
 # End of https://www.gitignore.io/api/java,gradle,netbeans,intellij,visualstudiocode
-=======
-.gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
->>>>>>> resit
