@@ -1,0 +1,118 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>เพิ่มร้าน {{storeName}}</mat-card-title>
+      <mat-card-subtitle>การกรอกข้อมูลให้ละเอียดและถูกต้องจะทำให้ผู้ใช้งานเว็บคนอื่นๆหาร้านของคุณเจอได้ง่ายขึ้น</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form #addRes="ngForm" (onSubmit)="onSubmit(addRes.value)">
+        <h4>ข้อมูลพื้นฐาน</h4>
+        <mat-card>
+          <mat-form-field>
+            <input matInput placeholder="ชื่อร้าน" name="name" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="สาขา" name="branch" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <mat-select placeholder="ช่วงราคา" name="priceRange" ngModel>
+              <mat-option *ngFor="let food of priceRanges" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+        </mat-card>
+
+        <h4>ที่อยู่</h4>
+        <mat-card>
+          <mat-form-field>
+            <input matInput placeholder="ที่อยู่" name="adddress" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="เส้นทาง" name="hint" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="จังหวัด" name="province" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="เขต/อำเภอ" name="district" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="แขวง/ตำบล" name="subDistrict" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="อาคารสถานที่" name="building" ngModel>
+          </mat-form-field><br>
+        </mat-card>
+
+        <h4>ข้อมูลติดต่อ</h4>
+        <mat-card>
+          <mat-form-field>
+            <input matInput placeholder="เบอร์ติดต่อ" name="phone" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="อีเมล์" name="email" ngModel>
+          </mat-form-field><br>
+          <mat-form-field>
+            <input matInput placeholder="Website" name="website" ngModel>
+          </mat-form-field><br>
+        </mat-card>
+
+        <h4>ข้อมูลเพิ่มเติม</h4>
+        <mat-card>
+          <h4>เวลาเปิดให้บริการ</h4>
+
+          <mat-chip-list class="mat-chip-list-stacked">
+            <mat-chip *ngFor="let time of time" removable="true">{{time}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list><br>
+          <input hidden matInput name="time" [(ngModel)]="time" [value]="time">
+          <form #timeserviceForm="ngForm" (ngSubmit)="addTimeservice(timeserviceForm.value)">
+            <mat-form-field>
+              <mat-select placeholder="วัน" name="dayOfWeek" ngModel>
+                <mat-option *ngFor="let dayOfWeek of dayOfWeeks" [value]="dayOfWeek.value">
+                  {{dayOfWeek.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field><br>
+            <mat-form-field>
+              <mat-select placeholder="เวลาเปิด" name="timeOpen" ngModel>
+                <mat-option *ngFor="let time of times" [value]="time.value">
+                  {{time.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field><br>
+            <mat-form-field>
+              <mat-select placeholder="เวลาปิด" name="timeClose" ngModel>
+                <mat-option *ngFor="let time of times" [value]="time.value">
+                  {{time.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="warn">เพิ่มเวลา</button><br><br>
+          </form>
+
+          <mat-form-field>
+            <mat-select placeholder="จำนวนที่นั้ง" name="numberOfSeat" ngModel>
+              <mat-option *ngFor="let food of numberOfSeat" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+        </mat-card>
+
+        <h4>รูปภาพ</h4>
+        <mat-card>
+          เลือกรูปภาพร้าน : <input type="file" (change)="getFile($event)" />
+          <div *ngIf="(uploadPercent | async) > 0">อัพโหลดรูป : {{ uploadPercent | async }}</div>
+          
+        </mat-card>
+        <br><br>
+        <button type="submit" (click)="onSubmit(addRes.value)" mat-raised-button color="warn">บันทึก</button><br><br>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
