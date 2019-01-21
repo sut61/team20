@@ -37,12 +37,12 @@ class BusinessController{
         return provinceRepository.findAll();
     
     }
-    @PostMapping("/newBusiness/{profileId}/{businessTypeId}/{provinceId}")
-    public Business newBusiness(@PathVariable Long profileId,@PathVariable Long businessTypeId,@PathVariable Long provinceId, @RequestBody Map<String, Object> body){
+    @PostMapping("/Business/Register")
+    public Business newBusiness(@RequestBody Map<String, Object> body){
         Business newBusiness = new Business();
-        newBusiness.setProfile(profilesRepository.findById(profileId).get());
-        newBusiness.setType(businessTypeRepository.findById(businessTypeId).get());
-        newBusiness.setProvince(provinceRepository.findById(provinceId).get());
+        newBusiness.setProfile(profilesRepository.findByEmail(body.get("userEmail").toString()));
+        newBusiness.setType(businessTypeRepository.findById(Long.valueOf(body.get("BusinessTypeId").toString())).get());
+        newBusiness.setProvince(provinceRepository.findById(Long.valueOf(body.get("provinceId").toString())).get());
         newBusiness.setDistrict(body.get("district").toString());
         newBusiness.setEmail(body.get("email").toString());
         newBusiness.setShopName(body.get("shopName").toString());
