@@ -50,6 +50,7 @@ public class ReportProblemController{
         newreport.setTitle(body.get("title").toString());
         newreport.setImgUrl(body.get("imgUrl").toString());
         newreport.setRoom(roomRepository.findById(Long.valueOf(body.get("roomId").toString())).get());
+        newreport.setUser(profilesRepository.findByEmail(body.get("email").toString()));
 
         //หา tag ตาม array ที�?ส�?�?เ�?�?ามา
         Set<Tag> tags = new HashSet<Tag>();
@@ -64,28 +65,4 @@ public class ReportProblemController{
         newreport.setTags(tags);
         return reportProblemRepository.save(newreport);
      }
-
-
-     @PostMapping("/ReportProblem/{imgUrl}/{tagIdList}")
-     public ReportProblem newReport(@PathVariable String imgUrl,@PathVariable List<Long> tagIdList,@RequestBody() Map<String,Object> body){
-         ReportProblem newreport= new ReportProblem();
-         newreport.setDetail(body.get("detail").toString());
-         newreport.setTitle(body.get("title").toString());
-         newreport.setImgUrl(imgUrl);
-         newreport.setRoom(roomRepository.findById(Long.valueOf(body.get("roomId").toString())).get());
-         newreport.setUser(profilesRepository.findByEmail(body.get("email").toString()));
-
-         //หา tag ตาม array ที่ส่งมา
-         Set<Tag> tags = new HashSet<Tag>();
-         Set<ReportProblem> reports = new HashSet<ReportProblem>();
-         reports.add(newreport);
-         for(Long i : tagIdList){
-             Tag tag = tagRepository.findById(i).get();
-             tags.add(tag);
-             tag.setReports(reports);
-             tagRepository.save(tag);
-         }
-         newreport.setTags(tags);
-         return reportProblemRepository.save(newreport);
-      }
 }
