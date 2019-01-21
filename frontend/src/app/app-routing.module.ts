@@ -13,6 +13,7 @@ import { MakefoodDetailComponent } from './makefood-detail/makefood-detail.compo
 import { AddStoreComponent } from './add-store/add-store.component';
 import { ReportProblemComponent } from './report-problem/report-problem.component';
 import { ShowReportComponent } from './show-report/show-report.component';
+import { BusinessRegisterComponent } from './business-register/business-register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -46,6 +47,8 @@ const routes: Routes = [
 
   { path: 'report-problem', component : ReportProblemComponent},
   { path: 'show-report-problem', component : ShowReportComponent},
+
+  { path: 'business-register', component : BusinessRegisterComponent},
 
 ];
 
