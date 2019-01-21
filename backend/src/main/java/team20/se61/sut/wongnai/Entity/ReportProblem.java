@@ -25,6 +25,10 @@ public class ReportProblem{
     @JoinColumn(name= "roomId")     
     private Room room;
 
+    @ManyToOne()
+    @JoinColumn(name= "userId")     
+    private ProfilesEntity user;
+
     @ManyToMany
     @JoinTable(name = "has_tag", joinColumns = @JoinColumn(name = "report_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
