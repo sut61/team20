@@ -55,6 +55,9 @@ import { LoginService} from './shared/login/login.service';
 import { RegisterService} from './shared/register/register.service';
 import { MakefoodDetailComponent } from './makefood-detail/makefood-detail.component';
 import { AddStoreComponent } from './add-store/add-store.component';
+import { ReportProblemComponent } from './report-problem/report-problem.component';
+import { ShowReportComponent } from './show-report/show-report.component';
+import { ReportDialogComponent } from './report-dialog/report-dialog.component';
 
 
 @NgModule({
@@ -67,7 +70,10 @@ import { AddStoreComponent } from './add-store/add-store.component';
     MakefoodAddComponent,
     MakefoodListComponent,
     MakefoodDetailComponent,
-    AddStoreComponent
+    AddStoreComponent,
+    ReportProblemComponent,
+    ShowReportComponent,
+    ReportDialogComponent
   ],
 
 
@@ -115,6 +121,7 @@ import { AddStoreComponent } from './add-store/add-store.component';
   ],
 
   providers: [RegisterService,LoginService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ReportDialogComponent]
 })
 export class AppModule { }
