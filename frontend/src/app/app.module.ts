@@ -58,6 +58,7 @@ import { AddStoreComponent } from './add-store/add-store.component';
 import { ReportProblemComponent } from './report-problem/report-problem.component';
 import { ShowReportComponent } from './show-report/show-report.component';
 import { ReportDialogComponent } from './report-dialog/report-dialog.component';
+import { BusinessRegisterComponent } from './business-register/business-register.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { ReportDialogComponent } from './report-dialog/report-dialog.component';
     AddStoreComponent,
     ReportProblemComponent,
     ShowReportComponent,
-    ReportDialogComponent
+    ReportDialogComponent,
+    BusinessRegisterComponent
   ],
 
 

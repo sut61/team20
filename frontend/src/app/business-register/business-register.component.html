@@ -1,0 +1,53 @@
+<div>
+  <mat-card class="card-report">
+      <b>ลงทะเบียนเป้นเจ้าของร้านค้า</b>    
+
+      <form #myform="ngForm">
+      <p>ชื่อร้าน/โรงแรม/ที่พัก/สถานที่ท่องเที่ยว</p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="หัวข้อที่ต้องการแจ้ง" name="shopName" [(ngModel)]="myform.shopName">
+      </mat-form-field><br>
+      <p>ประเภทของธุรกิจ</p>
+      <mat-form-field class="example-full-width">
+        <mat-select name ="BusinessTypeId" [(ngModel)]="myform.BusinessTypeId">
+          <mat-option *ngFor="let type of types" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <p>จังหวัด</p>
+      <mat-form-field class="example-full-width">
+        <mat-select  name="provinceId" [(ngModel)]="myform.provinceId">
+          <mat-option *ngFor="let province of provinces"   [value]="province.id" >
+            {{province.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>อำเภอ/ตำบล</p>
+      <mat-form-field class="example-full-width">
+        <input matInput name="district" [(ngModel)]="myform.district">
+      </mat-form-field><br>   
+      
+      <p>เบอร์ติดต่อ</p>
+      <mat-form-field class="example-full-width">
+        <input matInput type="number" name="tel" [(ngModel)]="myform.tel">
+      </mat-form-field><br>  
+      
+      <p>อีเมล</p>
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" name="email" [(ngModel)]="myform.email">
+      </mat-form-field><br> 
+      </form>
+      <p style="color:red">*ขอบคุณสำหรับข้อมูล</p>
+
+    <mat-card-actions>
+      <button style="width:100%" mat-raised-button color="primary"  (click)="save(myform.value)">สมัคร</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+
+ 
