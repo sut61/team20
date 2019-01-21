@@ -1,0 +1,19 @@
+.card-report {
+    max-width: auto;
+    margin: auto;
+}
+  
+.example-header-image {
+  background-image: url('http://www.agri.cmu.ac.th/4jobb33cmu/files/2015/09/what-can-i-do-300x300.jpg');
+  background-size: cover;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.close {
+    margin-left: 100%;
+}
+.content {
+  align-self: auto;
+}
