@@ -10,6 +10,7 @@ import { ManuComponent } from './manu/manu.component';
 import { MakefoodAddComponent } from './makefood-add/makefood-add.component';
 import { MakefoodListComponent } from './makefood-list/makefood-list.component';
 import { MakefoodDetailComponent } from './makefood-detail/makefood-detail.component';
+import { AddStoreComponent } from './add-store/add-store.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -37,7 +38,9 @@ const routes: Routes = [
   
   { path: 'makefood-list',component : MakefoodListComponent },
   { path: 'makefood-add', component : MakefoodAddComponent},
-  { path: 'makefood-detail/:id', component : MakefoodDetailComponent}
+  { path: 'makefood-detail/:id', component : MakefoodDetailComponent},
+
+  { path: 'add-store', component : AddStoreComponent},
 
 
 ];
