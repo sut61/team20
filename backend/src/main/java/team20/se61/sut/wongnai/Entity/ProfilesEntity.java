@@ -32,10 +32,4 @@ public class ProfilesEntity {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = PrefixEntity.class)
     @JoinColumn(name="prefixid",insertable = true)
     private @NonNull PrefixEntity prefix;
-
-	
-    @OneToOne(fetch = FetchType.LAZY,
-    cascade =  CascadeType.ALL,
-    mappedBy = "profile") 
-    private Business business;
 }

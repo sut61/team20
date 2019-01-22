@@ -33,8 +33,8 @@ public class Business {
     @JoinColumn(name= "provinceId")     
     private Province province;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "profilesId", nullable = false)    
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="profilesId")
     private ProfilesEntity profile;
 
 
