@@ -2,16 +2,16 @@ package team20.se61.sut.wongnai.Controller;
 
 import team20.se61.sut.wongnai.Entity.*;
 import team20.se61.sut.wongnai.Repository.*;
-
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import java.util.Collection;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,7 +25,6 @@ class BusinessController{
     @GetMapping("/Business")
     public Collection<Business> getBusiness(){
         return businessRepository.findAll();
-    
     }
     @GetMapping("/BusinessType")
     public Collection<BusinessType> getBusinessType(){
@@ -35,7 +34,6 @@ class BusinessController{
     @GetMapping("/Province")
     public Collection<Province> getProvince(){
         return provinceRepository.findAll();
-    
     }
     @PostMapping("/Business/Register")
     public Business newBusiness(@RequestBody Map<String, Object> body){
@@ -50,5 +48,16 @@ class BusinessController{
         return businessRepository.save(newBusiness);
     }
 
+    @PostMapping("/Business/login")
+    public String loginBusiness(@RequestBody Map<String, Object> body) throws NotFoundException{
+
+        try {
+            Business b = businessRepository.findByProfile(profilesRepository.findByEmail(body.get("email").toString()));
+            return "found";
+        }
+        catch (Exception err) {
+            throw new NotFoundException();
+        }
+    }
 }
 

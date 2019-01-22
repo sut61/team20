@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class BusinessService {
 
   constructor(private http: HttpClient) { }
+  
 
   getProvince(): Observable<any> {
     return this.http.get('http://localhost:8080/Province');
@@ -19,6 +20,10 @@ export class BusinessService {
   postBusiness(myform){
     console.log(myform);
     return this.http.post('//localhost:8080/Business/Register/',myform);
+  }
+
+  login(email){
+    return this.http.post('//localhost:8080/Business/login/',email);
   }
 
 }
