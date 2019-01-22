@@ -5,10 +5,15 @@ import lombok.*;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 @Entity
 @Getter @Setter
@@ -28,9 +33,10 @@ public class Business {
     @JoinColumn(name= "provinceId")     
     private Province province;
 
-    @ManyToOne()   
-    @JoinColumn(name= "profilesId")     
-    private @NonNull ProfilesEntity profile;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "profilesId", nullable = false)    
+    private ProfilesEntity profile;
+
 
     @ManyToOne()   
     @JoinColumn(name= "typeId")     

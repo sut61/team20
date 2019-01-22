@@ -34,5 +34,8 @@ public class ProfilesEntity {
     private @NonNull PrefixEntity prefix;
 
 	
-
+    @OneToOne(fetch = FetchType.LAZY,
+    cascade =  CascadeType.ALL,
+    mappedBy = "profile") 
+    private Business business;
 }
