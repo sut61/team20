@@ -26,7 +26,7 @@ public class OrderFood {
 
     @ManyToOne()
     @JoinColumn(name= "profilesId")
-    private ProfilesEntity profilesEntity;
+    private ProfilesEntity profile;
     
     public OrderFood(){}
 }
