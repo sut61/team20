@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../shared/login/login.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { BusinessService } from '../shared/ิbusiness/business.service';
 
 @Component({
   selector: 'app-manu',
@@ -13,7 +14,7 @@ export class ManuComponent implements OnInit {
   profiles : any;
 
 
-  constructor(private loginService:LoginService,private  router :Router) { }
+  constructor(private loginService:LoginService,private  router :Router,private businessService:BusinessService) { }
 
 
   ngOnInit() {
@@ -54,5 +55,16 @@ export class ManuComponent implements OnInit {
 }
   email(email: any): any {
     throw new Error("Method not implemented.");
+  }
+  checkbusiness(){
+    this.businessService.login(this.profiles.email).subscribe(data => {
+      console.log(data);
+    },
+    error => {
+      console.log("Error", error);
+      alert("ยังไม่ได้สมัคร");
+      this.router.navigate(['/business-register']);
+    }
+  );
   }
 }

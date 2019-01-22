@@ -40,16 +40,20 @@ export class BusinessRegisterComponent implements OnInit {
   }
 
   save(myform){
-    this.form = myform;
-    this.form.userEmail = this.userEmail;
-    console.log(this.form);
-    this.businessService.postBusiness(myform).subscribe(data => {
-      console.log(data);
-    },
-    error =>{
-      alert('สมัครไม่สำเร็จ');
-      console.log(error);
-    });
+    if(myform.shopName == null || myform.BusinessTypeId == null || myform.provinceId == null || myform.district == null || myform.tel == null || myform.email == null ){
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+    }
+    else{
+      this.form = myform;
+      this.form.userEmail = this.userEmail;
+      this.businessService.postBusiness(myform).subscribe(data => {
+        this.router.navigate(['/add-store']);
+      },
+      error =>{
+        alert('สมัครไม่สำเร็จ');
+        console.log(error);
+      });
+    }
   }
 
 }
