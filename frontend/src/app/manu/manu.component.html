@@ -9,14 +9,19 @@
 <mat-toolbar color="primary" >
     <div class ="center">
       <span>
-        <button mat-raised-button color="warn"
-            type="button" routerLink="/login" type="button">ระบบที่หนึ่งสมมุติ</button>&nbsp;
+      
 
             <button mat-raised-button color="warn"
-            type="button" routerLink="/add-store" type="button">เพิ่มร้านค้า</button>&nbsp;
+            type="button" routerLink="/business-register" type="button">สม้ครเป็นเจ้าของร้านค้า</button>&nbsp;
+
+            <button mat-raised-button color="warn"
+            type="button" routerLink="/add-store" type="button" (click)="checkbusiness()">เพิ่มร้านค้า</button>&nbsp;
 
             <button mat-raised-button color="warn"
             type="button" routerLink="/makefood-list" type="button">สูตรอาหาร</button>&nbsp;
+
+            <button mat-raised-button color="warn"
+            type="button" routerLink="/show-report-problem" type="button">แจ้งปัญหาร้องเรียน</button>&nbsp;
 
             <button mat-raised-button color="warn"
             type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;

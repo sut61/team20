@@ -1,0 +1,50 @@
+<br>
+<br>
+<br>
+<br>
+<mat-card class="card-report">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>แจ้งปัญหาใหม่</mat-card-title>
+    <mat-card-subtitle>แจ้งปัญหาที่พบ</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <form #newReport="ngForm">
+    <p>หัวข้อ</p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="หัวข้อที่ต้องการแจ้ง" name="title" [(ngModel)]="newReport.title">
+    </mat-form-field><br>
+    <p>เนื้อหา</p>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="รายละเอียดของเนื้อหา" name = "detail" rows="10" [(ngModel)]="newReport.detail"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="ห้องที่จะแจ้ง"  name ="roomId" [(ngModel)]="newReport.roomId">
+        <mat-option *ngFor="let room of rooms" [value]="room.id">
+          {{room.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="แท็ก" name="tagId" [(ngModel)]="tagIdList"  multiple>
+        <mat-option *ngFor="let tag of tags"   [value]="tag.id" >
+          {{tag.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <input type="file" (change)="selectFile($event)">
+    <div>{{ uploadPercent | async }}%</div>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary"  (click)="postReport(newReport.value)">SAVE</button>
+    <button mat-raised-button color="warn" (click)="clear(newReport)">CLEAR</button>
+  </mat-card-actions>
+</mat-card>
+
+ 

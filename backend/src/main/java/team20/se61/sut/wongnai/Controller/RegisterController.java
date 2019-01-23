@@ -256,7 +256,7 @@ public class RegisterController {
                     &&name.charAt(i)!='ุ'&&name.charAt(i)!='ู'&&name.charAt(i)!='ไ'&&name.charAt(i)!='ึ'
                     &&name.charAt(i)!='ำ'&&name.charAt(i)!='โ'&&name.charAt(i)!='เ'&&name.charAt(i)!='็'
                     &&name.charAt(i)!='า'&&name.charAt(i)!='แ'&&name.charAt(i)!='ิ'&&name.charAt(i)!='ื'
-                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'&&name.charAt(i)!=' '){
+                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'&&name.charAt(i)!=' '&&name.charAt(i)!='ะ'){
                 message = "ชื่อและนามสกุลต้องไม่มีอักษรพิเศษ";
                 return false;
 

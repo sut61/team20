@@ -1,0 +1,21 @@
+<div class="close">
+  <button mat-icon-button color="black">
+    <mat-icon (click)="onClose()">clear</mat-icon>
+    </button>
+</div>
+<mat-card class="card-report">
+<div class="content">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>หัวข้อ: {{message.title}}</mat-card-title>
+    <mat-card-subtitle>ผู้แจ้ง: {{message.userName}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{message.imgUrl}}" style="width: 50%;">
+  <mat-card-content>
+    เกิดที่ห้อง : {{message.room}}<br>
+    แท็ก: {{message.tag}}<br>
+    รายละเอียด : {{message.detail}}
+  </mat-card-content>
+</div>
+</mat-card>
+

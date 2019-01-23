@@ -5,7 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Data
+@Table(name = "Food")
 public class Food {
     @Id
     @SequenceGenerator(name="food_seq",sequenceName="food_seq")       
@@ -15,10 +16,9 @@ public class Food {
     private @NonNull String Name;
     private @NonNull int Price;
 
-    // Food --> Restaurant
-    @ManyToOne()   
-    @JoinColumn(name= "restaurant_id")     
-    private Restaurant restaurant;
+    @ManyToOne()
+    @JoinColumn(name= "storeId")
+    private Store store;
 
     public Food(){}
 }
