@@ -21,6 +21,7 @@ export class MakefoodListComponent implements OnInit {
   constructor(private loginService:LoginService,private  router :Router,private httpClient: HttpClient) { }
 
   ngOnInit() {
+    /*
     this.loginService.getUser().subscribe(
       data=>{
           try{
@@ -30,7 +31,8 @@ export class MakefoodListComponent implements OnInit {
               this.router.navigate(['/login']);
           }
         }
-      );
+      );  */ //private premission
+
     this.httpClient.get('http://localhost:8080/Recipe').subscribe(
         body => {
           this.Recipes = body;

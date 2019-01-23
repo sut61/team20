@@ -49,6 +49,8 @@ export class MakefoodAddComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   profileUrl: Observable<string | null>;
+  url :any = '';
+  file: any;
 
   constructor(private httpClient: HttpClient,private storage: AngularFireStorage,
     private loginService:LoginService,private  router :Router)
@@ -58,22 +60,42 @@ export class MakefoodAddComponent implements OnInit {
 
 
     addRecipe(){
-      
-      this.addRecipetoDB(this.foodname,this.foodtypeid,this.cookingmethodid,this.mainingredid,this.downloadURL,this.howto,this.email).subscribe(data =>{
-        console.log( "Update Success" , data) ;
-        alert('แก้ไขเรียบร้อย');
-        this.router.navigate(['/makefood-list']);
 
-      },
-      error =>{
-        console.log("Fail Success", error);
-        alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
-      })
+      const filePath = `test/${new Date().getTime()}_${this.file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, this.file);
+  
       
+      
+      // observe percentage changes
+      this.uploadPercent = task.percentageChanges();
+      
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+          finalize(() =>{ this.downloadURL = fileRef.getDownloadURL()
+                         this.downloadURL.subscribe(urllink =>{
+                           this.urlphoto = urllink;
+
+                           this.addRecipetoDB(this.foodname,this.foodtypeid,this.cookingmethodid,this.mainingredid,this.urlphoto,this.howto,this.email).subscribe(data =>{
+                            console.log( "Update Success" , data) ;
+                            alert('เพิ่มสูตรอาหารเรียบร้อย');
+                            this.router.navigate(['/makefood-list']);
+                    
+                          },
+                          error =>{
+                            console.log("Fail Success", error);
+                            alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
+                          })
+                        })          
+            })
+          
+       ).subscribe()
+     
+    
    
   }
 
-  addRecipetoDB(foodname : string, foodtypeid :number,cookingmethodid:number,mainingredid:number,downloadURL:  Observable<string>,howto: string,email:string){
+  addRecipetoDB(foodname : string, foodtypeid :number,cookingmethodid:number,mainingredid:number,urlphoto:string,howto: string,email:string){
  
   
      return this.httpClient.post('//localhost:8080/Recipe',{
@@ -81,7 +103,7 @@ export class MakefoodAddComponent implements OnInit {
         'foodType':foodtypeid,
         'mainIngred':mainingredid,
         'email':email,
-        'UrlPhoto':downloadURL,
+        'UrlPhoto':urlphoto,
         'foodname':foodname,
         'howto':howto
       })
@@ -89,23 +111,20 @@ export class MakefoodAddComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //private premission
     this.loginService.getUser().subscribe(
       data=>{
-          try{
-            
+          try{  
            this.email = data.email;
            console.log(this.email)
-
           }
           catch(Err){
               this.router.navigate(['/login']);
-          }
-            
+          }      
       }
-      
-
-    );
-
+    ); 
+/////////////////////////////////////////////////////////////////////////
     this.httpClient.get("http://localhost:8080/FoodType").subscribe(
       body => {
         console.log("GET Request is successful ", body);
@@ -144,32 +163,24 @@ export class MakefoodAddComponent implements OnInit {
 
   }
 
+  getFile(event) {
 
+    this.file = event.target.files[0];
+    console.log(this.file);
 
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
 
+      const reader = new FileReader();
+      reader.onload = e => this.url = reader.result;
 
-
-
-  uploadFile(event){
-
-    const file = event.target.files[0];
-    const filePath = `test/${new Date().getTime()}_${file.name}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-
-    // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
-    task.snapshotChanges().pipe(
-        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
-        
-     )
-    .subscribe()
-    //this.urlphoto =this.downloadURL.pipe(concatAll()).subscribe() 
-
-  
+      reader.readAsDataURL(file);
+      }
   }
+}
+ 
+
 
  
 
-}
+

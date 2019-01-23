@@ -1,18 +1,32 @@
 
-<mat-card>
-    <button mat-fab color="primary" [routerLink]="['/manu']">Menu</button>
-    <button mat-fab color="primary" [routerLink]="['/makefood-add']">Add</button>
+<mat-card >
+    <mat-toolbar >
+      <div class = "center">
+    <button mat-raised-button color="primary" [routerLink]="['/manu']">Menu</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="accent" [routerLink]="['/makefood-add']">Add</button>
+  </div>
+    </mat-toolbar> <br><br>
+   
   <mat-card-content>
-    <mat-list>
+    <mat-grid-list>
       <mat-list-item *ngFor="let Recipe of Recipes">
-       
-        <img mat-list-avatar src="{{Recipe.urlPhoto}}" alt="{{Recipe.name}}">
-        <h3 mat-line>
-          <a mat-button [routerLink]="['/makefood-detail',Recipe.id]">{{Recipe.name}}</a>
-        </h3>
+       <mat-card class = "example-form"  mat-button [routerLink]="['/makefood-detail',Recipe.id]">
+         <div>
+        <img mat-list-avatar  width="160" height="90" src="{{Recipe.urlPhoto}}" alt="{{Recipe.name}}">
+      </div>
+      <h2>
+        <div>
+          <a >เมนู: {{Recipe.name}} </a>
+        </div>
+        </h2>
+        <a >อาหาร:{{Recipe.foodtype.name}}     </a>
+        <a >วัตถุดิบ:{{Recipe.mainingred.name}}   </a>
+        <a >วีธีทำ:{{Recipe.cookingmethod.name}}  </a>
+        <a >โดย:{{Recipe.profilles.name}} </a>
+      </mat-card>
     <br>
       </mat-list-item>
-    </mat-list>
+    </mat-grid-list>
   </mat-card-content>
 
 </mat-card>
