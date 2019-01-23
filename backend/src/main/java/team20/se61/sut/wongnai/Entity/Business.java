@@ -34,7 +34,7 @@ public class Business {
     private Province province;
 
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="profilesId")
+    @JoinColumn( unique=true, name="profilesId")
     private ProfilesEntity profile;
 
 

@@ -3,6 +3,8 @@ import { LoginService } from '../shared/login/login.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BusinessService } from '../shared/ิbusiness/business.service';
+import { NgForm } from '@angular/forms';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-manu',
@@ -57,7 +59,13 @@ export class ManuComponent implements OnInit {
     throw new Error("Method not implemented.");
   }
   checkbusiness(){
-    this.businessService.login(this.profiles.email).subscribe(data => {
+    const form = <NgForm>{
+      value: {
+          "email":String
+      }
+  };
+    form.email = this.profiles.email;
+    this.businessService.login(form).subscribe(data => {
       console.log(data);
     },
     error => {
