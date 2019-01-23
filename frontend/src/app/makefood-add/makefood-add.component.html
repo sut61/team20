@@ -1,14 +1,12 @@
 <section >
-
-
+  <button mat-raised-button color="accent" [routerLink]="['/makefood-list']">List </button>
   <h1 >เขียนสูตรอาหาร</h1>
-
-
 </section>
 
 <form >
-
-<div>
+<mat-card>
+    <mat-card width=50%>
+<div class="center">
   <mat-form-field >
     <input placeholder="ชื่ออาหาร"  matInput  [(ngModel)]="foodname" type="string" [ngModelOptions]="{standalone: true}" >
   </mat-form-field>
@@ -20,7 +18,7 @@
         {{FoodType.nametype}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field>&nbsp;
 
   <mat-form-field>
     <mat-select placeholder=" แบบอาหาร " [(ngModel)]="cookingmethodid" type="number" [ngModelOptions]="{standalone: true}">
@@ -28,7 +26,7 @@
         {{CookingMethod.viewValue}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field>&nbsp;
 
   <mat-form-field>
     <mat-select placeholder=" ส่วนประกอบหลัก " [(ngModel)]="mainingredid" type="number" [ngModelOptions]="{standalone: true}">
@@ -36,31 +34,37 @@
         {{MainIngredients.viewValue}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
-
+  </mat-form-field>&nbsp;
+</mat-card>
+<br><br>
   <div>
-  <input type="file" (change)="uploadFile($event)" />
-  <div>{{ uploadPercent | async }}</div>
-  <div *ngIf="downloadURL | async">
-    link: <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
-    <h3>Results!</h3>
-    <img width="125" [src]="downloadURL | async" ><br>
-  </div>
+      <mat-card>
+          เลือกรูปภาพอาหาร : 
+          <img [src]="url" height="250" > <br/>
+          <input type="file" (change)="getFile($event)" />
+          <div *ngIf="(uploadPercent | async) > 0">อัพโหลดรูป : {{ uploadPercent | async }}</div>
+          
+        </mat-card>
+  
 </div>
-
+<br><br>
 <div>
+  <mat-card>
   <mat-form-field  class="txtarray">
     <textarea matInput placeholder="วิธีทำ" rows="15" [(ngModel)]="howto" type="string" [ngModelOptions]="{standalone: true}" ></textarea>
   </mat-form-field>
-  
-</div>
+</mat-card>
 
+</div>
+<br><br>
+<button  mat-raised-button color="primary" (click)= "addRecipe()">Save</button>&nbsp;
+<button  mat-raised-button color="warn"  [routerLink]="['/makefood-list']">Cancel</button>
+</mat-card>
 </form>
 
 <section>
 
 
-<button mat-fab color="primary" (click)= "addRecipe()">Save</button>
-<button mat-fab color="primary"  [routerLink]="['/makefood-list']">Cancel</button>
+
 
 </section>
