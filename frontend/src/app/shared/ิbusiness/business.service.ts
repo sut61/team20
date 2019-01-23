@@ -19,11 +19,11 @@ export class BusinessService {
   }
   postBusiness(myform){
     console.log(myform);
-    return this.http.post('//localhost:8080/Business/Register/',myform);
+    return this.http.post('http://localhost:8080/Business/Register/',myform);
   }
 
   login(email){
-    return this.http.post('//localhost:8080/Business/login/',email);
+    return this.http.post('http://localhost:8080/Business/login/',email);
   }
 
 }
