@@ -32,4 +32,9 @@ public class ProfilesEntity {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = PrefixEntity.class)
     @JoinColumn(name="prefixid",insertable = true)
     private @NonNull PrefixEntity prefix;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "contactid", insertable = true,unique = true)
+    private @NonNull ContactEntity contact;
+   
 }
