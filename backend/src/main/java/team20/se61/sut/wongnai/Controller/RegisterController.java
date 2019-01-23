@@ -72,16 +72,18 @@ public class RegisterController {
         }
         else{
 
-            if(validationUniqeEmail(prefix,sex,name,passworg,email)!=true){
-
-                message = "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
-                map.put("message",message);
-                return map;
-            }
+            
 
             if(validationUniqeTelephonenumber(address,telephonenumber,email)!=true){
 
                 message = "เบอร์โทรศัพท์นี้ ลงทะเบียนไปแล้ว กรุณาใช้ เบอร์โทรศัพท์อื่น";
+                map.put("message",message);
+                return map;
+            }
+            
+            if(validationUniqeEmail(prefix,sex,name,passworg,email,telephonenumber)!=true){
+
+                message = "emailนี้ ลงทะเบียนไปแล้ว กรุณาใช้ email อื่น";
                 map.put("message",message);
                 return map;
             }
@@ -93,14 +95,17 @@ public class RegisterController {
     }
 
 
-    public boolean validationUniqeEmail(String prefix,String sex,String name,String passworg,String email){
-
-        try{
+    public boolean validationUniqeEmail(String prefix,String sex,String name,String passworg,String email,String telephonenumber){
+        long contactid=0;
+            try{
             PrefixEntity prefixEntity = prefixRepository.findByPrefix(prefix);
             SexEntity sexEntity = sexRepository.findBySex(sex);
+            ContactEntity contactEntity = contactRepository.findByTelephonenumber(telephonenumber);
             ProfilesEntity profilesEntity = new ProfilesEntity();
+            contactid = contactEntity.getContactid();
             profilesEntity.setPrefix(prefixEntity);
             profilesEntity.setSex(sexEntity);
+            profilesEntity.setContact(contactEntity);
             profilesEntity.setEmail(email);
             profilesEntity.setPassword(passworg);
             profilesEntity.setName(name);
@@ -108,6 +113,7 @@ public class RegisterController {
         }
 
         catch (Exception e){
+            contactRepository.deleteById(contactid);
             return false;
         }
 
@@ -115,19 +121,16 @@ public class RegisterController {
     }
 
     public boolean validationUniqeTelephonenumber(String address,String telephonenumber,String email){
-        long profilesid=0;
+        
         try{
             ContactEntity contactEntity = new ContactEntity();
             contactEntity.setAddress(address);
             contactEntity.setTelephonenumber(telephonenumber);
-            ProfilesEntity profilesEntity = profilesRepository.findByEmail(email);
-            profilesid = profilesEntity.getProfilesid();
-            contactEntity.setProfilesEntity(profilesEntity);
             contactRepository.save(contactEntity);
         }
 
         catch (Exception e){
-            profilesRepository.deleteById(profilesid);
+           
             return false;
         }
 

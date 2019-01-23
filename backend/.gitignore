@@ -170,5 +170,5 @@ gradle-app.setting
 /dist/
 /nbdist/
 /.nb-gradle/
-
+bin
 # End of https://www.gitignore.io/api/java,gradle,netbeans,intellij,visualstudiocode

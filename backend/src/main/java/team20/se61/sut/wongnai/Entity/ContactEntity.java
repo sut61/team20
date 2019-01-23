@@ -24,11 +24,6 @@ public class ContactEntity {
     private  Long contactid;
     private @NonNull  String address;
     private @NonNull @Column(unique = true) String telephonenumber;
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "profilesid", insertable = true,unique = true)
-    @NonNull
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private ProfilesEntity profilesEntity;
-
+    
 
 }
