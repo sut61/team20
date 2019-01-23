@@ -61,24 +61,29 @@ export class ReportProblemComponent implements OnInit {
 
   postReport(newReport){
     this.form = newReport;
-    //upload to firebase
-    const filePath = `test/${new Date().getTime()}_${this.file.name}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, this.file);
+    if(newReport.title == null || newReport.detail == null || newReport.roomId == null || this.tagIdList == null || this.file ==null){
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+    }
+    else{
+      //upload to firebase
+      const filePath = `test/${new Date().getTime()}_${this.file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, this.file);
 
-    // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
-    task.snapshotChanges().pipe(
-      finalize(() => {
-        this.downloadURL = fileRef.getDownloadURL()
-        this.downloadURL.subscribe(val => {
-          this.imgUrl = val;
-          console.log(this.imgUrl);
-          this.saveData();
+      // observe percentage changes
+      this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL()
+          this.downloadURL.subscribe(val => {
+            this.imgUrl = val;
+            console.log(this.imgUrl);
+            this.saveData();
+          })
         })
-      })
-    ).subscribe()
+      ).subscribe()
+    }
   }
 
   saveData(){
@@ -87,8 +92,9 @@ export class ReportProblemComponent implements OnInit {
     this.form.email = this.email;
     this.reportproblemService.newReport(this.tagIdList,this.form).subscribe(
       data =>{
-        alert('post success');
+        alert('แจ้งปัญหาสำเร็จ');
         console.log(data);
+        this.router.navigate(['/show-report-problem']);
      },
      error => {
         alert('error');

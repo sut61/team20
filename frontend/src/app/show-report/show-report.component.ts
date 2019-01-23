@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReportProblemService } from '../shared/reportproblem/report-problem.service';
 import { MatTableDataSource, MatPaginator, MatDialogConfig, MatDialog } from '@angular/material';
 import { ReportDialogComponent } from '../report-dialog/report-dialog.component';
+import { LoginService } from '../shared/login/login.service';
+import { Router } from '@angular/router';
 export interface Report {  
   id:number
   title:string;
@@ -9,6 +11,7 @@ export interface Report {
   room:string;
   imgUrl:string;
   tag:any;
+  userName:string;
 }
 
 @Component({
@@ -18,6 +21,7 @@ export interface Report {
 })
 export class ShowReportComponent implements OnInit {
 
+  email;
   reports:any;
   dataSource:any;
   displayedColumns: string[] = ['reportId', 'title', 'detail','room','tag','actions'];
@@ -25,10 +29,22 @@ export class ShowReportComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   message: string;
   
-  constructor(private reportproblemService: ReportProblemService,private dialog: MatDialog,) { }
+  constructor(private reportproblemService: ReportProblemService,private dialog: MatDialog,
+              private loginService:LoginService,private  router :Router) { }
 
   ngOnInit() {
     this.getReport();
+    this.loginService.getUser().subscribe(data => {
+      try{
+            
+        this.email = data.email;
+        console.log(this.email)
+
+       }
+       catch(Err){
+           this.router.navigate(['/login']);
+       }
+    });
   }
   getReport(){
     this.reportproblemService.getReport().subscribe(data => {
@@ -47,6 +63,7 @@ export class ShowReportComponent implements OnInit {
           imgUrl: this.reports[index].imgUrl,
           room: this.reports[index].room.name,
           tag: tagTemp,
+          userName: this.reports[index].user.name,
         })
         }  
         this.dataSource = new MatTableDataSource(reportList);
