@@ -61,38 +61,28 @@
 
         <h4>ข้อมูลเพิ่มเติม</h4>
         <mat-card>
-          <h4>เวลาเปิดให้บริการ</h4>
+          <mat-form-field>
+            <mat-select placeholder="วันปิดให้บริการ" name="dayOfWeek" [(ngModel)]="dayIdList" multiple>
+              <mat-option *ngFor="let day of dayOfWeeks" [value]="day.id">
+                {{day.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-          <mat-chip-list class="mat-chip-list-stacked">
-            <mat-chip *ngFor="let time of time" removable="true">{{time}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list><br>
-          <input hidden matInput name="time" [(ngModel)]="time" [value]="time">
-          <form #timeserviceForm="ngForm" (ngSubmit)="addTimeservice(timeserviceForm.value)">
-            <mat-form-field>
-              <mat-select placeholder="วัน" name="dayOfWeek" ngModel>
-                <mat-option *ngFor="let dayOfWeek of dayOfWeeks" [value]="dayOfWeek.value">
-                  {{dayOfWeek.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field><br>
-            <mat-form-field>
-              <mat-select placeholder="เวลาเปิด" name="timeOpen" ngModel>
-                <mat-option *ngFor="let time of times" [value]="time.value">
-                  {{time.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field><br>
-            <mat-form-field>
-              <mat-select placeholder="เวลาปิด" name="timeClose" ngModel>
-                <mat-option *ngFor="let time of times" [value]="time.value">
-                  {{time.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <button mat-raised-button color="warn">เพิ่มเวลา</button><br><br>
-          </form>
+          <mat-form-field>
+            <mat-select placeholder="เวลาเปิด" name="openTime" ngModel>
+              <mat-option *ngFor="let time of times" [value]="time.value">
+                {{time.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+          <mat-form-field>
+            <mat-select placeholder="เวลาปิด" name="closeTime" ngModel>
+              <mat-option *ngFor="let time of times" [value]="time.value">
+                {{time.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
           <mat-form-field>
             <mat-select placeholder="จำนวนที่นั้ง" name="numberOfSeat" ngModel>
@@ -107,7 +97,7 @@
         <mat-card>
           เลือกรูปภาพร้าน : <input type="file" (change)="getFile($event)" />
           <div *ngIf="(uploadPercent | async) > 0">อัพโหลดรูป : {{ uploadPercent | async }}</div>
-          
+
         </mat-card>
         <br><br>
         <button type="submit" (click)="onSubmit(addRes.value)" mat-raised-button color="warn">บันทึก</button><br><br>

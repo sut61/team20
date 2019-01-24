@@ -1,9 +1,13 @@
 package team20.se61.sut.wongnai.DataLoader;
 
+import team20.se61.sut.wongnai.Entity.DayOfWeek;
 import team20.se61.sut.wongnai.Entity.NumberOfSeat;
 import team20.se61.sut.wongnai.Entity.PriceRange;
+import team20.se61.sut.wongnai.Repository.DayOfWeekRepository;
 import team20.se61.sut.wongnai.Repository.NumberOfSeatRepository;
 import team20.se61.sut.wongnai.Repository.PriceRangeRepository;
+
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -15,9 +19,14 @@ public class StoreDataloader implements ApplicationRunner {
 
     @Autowired private PriceRangeRepository priceRangeRepository;
     @Autowired private NumberOfSeatRepository numberOfSeatRepository;
+    @Autowired private DayOfWeekRepository dayOfWeekRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        Stream.of("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์").forEach(days -> { 
+            dayOfWeekRepository.save(new DayOfWeek(days));            
+        });
 
         priceRangeRepository.save(new PriceRange("ต่ำกว่า 100 บาท"));
         priceRangeRepository.save(new PriceRange("101 - 250 บาท"));
