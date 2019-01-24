@@ -18,7 +18,7 @@ export class OrderResComponent implements OnInit {
   
   ngOnInit() {
     this.getStoreList();
-    
+    console.log(this.stores);
   }
 
   getStoreList() {
@@ -32,5 +32,9 @@ export class OrderResComponent implements OnInit {
     localStorage.setItem("store", sid);
     this.router.navigate(['/order/food']);
     console.log(sid);
+  }
+
+  clear() {
+    localStorage.clear();
   }
 }

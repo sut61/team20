@@ -36,4 +36,7 @@ export class OrderFoodComponent implements OnInit {
     console.log(foodid);
   }
 
+  clear() {
+    localStorage.clear();
+  }
 }
