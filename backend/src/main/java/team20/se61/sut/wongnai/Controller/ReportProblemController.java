@@ -59,8 +59,6 @@ public class ReportProblemController{
         for(Long i : tagIdList){
             Tag tag = tagRepository.findById(i).get();
             tags.add(tag);
-            tag.setReports(reports);
-            tagRepository.save(tag);
         }
         newreport.setTags(tags);
         return reportProblemRepository.save(newreport);
