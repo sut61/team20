@@ -53,12 +53,17 @@ import { AngularFireModule } from '@angular/fire';
 import { ManuComponent } from './manu/manu.component';
 import { LoginService} from './shared/login/login.service';
 import { RegisterService} from './shared/register/register.service';
+import { OrderService } from './shared/order/order.service';
 import { MakefoodDetailComponent } from './makefood-detail/makefood-detail.component';
 import { AddStoreComponent } from './add-store/add-store.component';
 import { ReportProblemComponent } from './report-problem/report-problem.component';
 import { ShowReportComponent } from './show-report/show-report.component';
 import { ReportDialogComponent } from './report-dialog/report-dialog.component';
 import { BusinessRegisterComponent } from './business-register/business-register.component';
+import { OrderResComponent } from './order-res/order-res.component';
+import { OrderFoodComponent } from './order-food/order-food.component';
+import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+
 
 
 @NgModule({
@@ -75,7 +80,10 @@ import { BusinessRegisterComponent } from './business-register/business-register
     ReportProblemComponent,
     ShowReportComponent,
     ReportDialogComponent,
-    BusinessRegisterComponent
+    BusinessRegisterComponent,
+    OrderResComponent,
+    OrderFoodComponent,
+    OrderConfirmComponent
   ],
 
 
@@ -122,7 +130,7 @@ import { BusinessRegisterComponent } from './business-register/business-register
     AngularFireStorageModule
   ],
 
-  providers: [RegisterService,LoginService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' }],
+  providers: [RegisterService,LoginService, OrderService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' }],
   bootstrap: [AppComponent],
   entryComponents:[ReportDialogComponent]
 })

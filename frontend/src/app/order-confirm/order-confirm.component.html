@@ -1,0 +1,85 @@
+<mat-toolbar color="primary" >
+  <div class ="center">
+    <span>
+      ระบบสั่งอาหาร
+    </span>
+  </div>
+</mat-toolbar>
+
+<body class="body">
+  <div class="food-detail">
+    <mat-grid-list cols="3" rowHeight="4:1">
+      <mat-grid-tile>
+          <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput name = "foodName" disabled="true"  placeholder="ชื่อสินค้า : {{foodDetail.name}}">
+              </mat-form-field>
+            </form>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput name = "foodPrice" disabled="true"  placeholder="รูป : ">
+            <img mat-card-image width="200px" height="400px" src="{{foodDetail.image}}">
+          </mat-form-field>
+        </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <mat-grid-list cols="3" rowHeight="4:1">
+      <mat-grid-tile>
+          <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput name = "foodPrice" disabled="true"  placeholder="ราคา : {{foodDetail.price}}">
+              </mat-form-field>
+            </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <mat-grid-list cols="3" rowHeight="4:1">
+      <mat-grid-tile>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput name = "foodCount" [(ngModel)]="orderDetail.countItem" type="number" step="1" min="1" placeholder="จำนวน" value="orderDetail.countItem" (keyup)="onKey($event)">
+            </mat-form-field>
+            </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <mat-grid-list cols="3" rowHeight="4:1">
+      <mat-grid-tile>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput [(ngModel)]="orderDetail.totalPrice" name = "foodCount" disabled="true" placeholder="รวมเป็นเงิน:฿{{orderDetail.totalPrice}}">
+            </mat-form-field>
+            </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div class="user-information">
+    <hr>
+    <h4>เลือกที่อยู่ที่จัดส่ง</h4>
+    
+    <form>
+      <mat-form-field>
+        <mat-select placeholder="เลือกที่อยู่" [(ngModel)]="selectedValue" name="addr">
+          <mat-option [value]="userAddress">
+            {{userAddress}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p> ที่อยู่: {{selectedValue}} </p>
+    </form>
+
+  </div>
+  <div class="button">
+    <mat-grid-list cols="4" rowHeight="3:5">
+      <mat-card-actions>
+        <button mat-raised-button color="warn" matBadgePosition="before" matBadgeColor="accent" (click)="confirm()">ยืนยัน</button>&nbsp;
+        <button mat-raised-button color="warn" matBadgePosition="before" matBadgeColor="accent" (click)="clear()">ล้าง</button>&nbsp;
+        <button mat-raised-button color="warn" matBadgePosition="before" matBadgeColor="accent" (click)="goToMenu()">ยกเลิก</button>&nbsp;
+      </mat-card-actions>
+  </mat-grid-list>
+  </div>
+</body>

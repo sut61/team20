@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" >
+  <div class ="center">
+    <span>
+      ระบบสั่งอาหาร
+    </span>
+  </div>
+</mat-toolbar>
+
+<body>
+  <div class="search">
+    <mat-grid-list cols="1" rowHeight="15:1">
+      <mat-grid-tile>
+          <mat-form-field>
+              <input matInput placeholder="ค้นหาร้านค้า" [(ngModel)]="searchText" >
+          </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+    <div class="bodyFood">
+      <mat-grid-list cols="4" rowHeight="3:5">
+        <mat-grid-tile *ngFor="let store of stores">
+
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{store.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image width="150px" height="225px" src="{{store.image}}">
+            <mat-card-content>
+              <p>ที่อยู่ : {{store.address}}</p><br>
+              <p>ติดต่อ : {{store.phone}}</p><br>
+              <p>เว็บไซต์ : {{store.website}}</p><br>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="warn" matBadgePosition="before" matBadgeColor="accent" (click)="sendStore(store.id)">เลือก</button>
+            </mat-card-actions>
+          </mat-card>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+</body>

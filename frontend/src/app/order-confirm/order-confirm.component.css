@@ -1,0 +1,32 @@
+.center {
+    margin: auto;
+}
+
+.body {
+    background-color: #b8e4f9;
+    border-radius: 8px;
+    width: 800px;
+    height: 500px;
+    /* border: 25px solid green; */
+    padding: 50px;
+    margin: auto;
+}
+
+.full-width {
+  width: 30%;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+	font-weight: 900;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0 0 0px;
+}
+
+.example-card {
+    max-width: 300px;
+  }
+  
+
