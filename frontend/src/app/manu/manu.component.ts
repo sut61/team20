@@ -13,27 +13,27 @@ import { stringify } from 'querystring';
 })
 export class ManuComponent implements OnInit {
 
-  profiles : any;
+  profiles: any;
 
 
-  constructor(private loginService:LoginService,private  router :Router,private businessService:BusinessService) { }
+  constructor(private loginService: LoginService, private router: Router, private businessService: BusinessService) { }
 
 
   ngOnInit() {
     this.loginService.getUser().subscribe(
-      data=>{
-          try{
-            this.profiles=data;
+      data => {
+        try {
+          this.profiles = data;
 
-            console.log(this.profiles.name);
+          console.log(this.profiles.name);
 
 
-           // alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
+          // alert("ยินดีต้อนรับ   คุณ"+this.profiles.name);
 
-          }
-          catch(Err){
-              this.router.navigate(['/login']);
-          }
+        }
+        catch (Err) {
+          this.router.navigate(['/login']);
+        }
 
       }
 
@@ -41,38 +41,36 @@ export class ManuComponent implements OnInit {
     );
   }
 
-  Logout(){
+  Logout() {
 
 
 
     this.loginService.logout().subscribe(
       data => {
 
-              this.router.navigate(['/login']);
-              console.log(data);
+        this.router.navigate(['/login']);
+        console.log(data);
 
-          }
+      }
     );
 
-}
+  }
   email(email: any): any {
     throw new Error("Method not implemented.");
   }
-  checkbusiness(){
-    const form = <NgForm>{
-      value: {
-          "email":String
-      }
-  };
+  checkbusiness() {
+    let form:any = {
+        "email": String
+    };
     form.email = this.profiles.email;
     this.businessService.login(form).subscribe(data => {
       console.log(data);
     },
-    error => {
-      console.log("Error", error);
-      alert("ยังไม่ได้สมัคร");
-      this.router.navigate(['/business-register']);
-    }
-  );
+      error => {
+        console.log("Error", error);
+        alert("ยังไม่ได้สมัคร");
+        this.router.navigate(['/business-register']);
+      }
+    );
   }
 }

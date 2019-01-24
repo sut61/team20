@@ -19,6 +19,7 @@ import team20.se61.sut.wongnai.Entity.Store;
 import team20.se61.sut.wongnai.Repository.BusinessRepository;
 import team20.se61.sut.wongnai.Repository.NumberOfSeatRepository;
 import team20.se61.sut.wongnai.Repository.PriceRangeRepository;
+import team20.se61.sut.wongnai.Repository.ProfilesRepository;
 import team20.se61.sut.wongnai.Repository.StoreRepository;
 
 @RestController
@@ -28,8 +29,8 @@ public class StoreController {
     @Autowired private StoreRepository storeRepository;
     @Autowired private NumberOfSeatRepository numberOfSeatRepository;
     @Autowired private PriceRangeRepository priceRangeRepository;
-
     @Autowired private BusinessRepository businessRepository;
+    @Autowired private ProfilesRepository profilesRepository;
 
     @GetMapping()
     public List<Store> Stores() {
@@ -50,12 +51,12 @@ public class StoreController {
     public Store AddStore(Store newStore, @RequestBody Map<String, String> body) {
         Optional<NumberOfSeat> numberOfSeat = numberOfSeatRepository.findById(Long.valueOf(body.get("numberOfSeat")));
         Optional<PriceRange> priceRange = priceRangeRepository.findById(Long.valueOf(body.get("priceRange")));
-        Optional<Business> business = businessRepository.findById(Long.valueOf(body.get("business")));
+        Business business = businessRepository.findByProfile(profilesRepository.findByEmail(body.get("email")));
 
         newStore.setName(body.get("name"));
         newStore.setBranch(body.get("branch"));
         newStore.setPriceRange(priceRange.get());
-        newStore.setBusiness(business.get());
+        newStore.setBusiness(business);
 
         newStore.setAdddress(body.get("adddress"));
         newStore.setHint(body.get("hint"));
