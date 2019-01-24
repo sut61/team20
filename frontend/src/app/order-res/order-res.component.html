@@ -5,7 +5,19 @@
     </span>
   </div>
 </mat-toolbar>
+<mat-toolbar color="primary" >
+    <div class ="center">
+      <span>
 
+            <button mat-raised-button color="warn"
+            type="button" routerLink="/manu" type="button" (click)="clear()">กลับสู่หน้าหลัก</button>&nbsp;
+
+            <button mat-raised-button color="warn"
+            type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;
+
+      </span>
+    </div>
+</mat-toolbar>
 <body>
     <div class="bodyFood">
       <mat-grid-list cols="4" rowHeight="3:5">
@@ -18,7 +30,7 @@
             </mat-card-header>
             <img mat-card-image width="150px" height="225px" src="{{store.image}}">
             <mat-card-content>
-              <p>ที่อยู่ : {{store.address}}</p><br>
+              <p>ที่อยู่ : {{store.adddress}}</p><br>
               <p>ติดต่อ : {{store.phone}}</p><br>
               <p>เว็บไซต์ : {{store.website}}</p><br>
             </mat-card-content>

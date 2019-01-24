@@ -28,7 +28,8 @@ export class OrderConfirmComponent implements OnInit {
   email: string;
   userAddress: string;
   storeId: string;
-  
+
+
   profile: any;
   order: any;
 
@@ -58,8 +59,7 @@ export class OrderConfirmComponent implements OnInit {
          this.router.navigate(['/login']);
        }
     });
-
-    this.selectedValue = this.userAddress;
+    console.log(this.orderDetail.addr)
   }
 
   getFoodById() {
@@ -76,9 +76,10 @@ export class OrderConfirmComponent implements OnInit {
       this.orderDetail.totalPrice = this.foodDetail.price * this.orderDetail.countItem;
     }
     catch{
-      console.log('Error');
+      console.log('กรุณากรอกตัวเลข');
     }
   }
+
 
   confirm() {
     this.setOrder();
@@ -107,13 +108,14 @@ export class OrderConfirmComponent implements OnInit {
 
   goToMenu() {
     this.clear();
+    localStorage.clear();
     this.router.navigate(['/manu']);
   }
 
   setOrder() {
     this.orderDetail.uid = this.userId;
     this.orderDetail.sid = this.storeId;
-    this.orderDetail.addr = this.userAddress;
+    this.orderDetail.addr = this.selectedValue;
   }
 
 }
