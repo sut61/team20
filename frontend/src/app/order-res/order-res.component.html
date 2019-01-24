@@ -7,15 +7,6 @@
 </mat-toolbar>
 
 <body>
-  <div class="search">
-    <mat-grid-list cols="1" rowHeight="15:1">
-      <mat-grid-tile>
-          <mat-form-field>
-              <input matInput placeholder="ค้นหาร้านค้า" [(ngModel)]="searchText" >
-          </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
     <div class="bodyFood">
       <mat-grid-list cols="4" rowHeight="3:5">
         <mat-grid-tile *ngFor="let store of stores">
