@@ -17,7 +17,11 @@ public class Store {
     private String branch;
 
     @ManyToOne
+    private Business business;
+
+    @ManyToOne
     private PriceRange priceRange;
+
 
     private String adddress;
     private String hint;

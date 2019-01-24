@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import team20.se61.sut.wongnai.Entity.Business;
 import team20.se61.sut.wongnai.Entity.NumberOfSeat;
 import team20.se61.sut.wongnai.Entity.PriceRange;
 import team20.se61.sut.wongnai.Entity.Store;
+import team20.se61.sut.wongnai.Repository.BusinessRepository;
 import team20.se61.sut.wongnai.Repository.NumberOfSeatRepository;
 import team20.se61.sut.wongnai.Repository.PriceRangeRepository;
 import team20.se61.sut.wongnai.Repository.StoreRepository;
@@ -26,6 +28,8 @@ public class StoreController {
     @Autowired private StoreRepository storeRepository;
     @Autowired private NumberOfSeatRepository numberOfSeatRepository;
     @Autowired private PriceRangeRepository priceRangeRepository;
+
+    @Autowired private BusinessRepository businessRepository;
 
     @GetMapping()
     public List<Store> Stores() {
@@ -46,10 +50,12 @@ public class StoreController {
     public Store AddStore(Store newStore, @RequestBody Map<String, String> body) {
         Optional<NumberOfSeat> numberOfSeat = numberOfSeatRepository.findById(Long.valueOf(body.get("numberOfSeat")));
         Optional<PriceRange> priceRange = priceRangeRepository.findById(Long.valueOf(body.get("priceRange")));
+        Optional<Business> business = businessRepository.findById(Long.valueOf(body.get("business")));
 
         newStore.setName(body.get("name"));
         newStore.setBranch(body.get("branch"));
         newStore.setPriceRange(priceRange.get());
+        newStore.setBusiness(business.get());
 
         newStore.setAdddress(body.get("adddress"));
         newStore.setHint(body.get("hint"));
