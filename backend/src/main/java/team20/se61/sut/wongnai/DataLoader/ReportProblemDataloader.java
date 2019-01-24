@@ -20,7 +20,7 @@ public class ReportProblemDataloader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         
-        Stream.of("อาหาร","อาหารไทย","อาหารต่างประเทศ","ของหวาน","กาแฟ","อาหารทะเล","พิซซ่า","บุฟเฟ่ปิ้งย่าง").forEach(tagName -> { 
+        Stream.of("bug","text ผิด","ปุ่มกดไม่ได้","ค้าง","จอเด้ง").forEach(tagName -> { 
             tagRepository.save(new Tag(tagName));            
         });
 
