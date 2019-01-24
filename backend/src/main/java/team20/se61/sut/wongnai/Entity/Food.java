@@ -15,7 +15,8 @@ public class Food {
     private @NonNull Long id;
     private @NonNull String Name;
     private @NonNull int Price;
-
+    private @NonNull String Image;
+    
     @ManyToOne()
     @JoinColumn(name= "storeId")
     private Store store;

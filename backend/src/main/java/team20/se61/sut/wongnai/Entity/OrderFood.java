@@ -15,7 +15,8 @@ public class OrderFood {
     private Long id;
     private @NonNull int CountItem;
     private @NonNull int TotalPrice;
-
+    private String DeliverAddress;
+    
     @ManyToOne()
     @JoinColumn(name= "storeId")
     private Store store;
