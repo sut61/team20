@@ -3,6 +3,9 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { LoginService } from '../shared/login/login.service';
+import { Router } from '@angular/router';
+import { BusinessService } from '../shared/ิbusiness/business.service';
 
 @Component({
   selector: 'app-add-store',
@@ -15,7 +18,7 @@ export class AddStoreComponent implements OnInit {
   profileUrl: Observable<string | null>;
   file: any;
   dowloadURL: string;
-  formData:any;
+  formData: any;
   dayOfWeeks = [
     { value: 'จันทร์', viewValue: 'จันทร์' },
     { value: 'อังคาร', viewValue: 'อังคาร' },
@@ -30,15 +33,27 @@ export class AddStoreComponent implements OnInit {
   numberOfSeat = [];
 
 
-  times = [
-  ]
+  times = []
+  email: string;
+  profiles: any;
 
-  constructor(private storage: AngularFireStorage,private http: HttpClient) {}
+  constructor(private storage: AngularFireStorage, private http: HttpClient, private loginService: LoginService, private businessService: BusinessService, private router: Router) { }
 
   ngOnInit() {
+    this.loginService.getUser().subscribe(data => {
+      try {
+
+        this.email = data.email;
+        console.log(this.email)
+
+      }
+      catch (Err) {
+        this.router.navigate(['/login']);
+      }
+    });
     for (let index = 0; index < 24; index++) {
       this.times.push(
-        { value: index+':00', viewValue: index+':00' },
+        { value: index + ':00', viewValue: index + ':00' },
       );
     }
 
@@ -47,7 +62,7 @@ export class AddStoreComponent implements OnInit {
         console.log("GET Request is successful ", data);
         for (let index = 0; index < data["length"]; index++) {
           this.priceRanges.push({
-            value: data[index].id,
+            value: data[index].id+'',
             viewValue: data[index].range
           })
         }
@@ -62,7 +77,7 @@ export class AddStoreComponent implements OnInit {
         console.log("GET Request is successful ", data);
         for (let index = 0; index < data["length"]; index++) {
           this.numberOfSeat.push({
-            value: data[index].id,
+            value: data[index].id+'',
             viewValue: data[index].choices
           })
         }
@@ -72,14 +87,9 @@ export class AddStoreComponent implements OnInit {
       }
     );
   }
-
   removable = true;
 
-
-  
-
-  time: any = [
-  ];
+  time: any = [];
 
   addTimeservice(data) {
     console.log(data);
@@ -137,7 +147,9 @@ export class AddStoreComponent implements OnInit {
   }
 
 
-  saveData(){
+  saveData() {
+    this.formData.email = this.email;
+
     this.formData.time = JSON.stringify(this.formData.time)
     this.formData.image = this.dowloadURL;
     console.log(this.formData);
@@ -146,12 +158,13 @@ export class AddStoreComponent implements OnInit {
       data => {
         console.log("POST Request is successful ", data);
         alert("สำเร็จ")
+        this.router.navigate(['/manu']);
       },
       error => {
         console.log("Error", error);
         alert("ผิดพลาด " + error)
       }
 
-    ); 
+    );
   }
 }
