@@ -1,0 +1,28 @@
+.center {
+    margin: auto;
+}
+
+.body {
+    height: 600px;
+    width: 100%;
+    padding: 0 0 0px;
+
+}
+
+.full-width {
+  width: 30%;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+	font-weight: 900;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0 0 0px;
+}
+
+.example-card {
+    max-width: 300px;
+  }
+  
