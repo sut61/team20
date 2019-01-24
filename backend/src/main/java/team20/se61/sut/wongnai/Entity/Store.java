@@ -1,6 +1,9 @@
 package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
+
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Entity;
@@ -8,7 +11,7 @@ import javax.persistence.GeneratedValue;
 
 @Entity
 @Data
-
+@NoArgsConstructor
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,11 +36,22 @@ public class Store {
     private String phone;
     private String email;
     private String website;
-    private String time;
+
+    @ManyToMany
+    @JoinTable(name = "store_openday", joinColumns = @JoinColumn(name = "store_id", referencedColumnName = "id"), 
+    inverseJoinColumns = @JoinColumn(name = "dayOfWeeks_id", referencedColumnName = "id"))
+    private Set<DayOfWeek> dayOfWeeks;
+    
+    private String openTime;
+    private String closeTime;
 
     @ManyToOne
     private NumberOfSeat numberOfSeat;
 
     private String image; // url
+
+    public Store(Set<DayOfWeek> day){
+        this.dayOfWeeks = day;
+    }
 
 }

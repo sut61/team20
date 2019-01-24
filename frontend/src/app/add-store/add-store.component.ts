@@ -19,19 +19,10 @@ export class AddStoreComponent implements OnInit {
   file: any;
   dowloadURL: string;
   formData: any;
-  dayOfWeeks = [
-    { value: 'จันทร์', viewValue: 'จันทร์' },
-    { value: 'อังคาร', viewValue: 'อังคาร' },
-    { value: 'พุธ', viewValue: 'พุธ' },
-    { value: 'พฤหัสบดี', viewValue: 'พฤหัสบดี' },
-    { value: 'ศุกร์', viewValue: 'ศุกร์' },
-    { value: 'เสาร์', viewValue: 'เสาร์' },
-    { value: 'อาทิตย์', viewValue: 'อาทิตย์' },
-  ];
-
+  dayOfWeeks:any;
   priceRanges = [];
   numberOfSeat = [];
-
+  dayIdList:Array<number>;
 
   times = []
   email: string;
@@ -72,6 +63,17 @@ export class AddStoreComponent implements OnInit {
       }
     );
 
+    this.http.get("http://localhost:8080/store/dayOfWeek").subscribe(
+      data => {
+        console.log("GET Request is successful ", data);
+        this.dayOfWeeks = data;
+        console.log('dayOfWeeks :' ,this.dayOfWeeks)
+      },
+      error => {
+        console.log("Error", error);
+      }
+    );
+
     this.http.get("http://localhost:8080/store/numberofseat").subscribe(
       data => {
         console.log("GET Request is successful ", data);
@@ -91,28 +93,11 @@ export class AddStoreComponent implements OnInit {
 
   time: any = [];
 
-  addTimeservice(data) {
-    console.log(data);
-
-    if (data.dayOfWeek == "" || data.timeOpen == "" || data.timeClose == "")
-      console.log("ว่าง")
-    else if (parseFloat(data.timeClose.replace(":", ".")) <= parseFloat(data.timeOpen.replace(":", "."))
+  checkTimeFormat(open,close) {
+    if (parseFloat(open.replace(":", ".")) >= parseFloat(close.replace(":", "."))
     ) {
       console.log("เวลาไม่ถูกต้อง")
     }
-    else if (
-      this.time.find(
-        (cur) => {
-          return data.dayOfWeek + " " + data.timeOpen + " - " + data.timeClose == cur;
-        }
-      ) == undefined
-    ) {
-      this.time.push(
-        data.dayOfWeek + " " + data.timeOpen + " - " + data.timeClose
-      )
-    }
-    else
-      console.log("ซ้ำ")
 
 
   }
@@ -125,7 +110,7 @@ export class AddStoreComponent implements OnInit {
 
   onSubmit(data) {
     this.formData = data;
-
+    this.checkTimeFormat(this.formData.openTime,this.formData.closeTime);
     const filePath = `test/${new Date().getTime()}_${this.file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, this.file);
@@ -152,9 +137,10 @@ export class AddStoreComponent implements OnInit {
 
     this.formData.time = JSON.stringify(this.formData.time)
     this.formData.image = this.dowloadURL;
+    this.formData.dayOfWeek = null;
     console.log(this.formData);
 
-    this.http.post("http://localhost:8080/store", this.formData).subscribe(
+    this.http.post("http://localhost:8080/store/"+this.dayIdList, this.formData).subscribe(
       data => {
         console.log("POST Request is successful ", data);
         alert("สำเร็จ")
