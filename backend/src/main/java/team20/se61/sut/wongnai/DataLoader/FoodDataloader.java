@@ -27,18 +27,10 @@ public class FoodDataloader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        ContactEntity c1 = new ContactEntity();
-        c1.setAddress("address");
-        c1.setTelephonenumber("0999999999");
-        contactRepository.save(c1);
+        
 
-        PrefixEntity prefix = new PrefixEntity();
-        prefix.setPrefix("อื้ม");
-        prefixRepository.save(prefix);
-
-        SexEntity sex = new SexEntity();
-        sex.setSex("เพศที่สาม");
-        sexRepository.save(sex);
+        
+        
 
         NumberOfSeat numSeat = new NumberOfSeat("500");
         numberOfSeatRepository.save(numSeat);
@@ -51,14 +43,7 @@ public class FoodDataloader implements ApplicationRunner {
         newBusinessType.setName("ขายอยู่ มทส.");
         businessTypeRepository.save(newBusinessType);
 
-        ProfilesEntity p1 = new ProfilesEntity();
-        p1.setContact(c1);
-        p1.setEmail("www@www.gg");
-        p1.setName("อื้ม งืมๆ");
-        p1.setPassword("11111111");
-        p1.setPrefix(prefix);
-        p1.setSex(sex);
-        profilesRepository.save(p1);
+        
 
         Business business = new Business();
         business.setProfile(p1);
