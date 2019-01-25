@@ -237,7 +237,7 @@ public class RegisterController {
                     &&address.charAt(i)!='ำ'&&address.charAt(i)!='โ'&&address.charAt(i)!='เ'&&address.charAt(i)!='็'
                     &&address.charAt(i)!='า'&&address.charAt(i)!='แ'&&address.charAt(i)!='ิ'&&address.charAt(i)!='ื'
                     &&address.charAt(i)!='์'&&address.charAt(i)!='ี'&&address.charAt(i)!='ใ'&&address.charAt(i)!=' '&&address.charAt(i)!='.'&&address.charAt(i)!='/'
-                    &&address.charAt(i)!='ั'&&address.charAt(i)!='ะ'){
+                    &&address.charAt(i)!='ั'&&address.charAt(i)!='ะ'&&address.charAt(i)!='ั'&&address.charAt(i)!='์'){
                 message = "ที่อยู่ต้องไม่มีอักษรพิเศษ";
                 return false;
 
@@ -259,7 +259,7 @@ public class RegisterController {
                     &&name.charAt(i)!='ุ'&&name.charAt(i)!='ู'&&name.charAt(i)!='ไ'&&name.charAt(i)!='ึ'
                     &&name.charAt(i)!='ำ'&&name.charAt(i)!='โ'&&name.charAt(i)!='เ'&&name.charAt(i)!='็'
                     &&name.charAt(i)!='า'&&name.charAt(i)!='แ'&&name.charAt(i)!='ิ'&&name.charAt(i)!='ื'
-                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'&&name.charAt(i)!=' '&&name.charAt(i)!='ะ'){
+                    &&name.charAt(i)!='์'&&name.charAt(i)!='ี'&&name.charAt(i)!='ใ'&&name.charAt(i)!=' '&&name.charAt(i)!='ะ'&&name.charAt(i)!='ั'&&name.charAt(i)!='์'){
                 message = "ชื่อและนามสกุลต้องไม่มีอักษรพิเศษ";
                 return false;
 
