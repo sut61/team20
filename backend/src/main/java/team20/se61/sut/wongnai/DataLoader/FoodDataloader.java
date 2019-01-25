@@ -46,7 +46,7 @@ public class FoodDataloader implements ApplicationRunner {
         
 
         Business business = new Business();
-        business.setProfile(p1);
+        
         business.setDistrict("district");
         business.setEmail("email");
         business.setProvince(province);
