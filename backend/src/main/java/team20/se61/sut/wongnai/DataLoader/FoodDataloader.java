@@ -69,7 +69,7 @@ public class FoodDataloader implements ApplicationRunner {
         st.setPhone("0000000000");
         storeRepository.save(st);
 
-        String[] foodName = {"เบคอนกรอบ", "น้ำตกไก่", "ฮาวายเอี้ยน", "ซีฟู้ดค็อกเทล", "ซุปเปอร์เดอลุกซ์"};
+        String[] foodName = {"เบคอน�?รอบ", "น้ำต�?ไ�?่", "ฮาวายเอี้ยน", "ซีฟู้ดค็อ�?เทล", "ซุปเปอร์เดอลุ�?ซ์"};
         String[] foodImage = {"https://1112.minorcdn.com/1112/public/images/products/pizza/website/Pizza-Pan-Crispy-Bacon_New-Toppings_Angle_web.png",
         "https://1112.minorcdn.com/1112/public/images/products/pizza/website/Pizza-Pan-Spicy-Namtok-Chicken_New-Toppings_Angle_web.png",
         "https://1112.minorcdn.com/1112/public/images/products/pizza/website/Pan_Hawaiian.png",
