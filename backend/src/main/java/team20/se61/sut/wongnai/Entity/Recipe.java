@@ -2,6 +2,7 @@ package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -17,8 +18,15 @@ public class Recipe {
 
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
                         private Long id;
-                        private @NonNull String name;
+
+                        @NotNull @Size( max=25, message="Manu Name Too long (Limit 25 String)")                
+                        private
+                        String name;
+
+                        @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif|.PNG).+")
                         private String  urlPhoto;
+
+                        @Size( max=1500, message="Howto Too long (Limit 1500 String)")
                         private @NonNull String howto;
 
 
