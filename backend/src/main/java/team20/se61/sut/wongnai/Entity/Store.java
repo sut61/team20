@@ -6,6 +6,10 @@ import java.util.Set;
 
 import javax.persistence.*;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -16,6 +20,8 @@ public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min=2, max=20, message="Name should have atleast 2 characters or max 20 characters")
     private String name;
     private String branch;
 
@@ -33,7 +39,10 @@ public class Store {
     private String subDistrict;
     private String building;
 
+    @Size(min=2, max=20, message="Phone should have 10 characters")
     private String phone;
+    
+    @Email
     private String email;
     private String website;
 
@@ -48,6 +57,7 @@ public class Store {
     @ManyToOne
     private NumberOfSeat numberOfSeat;
 
+    @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif).+")
     private String image; // url
 
     public Store(Set<DayOfWeek> day){
