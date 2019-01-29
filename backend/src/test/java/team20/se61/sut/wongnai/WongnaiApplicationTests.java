@@ -61,11 +61,6 @@ public class WongnaiApplicationTests {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
 	}
-	
-	@Test
-	public void contextLoads() {
-	}
-
 	/*@Test Recipe /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	@Test   
 	public void NameNull() {
@@ -142,5 +137,72 @@ public class WongnaiApplicationTests {
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+	// test ReportProblem
+	@Test
+    public void titleNull() {
+        ReportProblem report = new ReportProblem();
+        report.setDetail("กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+        report.setTitle(null);
+        report.setImgUrl("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548763100004_690650.jpg?alt=media&token=61e2258f-479a-43d1-b5f");
+        try {
+            entityManager.persist(report);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void imgUrlnotPattern() {
+        ReportProblem report = new ReportProblem();
+        report.setDetail("กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+        report.setTitle("ต้องการสร้างเมนู ใน LINEMAN ทำอย่างไรครับ");
+        report.setImgUrl("firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548763100004_690650.jpg?alt=media&token=61e2258f-479a-43d1-b5f");
+        try {
+            entityManager.persist(report);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void detailSize() {
+        ReportProblem report = new ReportProblem();
+        report.setDetail("กก");
+        report.setTitle("ต้องการสร้างเมนู ใน LINEMAN ทำอย่างไรครับ");
+        report.setImgUrl("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548763100004_690650.jpg?alt=media&token=61e2258f-479a-43d1-b5f");
+        try {
+            entityManager.persist(report);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void reportCorrect() {
+        ReportProblem report = new ReportProblem();
+        report.setDetail("กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+        report.setTitle("ต้องการสร้างเมนู ใน LINEMAN ทำอย่างไรครับ");
+        report.setImgUrl("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548763100004_690650.jpg?alt=media&token=61e2258f-479a-43d1-b5f");
+        entityManager.persist(report);
+        entityManager.flush();
+	}
+	//-----------------------------------------------------------------------------------
 }
 
