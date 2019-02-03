@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm, Form } from '@angular/forms';
 import { LoginService } from '../shared/login/login.service';
 import { Profile } from 'selenium-webdriver/firefox';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ user:string;
 profiles :any;
 
 
-constructor(private loginservice: LoginService,private router : Router,private route: ActivatedRoute) { }
+constructor(private snackBar: MatSnackBar,private loginservice: LoginService,private router : Router,private route: ActivatedRoute) { }
   ngOnInit() {
     this.clear();
 
@@ -36,7 +37,13 @@ constructor(private loginservice: LoginService,private router : Router,private r
 
           if(this.message==='{"message":"false"}'){
 
-            alert('EMAIL หรือ PASSWORD ไม่ถูกต้อง');
+           
+            this.snackBar.open("EMAIL หรือ PASSWORD ไม่ถูกต้อง ", 'ลองใหม่', {
+              duration: 10000,
+              verticalPosition:"top",
+              horizontalPosition: "center"
+            
+            });
 
 
           }
@@ -44,7 +51,13 @@ constructor(private loginservice: LoginService,private router : Router,private r
             this.loginservice.getUser().subscribe(
               data=>{
                       this.profiles=data;
-                      alert("ยินดีต้อนรับ   "+this.profiles.prefix.prefix+this.profiles.name);
+                     
+                      this.snackBar.open("ยินดีต้อนรับ   "+this.profiles.prefix.prefix+this.profiles.name, 'OK', {
+                        duration: 10000,
+                        verticalPosition:"top",
+                        horizontalPosition: "center"
+                      
+                      });
                      this.gotoManu();
 
 
