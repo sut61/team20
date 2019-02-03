@@ -26,7 +26,7 @@ public class ContactEntity {
     private
     @NotNull(message = "กรุณากรอกเบอร์โทรศัพท์")
     @Column(unique = true)
-    @Pattern(regexp = "0\\d{9}",message ="เบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และครบ 10 ตัว" )
+    @Pattern(regexp = "0\\d{9}",message ="เบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และตัวเลขครบ 10 ตัว" )
     String telephonenumber;
 
 }
