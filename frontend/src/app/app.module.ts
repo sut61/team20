@@ -66,6 +66,8 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,6 +130,7 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
+    
   ],
 
   providers: [RegisterService,LoginService, OrderService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' }],
