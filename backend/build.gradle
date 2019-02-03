@@ -33,6 +33,10 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
-	// testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
+	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
 	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.141.59'
+
+	// https://mvnrepository.com/artifact/com.thoughtworks.selenium/com.springsource.com.thoughtworks.selenium
+	//Compile group: 'com.thoughtworks.selenium', name: 'com.springsource.com.thoughtworks.selenium', version: '1.0.1'
+
 }
