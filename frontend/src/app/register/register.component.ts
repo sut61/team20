@@ -121,8 +121,8 @@ export class RegisterComponent implements OnInit {
             });
           }
 
-          if(this.message==='{"message":"เบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และครบ 10 ตัว"}'){
-            this.snackBar.open("กรุณา กรอกเบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และครบ 10 ตัว", "ลองใหม่", {
+          if(this.message==='{"message":"เบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และตัวเลขครบ 10 ตัว"}'){
+            this.snackBar.open("กรุณา กรอกเบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และตัวเลขครบ 10 ตัว", "ลองใหม่", {
               duration: 10000,
               verticalPosition:"top",
               horizontalPosition: "center"
