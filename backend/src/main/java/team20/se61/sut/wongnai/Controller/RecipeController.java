@@ -43,8 +43,6 @@ class RecipeController{
 
     }
 
-
-
         @PostMapping()
         public Recipe addRecipe(Recipe hotRecipe, @RequestBody Map<String, Object> body) {
              

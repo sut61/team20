@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @Entity
 @Data
+@NoArgsConstructor
 @Table
 public class Recipe {
 
@@ -42,20 +43,27 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
     @JoinColumn(name="profilles") private ProfilesEntity profilles;
 
+    // @OneToOne(cascade = CascadeType.REMOVE)
+    // @JoinColumn(name = "fppid", insertable = true,unique = true)
+    // private @NotNull Foodproperties fpp; 
 
-    public Recipe() {}  
+    // @OneToOne(cascade = CascadeType.REMOVE)
+    // @JoinColumn(name = "Nvalueid", insertable = true,unique = true)
+    // private @NotNull Nutritive_value Nvalue;
 
-    public Recipe(String name , FoodType foodType , MainIngredients mainIngred, CookingMethod cookingMethod ,String urlPhoto ,String howto, ProfilesEntity profilles ){
+    //public Recipe() {}  
+
+    // public Recipe(String name , FoodType foodType , MainIngredients mainIngred, CookingMethod cookingMethod ,String urlPhoto ,String howto, ProfilesEntity profilles ){
 
   
-                        this.name = name;
-                        this.foodtype = foodType;
-                        this.mainingred = mainIngred;
-                        this.cookingmethod = cookingMethod;
-                        this.urlPhoto = urlPhoto;
-                        this.howto =howto;
-                        this.profilles=profilles;
-    }    
+    //                     this.name = name;
+    //                     this.foodtype = foodType;
+    //                     this.mainingred = mainIngred;
+    //                     this.cookingmethod = cookingMethod;
+    //                     this.urlPhoto = urlPhoto;
+    //                     this.howto =howto;
+    //                     this.profilles=profilles;
+    // }    
                                         
 
 
