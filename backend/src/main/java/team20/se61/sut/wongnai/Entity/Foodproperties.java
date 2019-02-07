@@ -11,19 +11,22 @@ import javax.validation.constraints.Size;
 @Table
 public class Foodproperties {
 
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long fppid;
+    private  Long id;
 
     private
-    @NotNull(message = "กรุณากรอกคุณค่าทางโภชนาการ")
+    @NotNull(message = "�?รุณา�?รอ�?�?ุณ�?�?าทา�?�?ภ�?�?า�?าร")
     @Size(min=2,max=250)
-    @Pattern(regexp = "^((?!(ลุงโทนี่|SamuelJackson))[\\s\\S])*$",message = "กรุณาใช้คำที่สุภาพ")
+    @Pattern(regexp = "^((?!(ลุ�?�?ท�?ี�?|SamuelJackson))[\\s\\S])*$",message = "�?รุณา�?�?�?�?ำที�?สุภา�?")
     @Column(unique = true)
     String foodproperties;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id", insertable = true,unique = true)
-    private @NotNull() Recipe recipe;
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "Recipe_id", unique = true)
+    private Recipe recipe;
 
 }

@@ -10,5 +10,8 @@ package team20.se61.sut.wongnai.Repository;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface RecipeRespository extends JpaRepository<Recipe, Long> {
+
+    
+	
             
 }
