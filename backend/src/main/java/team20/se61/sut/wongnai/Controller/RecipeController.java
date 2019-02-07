@@ -42,8 +42,7 @@ class RecipeController{
             return recipeRespository.findById(id); 
 
     }
-
-        @PostMapping()
+ @PostMapping()
         public Recipe addRecipe(Recipe hotRecipe, @RequestBody Map<String, Object> body) {
              
             Optional<CookingMethod> cookingMethod = cookingMethodRespository.findById(Long.valueOf(body.get("cookingMethod").toString()));

@@ -15,7 +15,7 @@ public class Nutritive_value {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Nvalueid;
+    private  Long id;
 
     @NotNull()@Min(0)@Max(2000)private float energy;
 
@@ -31,9 +31,9 @@ public class Nutritive_value {
 
 
    
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id", insertable = true,unique = true)
-    private @NotNull() Recipe recipe;
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "Recipe_id", unique = true)
+    private  Recipe recipe;
 
 
 }
