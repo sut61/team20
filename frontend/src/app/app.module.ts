@@ -63,6 +63,7 @@ import { BusinessRegisterComponent } from './business-register/business-register
 import { OrderResComponent } from './order-res/order-res.component';
 import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+import { PromotionComponent } from './promotion/promotion.component';
 
 
 
@@ -85,7 +86,8 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
     BusinessRegisterComponent,
     OrderResComponent,
     OrderFoodComponent,
-    OrderConfirmComponent
+    OrderConfirmComponent,
+    PromotionComponent
   ],
 
 

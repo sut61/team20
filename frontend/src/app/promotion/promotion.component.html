@@ -1,0 +1,51 @@
+<div>
+  <mat-card class="card-promotion">
+    <b>เพิ่มโปรโมชั่น</b>    
+    <form #myform="ngForm">
+    <p>ชื่อโปรโมชั่น</p>
+    <mat-form-field class="example-full-width">
+      <input matInput name="name" [(ngModel)]="myform.name">
+    </mat-form-field><br>
+
+      <p>เลือกร้านค้าของคุณ</p>
+      <mat-form-field class="example-full-width">
+        <mat-select name ="storeId" [(ngModel)]="myform.storeId">
+          <mat-option *ngFor="let store of stores" [value]="store.id">
+            {{store.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <p>เลือกประเภทของโปรโมชั่น</p>
+      <mat-form-field class="example-full-width">
+        <mat-select name ="promotionTypeId" [(ngModel)]="myform.promotionTypeId">
+          <mat-option *ngFor="let type of types" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>เปอร์เซนต์ที่ลด</p>
+      <mat-form-field class="example-full-width">
+        <mat-select  name="percentageId" [(ngModel)]="myform.percentageId">
+          <mat-option *ngFor="let percentage of percentages"   [value]="percentage.id" >
+            {{percentage.name}}%
+          </mat-option>
+        </mat-select>
+      </mat-form-field> 
+      
+      <p>รายละเอียดของโปรโมชั่น</p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput name = "detail" rows="10" [(ngModel)]="myform.detail"></textarea>
+      </mat-form-field><br>  
+      </form>
+    <mat-card-actions>
+      <button mat-raised-button color="primary"  (click)="save(myform.value)">เพิ่มโปรโมชั่น</button>
+      <button mat-raised-button color="warn" type="button" routerLink="/manu" type="button">ยกเลิก</button>&nbsp;
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+
+ 
