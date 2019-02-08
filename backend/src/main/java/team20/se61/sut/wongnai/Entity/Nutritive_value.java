@@ -33,7 +33,7 @@ public class Nutritive_value {
    
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "Recipe_id", unique = true)
-    private  Recipe recipe;
+    private  @NotNull Recipe recipe;
 
 
 }

@@ -32,8 +32,11 @@ export class AddNutriComponent implements OnInit {
     this.NutriService.addNutrition(this.id,this.fooprop,this.amount,this.energy,this.fat,this.saturate,this.sodium,this.sugar).subscribe(data=>{
 
                   console.log( "Update Success" , data) ;           
-                  alert('เพิ่มสูตรอาหารเรียบร้อย');
-                  this.router.navigate(['/makefood-list']);
+                  if(data == true){
+                    this.router.navigate(['/makefood-list']);
+                    alert('เพิ่มสูตรอาหารเรียบร้อย');}
+                  else alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
+
         },
         error =>{
                   console.log("Fail Success", error);
