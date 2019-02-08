@@ -21,5 +21,20 @@
     <div><h3>วิธีทำ</h3> </div>
     <textarea rows="15" cols="55" readonly>{{Recipe.howto}}</textarea>
    
+    <h3>
+      คุณค่าทางอาหาร
+    </h3>
+    <div>ปริมาณ : {{NutriValue.amount}} กรัม</div>
+    <div> พลัง  : {{NutriValue.energy}} Kcal</div>
+    <div> ไขมัน  : {{NutriValue.fat}} Kcal</div>
+    <div> ทราน  : {{NutriValue.saturates}} กรัม</div>
+    <div> น้ำตาล  : {{NutriValue.sugar}} กรัม</div>
+    <div> โซเดียม  : {{NutriValue.sodium}} มิลลิกรัม</div>
+    <br>
+    <h3>
+        ประโยชน์
+      </h3>
+      <textarea rows="15" cols="55" readonly>{{FoodProp.foodproperties}}</textarea>
+
 
 </mat-card>

@@ -1,0 +1,21 @@
+
+ <mat-form-field >
+  <input placeholder="ปริมาณ"  matInput  [(ngModel)]="amount" type="number" [ngModelOptions]="{standalone: true}" >
+</mat-form-field> <br><mat-form-field>
+  <input placeholder="พลังงาน"  matInput  [(ngModel)]="energy" type="number" [ngModelOptions]="{standalone: true}" >
+</mat-form-field><br><mat-form-field>
+  <input placeholder="ไขมัน"  matInput  [(ngModel)]="fat" type="number" [ngModelOptions]="{standalone: true}" >
+</mat-form-field><br><mat-form-field>
+  <input placeholder="ทราน"  matInput  [(ngModel)]="saturate" type="number" [ngModelOptions]="{standalone: true}" >
+</mat-form-field><br><mat-form-field>
+  <input placeholder="โซเดียม"  matInput  [(ngModel)]="sodium" type="number" [ngModelOptions]="{standalone: true}" >
+</mat-form-field><br><mat-form-field>
+  <input placeholder="น้ำตาล"  matInput  [(ngModel)]="sugar" type="number" [ngModelOptions]="{standalone: true}" >
+
+</mat-form-field><br><mat-form-field>
+  <textarea matInput placeholder="ประโยชน์ ข้อระวัง" rows="15" [(ngModel)]="fooprop" type="string" [ngModelOptions]="{standalone: true}" ></textarea>
+  
+
+</mat-form-field><br>
+<button  mat-raised-button color="primary" (click)= "AddNutrition()">Save</button>&nbsp;
+<button  mat-raised-button color="warn"  [routerLink]="['/makefood-list']">Cancel</button>
