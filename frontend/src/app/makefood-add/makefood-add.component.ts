@@ -46,6 +46,8 @@ export class MakefoodAddComponent implements OnInit {
   private howto: string;
   private email:string;
 
+  private Recipe:any={};
+
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   profileUrl: Observable<string | null>;
@@ -77,9 +79,12 @@ export class MakefoodAddComponent implements OnInit {
                            this.urlphoto = urllink;
 
                            this.addRecipetoDB(this.foodname,this.foodtypeid,this.cookingmethodid,this.mainingredid,this.urlphoto,this.howto,this.email).subscribe(data =>{
+                            
                             console.log( "Update Success" , data) ;
+                            this.Recipe=data;
                             alert('เพิ่มสูตรอาหารเรียบร้อย');
-                            this.router.navigate(['/makefood-list']);
+                            //this.router.navigate(['/makefood-list']);
+                            this.router.navigate(['/addNutri',this.Recipe.id]);
                     
                           },
                           error =>{

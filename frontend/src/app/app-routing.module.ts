@@ -18,6 +18,7 @@ import { OrderResComponent } from './order-res/order-res.component';
 import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { PromotionComponent } from './promotion/promotion.component';
+import { AddNutriComponent } from './add-nutri/add-nutri.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'makefood-list',component : MakefoodListComponent },
   { path: 'makefood-add', component : MakefoodAddComponent},
   { path: 'makefood-detail/:id', component : MakefoodDetailComponent},
+  { path: 'addNutri/:id', component : AddNutriComponent},
 
   { path: 'add-store', component : AddStoreComponent},
 

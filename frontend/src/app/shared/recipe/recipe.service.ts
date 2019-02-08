@@ -9,6 +9,8 @@ export class RecipeService {
 
   public API = '//localhost:8080';
   public recipe = this.API+'/Recipe/';
+  
+
  
   constructor(private http: HttpClient) { }
   getRecipe(id: string): Observable<any> {
