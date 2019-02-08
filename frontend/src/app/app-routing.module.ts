@@ -17,6 +17,7 @@ import { BusinessRegisterComponent } from './business-register/business-register
 import { OrderResComponent } from './order-res/order-res.component';
 import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+import { PromotionComponent } from './promotion/promotion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -52,11 +53,12 @@ const routes: Routes = [
   { path: 'show-report-problem', component : ShowReportComponent},
 
   { path: 'business-register', component : BusinessRegisterComponent},
+  { path: 'promotion', component : PromotionComponent},
 
   { path: 'order', component : OrderResComponent},
   { path: 'order/food', component : OrderFoodComponent},
   { path: 'order/confirm', component : OrderConfirmComponent},
-  
+
 ];
 
 
