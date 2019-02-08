@@ -27,6 +27,6 @@ public class Foodproperties {
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "Recipe_id", unique = true)
-    private Recipe recipe;
+    private @NotNull Recipe recipe;
 
 }

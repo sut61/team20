@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,22 +42,36 @@ class NutritionController{
     }
 
     @PostMapping("/add-nutrition")
-    public void addnutrition( Foodproperties foodprop ,  Nutritive_value Nutrivalue,@RequestBody Map<String, Object> body) {
-
+    public boolean addnutrition( Foodproperties foodprop ,  Nutritive_value Nutrivalue,@RequestBody Map<String, Object> body) {
+        long fid= 0;
+       
+      try{
+        
         Optional<Recipe> recipe = recipeRespository.findById(Long.valueOf(body.get("Recipe").toString()));
-
         foodprop.setRecipe(recipe.get());
         foodprop.setFoodproperties(body.get("prop").toString());
         foodpropRepo.save(foodprop);
+        Foodproperties foodtemp = foodpropRepo.findByRecipe_id(Long.valueOf(body.get("Recipe").toString())).get();
+        fid = foodtemp.getId();
+       
 
         Nutrivalue.setRecipe(recipe.get());
-        Nutrivalue.setAmount(Long.valueOf(body.get("amount").toString()));
-        Nutrivalue.setEnergy(Long.valueOf(body.get("energy").toString()));
-        Nutrivalue.setFat(Long.valueOf(body.get("fat").toString()));
-        Nutrivalue.setSaturates(Long.valueOf(body.get("saturates").toString()));
-        Nutrivalue.setSodium(Long.valueOf(body.get("sodium").toString()));
-        Nutrivalue.setSugar(Long.valueOf(body.get("sugar").toString()));
-        NutriRepo.save( Nutrivalue);
+        Nutrivalue.setAmount(Float.parseFloat(body.get("amount").toString()));
+        Nutrivalue.setEnergy(Float.parseFloat(body.get("energy").toString()));
+        Nutrivalue.setFat(Float.parseFloat(body.get("fat").toString()));
+        Nutrivalue.setSaturates(Float.parseFloat(body.get("saturates").toString()));
+        Nutrivalue.setSodium(Float.parseFloat(body.get("sodium").toString()));
+        Nutrivalue.setSugar(Float.parseFloat(body.get("sugar").toString()));
+        NutriRepo.save(Nutrivalue);
+        return true;
+    }catch (Exception e) {
+
+    if(fid !=0)
+        foodpropRepo.deleteById(fid);
+        return false;
+ 
+}
+       
 
     }
 
