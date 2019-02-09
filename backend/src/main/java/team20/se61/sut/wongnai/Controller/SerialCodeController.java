@@ -56,7 +56,6 @@ class SerialCodeController {
         newCode.setCodeCondition(codeConditionRepository.findById(conditionId).get());
         newCode.setDetail(detail);
         newCode.setSerialCode(genCode);
-        newCode.setActivate(false);
         return serialCodeRepository.save(newCode);
     }
 
@@ -73,7 +72,6 @@ class SerialCodeController {
             newCode.setDetail(body.get("detail").toString());
             newCode.setCodeCondition(findCondition.get());
             newCode.setSerialCode(genCode);
-            newCode.setActivate(false);
             serialCodeRepository.save(newCode);
         }
         return null;
