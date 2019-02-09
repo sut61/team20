@@ -47,6 +47,7 @@ export class BusinessRegisterComponent implements OnInit {
       this.form = myform;
       this.form.userEmail = this.userEmail;
       this.businessService.postBusiness(myform).subscribe(data => {
+        alert('สมัครสำเร็จแล้ว');
         this.router.navigate(['/add-store']);
       },
       error =>{
