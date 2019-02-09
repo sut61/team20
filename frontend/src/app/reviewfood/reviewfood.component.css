@@ -1,0 +1,25 @@
+.topright {
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	font-size: 18px;
+  }
+
+.center{
+      margin: auto;
+	}
+	
+	.example-form {
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+	}
+	
+
+	.container {
+		width: 100%;
+		margin: auto;
+		font-weight: 900;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 0 0 0px;
+	}

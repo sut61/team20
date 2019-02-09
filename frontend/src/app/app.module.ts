@@ -63,10 +63,17 @@ import { BusinessRegisterComponent } from './business-register/business-register
 import { OrderResComponent } from './order-res/order-res.component';
 import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+<<<<<<< HEAD
 import { PromotionComponent } from './promotion/promotion.component';
 import { AddNutriComponent } from './add-nutri/add-nutri.component';
 import { ShopAdvertiseComponent } from './shop-advertise/shop-advertise.component';
 import { GenerateSerialCodeComponent } from './generate-serial-code/generate-serial-code.component';
+=======
+import { ReviewfoodComponent } from './reviewfood/reviewfood.component';
+import { AddreviewfoodComponent } from './addreviewfood/addreviewfood.component';
+import { ReviewfoodService } from './shared/reviewfood/reviewfood.service';
+
+>>>>>>> close #102 - UIForReviewFodd
 
 
 
@@ -89,10 +96,15 @@ import { GenerateSerialCodeComponent } from './generate-serial-code/generate-ser
     OrderResComponent,
     OrderFoodComponent,
     OrderConfirmComponent,
+<<<<<<< HEAD
     PromotionComponent,
     AddNutriComponent,
     ShopAdvertiseComponent,
     GenerateSerialCodeComponent,
+=======
+    ReviewfoodComponent,
+    AddreviewfoodComponent
+>>>>>>> close #102 - UIForReviewFodd
   ],
 
 
@@ -140,7 +152,7 @@ import { GenerateSerialCodeComponent } from './generate-serial-code/generate-ser
     
   ],
 
-  providers: [RegisterService,LoginService, OrderService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' }],
+  providers: [RegisterService,LoginService, OrderService,ReviewfoodService,{ provide: StorageBucket, useValue: 'gs://uppictest.appspot.com/' },],
   bootstrap: [AppComponent],
   entryComponents:[ReportDialogComponent]
 })
