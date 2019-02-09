@@ -128,4 +128,23 @@ export class GenerateSerialCodeComponent implements OnInit {
     }
     return true;
   }
+
+  clear() {
+    this.genForm.storeId = "";
+    this.genForm.detail = "";
+    this.genForm.conditionId = "";
+    this.genForm.genCount = "";
+    this.router.navigate(["/manu"]);
+  }
+
+  Logout() {
+    this.loginService.logout().subscribe(data => {
+      this.genForm.storeId = "";
+      this.genForm.detail = "";
+      this.genForm.conditionId = "";
+      this.genForm.genCount = "";
+      this.router.navigate(["/login"]);
+      console.log(data);
+    });
+  }
 }
