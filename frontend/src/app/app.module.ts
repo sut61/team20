@@ -45,6 +45,7 @@ import { MakefoodAddComponent } from './makefood-add/makefood-add.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule,StorageBucket } from '@angular/fire/storage';
@@ -70,6 +71,9 @@ import { GenerateSerialCodeComponent } from './generate-serial-code/generate-ser
 import { ReviewfoodComponent } from './reviewfood/reviewfood.component';
 import { AddreviewfoodComponent } from './addreviewfood/addreviewfood.component';
 import { ReviewfoodService } from './shared/reviewfood/reviewfood.service';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { AllStoreComponent } from './all-store/all-store.component';
+import { ShowStoreComponent } from './show-store/show-store.component';
 
 
 
@@ -98,7 +102,10 @@ import { ReviewfoodService } from './shared/reviewfood/reviewfood.service';
     ShopAdvertiseComponent,
     GenerateSerialCodeComponent,
     ReviewfoodComponent,
-    AddreviewfoodComponent
+    AddreviewfoodComponent,
+    AddReviewComponent,
+    AllStoreComponent,
+    ShowStoreComponent
   ],
 
 
@@ -142,7 +149,8 @@ import { ReviewfoodService } from './shared/reviewfood/reviewfood.service';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FlexLayoutModule
     
   ],
 

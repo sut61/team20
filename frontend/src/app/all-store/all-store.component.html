@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="2%">
+  <div *ngFor="let store of stores">
+      <mat-card fxFlex="auto">
+          <div fxLayout="row" fxLayoutGap="3%">
+            <div fxFlex="auto">
+              <img [src]="store.image" width="150px" height="150px">
+            </div>
+            <div fxFlex="auto">
+              <div fxLayout="column">
+                <b>ชื่อร้าน :{{store.name}}</b> <br>
+                จำนวนที่นั้ง : {{store.numberOfSeat.choices}} <br>
+                ช่วงราคา : {{store.priceRange.range}} <br>
+                <button mat-flat-button color="primary" routerLink="/show-store/{{store.id}}" >เข้าชมร้าน</button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+  </div>
+
+</div>

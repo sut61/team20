@@ -1,0 +1,58 @@
+<mat-progress-bar mode="indeterminate" value="40" *ngIf="load"></mat-progress-bar>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-card fxFlex="30%">
+    <div fxLayout="row" fxLayoutGap="3%">
+      <div fxFlex="auto" >
+        <img [src]="store.image" width="150px" height="150px">
+      </div>
+      <div fxFlex="auto">
+        <div fxLayout="column">
+          <b>ชื่อร้าน :{{store.name}}</b> <br>
+          จำนวนที่นั้ง : {{store.numberOfSeat.choices}} <br>
+          ช่วงราคา : {{store.priceRange.range}} <br>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card fxFlex="auto">
+
+    <form #review="ngForm" (onSubmit)="onSubmit(review.value)">
+      <mat-form-field>
+        <mat-select placeholder="คะแนนรีวิว" name="rating" ngModel>
+          <mat-option *ngFor="let rate of rating" [value]="rate.id">
+            {{rate.rating}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="หัวข้อ" name="title" ngModel>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <textarea matInput placeholder="รายละเอียด" name="detail" ngModel></textarea>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-select placeholder="ราคาต่อหัว" name="pricePerHead" ngModel>
+          <mat-option *ngFor="let pricePerHeads of pricePerHead" [value]="pricePerHeads.id">
+            {{pricePerHeads.pricePerHead}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <div *ngFor="let image of nImage">
+        <mat-card>
+          รุปที่ {{image+1}} : <input type="file" (change)="getFile($event)" />
+        </mat-card>
+      </div>
+      <button (click)="addImage()">เพิ่มรูป</button>
+      <br><br>
+
+
+      <button type="submit" (click)="onSubmit(review.value)" mat-raised-button color="warn">บันทึก</button><br><br>
+
+    </form>
+
+  </mat-card>
+
+</div>
