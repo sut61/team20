@@ -936,6 +936,7 @@ catch (javax.persistence.PersistenceException e){
         profilesEntity.setName("สุริยา เสียงใส");
         profilesEntity.setEmail("Suriya1305@gmail.com");
 
+
         Restaurant restaurant = new Restaurant();
         FoodForReviewEntity foodForReview = new FoodForReviewEntity();
         PointFoodEntity pointFood = new PointFoodEntity();
@@ -945,6 +946,7 @@ catch (javax.persistence.PersistenceException e){
         restaurant.setTelephonenumber("0987654321");
         restaurant.setIdentity("กินฟรีวันหวยไม่ออก");
 
+        
         foodForReview.setProfilesEntity(profilesEntity);
         foodForReview.setRestaurant(restaurant);
         foodForReview.setFood("ข้าวผัด");
