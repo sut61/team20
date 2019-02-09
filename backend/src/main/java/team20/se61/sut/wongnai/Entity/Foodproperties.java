@@ -19,9 +19,9 @@ public class Foodproperties {
     private  Long id;
 
     private
-    @NotNull(message = "�?รุณา�?รอ�?�?ุณ�?�?าทา�?�?ภ�?�?า�?าร")
+    @NotNull(message = "โปรดกรอกคุณค่าทางอาหาร")
     @Size(min=2,max=250)
-    @Pattern(regexp = "^((?!(ลุ�?�?ท�?ี�?|SamuelJackson))[\\s\\S])*$",message = "�?รุณา�?�?�?�?ำที�?สุภา�?")
+    @Pattern(regexp = "^((?!(ลุงโทนี่|SamuelJackson))[\\s\\S])*$",message = "กรุณาใช้คำที่สุภาพ")
     @Column(unique = true)
     String foodproperties;
 
