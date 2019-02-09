@@ -24,6 +24,9 @@ import { GenerateSerialCodeComponent } from "./generate-serial-code/generate-ser
 
 import { ReviewfoodComponent } from './reviewfood/reviewfood.component';
 import { AddreviewfoodComponent } from './addreviewfood/addreviewfood.component';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { AllStoreComponent } from './all-store/all-store.component';
+import { ShowStoreComponent } from './show-store/show-store.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcome", pathMatch: "full" },
@@ -67,7 +70,10 @@ const routes: Routes = [
   { path: 'order/confirm', component : OrderConfirmComponent},
   { path: 'reviewfood', component : ReviewfoodComponent},
   { path: 'addreviewfood', component : AddreviewfoodComponent},
-  { path: "generate", component: GenerateSerialCodeComponent }
+  { path: "generate", component: GenerateSerialCodeComponent },
+  { path: 'add-review/:id',component : AddReviewComponent },
+  { path: 'all-store',component : AllStoreComponent },
+  { path: 'show-store/:id',component : ShowStoreComponent },
 ];
 
 @NgModule({

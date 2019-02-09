@@ -1,0 +1,56 @@
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5%">
+  <mat-card fxFlex="40" fxFlexOffset="10">
+    <img [src]="store.image" fxFlexFill> <br>
+    <h1>ชื่อร้าน : {{store.name}}</h1>
+    สาขา : {{store.branch}} <br>
+    ช่วงราคา : {{store.priceRange.range}} <br>
+    <br>
+    <h3>ที่อยู่</h3>
+    ที่อยู่ : {{store.adddress}} <br>
+    เส้นทางร้าน : {{store.hint}} <br>
+    จังหวัด : {{store.province}} <br>
+    อำเภอ : {{store.district}} <br>
+    ตำบล : {{store.subDistrict}} <br>
+    ชื่อตึก/อาคาร : {{store.building}} <br>
+
+    <br>
+    <h3>ข้อมูลติต่อ</h3>
+
+    เบอร์โทรศัพ : {{store.phone}} <br>
+    อีเมล : {{store.email}} <br>
+    เว็บไซ : {{store.website}} <br>
+
+    จำนวนที่นั้ง : {{store.numberOfSeat.choices}}
+
+
+  </mat-card>
+
+  <div fxFlex="40">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="5%">
+      <button mat-flat-button color="primary" routerLink="/add-review/{{store.id}}" >กดรีวิวร้าน</button>
+      <div *ngFor="let review of reviews">
+          <mat-card>
+              <mat-card-header>
+                <mat-card-title>{{review.title}}</mat-card-title>
+                <mat-card-subtitle>คุณ : {{review.profile.name}}</mat-card-subtitle>
+                <mat-card-subtitle>ให้คะแนน : {{review.rating.rating}}</mat-card-subtitle>
+                <mat-card-subtitle>ราคาต่อหัว : {{review.pricePerHead.pricePerHead}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  {{review.detail}}
+                </p>
+                
+                
+              </mat-card-content>
+              <div *ngFor="let ima of review.imageReview">
+                  <img mat-card-image [src]="ima.image">
+              </div>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="10"></div>
+</div>
