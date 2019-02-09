@@ -66,6 +66,7 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { AddNutriComponent } from './add-nutri/add-nutri.component';
 import { ShopAdvertiseComponent } from './shop-advertise/shop-advertise.component';
+import { GenerateSerialCodeComponent } from './generate-serial-code/generate-serial-code.component';
 
 
 
@@ -91,6 +92,7 @@ import { ShopAdvertiseComponent } from './shop-advertise/shop-advertise.componen
     PromotionComponent,
     AddNutriComponent,
     ShopAdvertiseComponent,
+    GenerateSerialCodeComponent,
   ],
 
 

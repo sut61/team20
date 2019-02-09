@@ -1,0 +1,53 @@
+<article class="bgimage">
+  <mat-toolbar color="primary" >
+    <div class ="center">
+      <span>
+        ระบบสร้างรหัสส่วนลด
+      </span>
+    </div>
+  </mat-toolbar>
+  <mat-toolbar color="primary" >
+      <div class ="center">
+        <span>
+
+              <button mat-raised-button color="warn"
+              type="button" routerLink="/manu" type="button" (click)="clear()">กลับสู่หน้าหลัก</button>&nbsp;
+
+              <button mat-raised-button color="warn"
+              type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;
+
+        </span>
+      </div>
+  </mat-toolbar>
+  
+  <body class="body">
+      <div class="main">
+        <h2>ระบบสร้างรหัสส่วนลด</h2><hr><br>
+        <div class="example-container">
+
+          <mat-form-field>
+            <mat-select placeholder="เลือกร้านค้าที่ต้องการเพิ่มรหัสส่วนลด" [(ngModel)]="genForm.storeId">
+              <mat-option *ngFor="let store of stores" [value]="store.id">{{store.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field hintLabel="น้อยสุด 10 ตัวอักษร สูงสุด 300 ตัวอักษร">
+            <textarea matInput #input minlength="10" maxlength="300" placeholder="รายละเอียดรหัสส่วนลด" [(ngModel)]="genForm.detail"></textarea>
+            <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="เลือกเงื่อนไขของรหัสส่วนลด" [(ngModel)]="genForm.conditionId">
+              <mat-option *ngFor="let condition of conditions" [value]="condition.id">{{condition.name}}{{condition.detail}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field hintLabel="สูงสุด 20">
+            <input matInput #input type="number" min="1" max="20" placeholder="กรอกจำนวนรหัสที่ต้องการสร้าง" (keypress)="numberOnly($event)" [(ngModel)]="genForm.genCount">
+          </mat-form-field>
+        </div>
+        <br>
+        <button mat-raised-button color="primary" (click)="generateConfirm(genForm)">ยืนยัน</button>
+      </div>
+  </body> 
+</article>
