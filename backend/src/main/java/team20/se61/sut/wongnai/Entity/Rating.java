@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -14,9 +15,10 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String rating;
 
-    protected Rating(){}
+    public Rating(){}
 
     public Rating(String rating){
         this.rating = rating;
