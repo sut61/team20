@@ -43,31 +43,48 @@ export class RegisterComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    if(this.register.email === ''||
-    this.register.password === ''||
-    this.register.prefix === ''||
-    this.register.name === ''||
-    this.register.telephonenumber === ''||
-    this.register.sex === ''||
-    this.register.address === ''){
+    // if(this.register.email === ''||
+    // this.register.password === ''||
+    // this.register.prefix === ''||
+    // this.register.name === ''||
+    // this.register.telephonenumber === ''||
+    // this.register.sex === ''||
+    // this.register.address === ''){
 
-      //alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-      this.snackBar.open("กรุณากรอกข้อมูลให้ครบถ้วน ", "ลองใหม่", {
-        duration: 10000,
-        verticalPosition:"top",
-        horizontalPosition: "center"
+    //   //alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+    //   this.snackBar.open("กรุณากรอกข้อมูลให้ครบถ้วน ", "ลองใหม่", {
+    //     duration: 10000,
+    //     verticalPosition:"top",
+    //     horizontalPosition: "center"
       
-      });
+    //   });
       
 
-    }
-    else{
+    // }
+    // else{
         this.registerservice.save(form).subscribe(
-      data => {
+       data => {
           this.message = JSON.stringify(data);
 
           if(this.message==='{"message":"กรอกemailไม่ถูกต้อง"}'){
             this.snackBar.open("กรุณากรอก email ให้ถูกต้อง ", "ลองใหม่", {
+              duration: 10000,
+              verticalPosition:"top",
+              horizontalPosition: "center"
+            
+            });
+          }
+
+          if(this.message==='{"message":"กรุณากรอกชื่อและนามสกุล"}'){
+            this.snackBar.open("กรุณากรอก ชื่อและนามสกุล ", "ลองใหม่", {
+              duration: 10000,
+              verticalPosition:"top",
+              horizontalPosition: "center"
+            
+            });
+          }
+          if(this.message==='{"message":"กรุณากรอกemail"}'){
+            this.snackBar.open("กรุณากรอก email ", "ลองใหม่", {
               duration: 10000,
               verticalPosition:"top",
               horizontalPosition: "center"
@@ -214,7 +231,7 @@ export class RegisterComponent implements OnInit {
       );
     }
 
-  }
+ // }
 
   clear(){
       this.register.email = "";

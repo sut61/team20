@@ -1,0 +1,101 @@
+<mat-toolbar color="primary" >
+  <div class ="center">เพิ่ม REVIEW อาหาร </div>
+
+  <div class="topright">ผู้ใช้งาน<br>{{profiles.prefix.prefix}}{{profiles.name}}</div>
+
+</mat-toolbar>
+
+<mat-toolbar color="primary" >
+  <div class = "center">
+    <span>
+    
+
+      <button mat-raised-button color="warn"
+      type="button" routerLink="/reviewfood" type="button">REVIEW อาหาร ทั้งหมด </button>&nbsp;
+
+      <button mat-raised-button color="warn"
+      type="button" routerLink="/manu" type="button">MUNU</button>&nbsp;
+      <button mat-raised-button color="warn"
+      type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;
+
+    </span>
+
+</div>
+</mat-toolbar>
+
+
+
+
+
+<form #addreviewForm="ngForm" (ngSubmit)="save(addreviewForm.value)">
+
+  <br>
+
+  <div class = "container">
+  <mat-form-field class='full-width'>
+      <input  matInput placeholder='ชื่ออาหาร' required name = "food" [(ngModel)]="reviewfood.food" type="name" >
+  </mat-form-field>
+  </div>
+
+  <div class = "container">
+  <mat-form-field class='full-width'>
+      <input  matInput placeholder='ราคา' required name = "price" [(ngModel)]="reviewfood.price" type="number" >
+  </mat-form-field>
+  </div>
+
+
+  <div class = "container">
+  <mat-form-field class='full-width'>
+                <mat-select placeholder="คะแนนรีวิวอาหาร" required name = "point" [(ngModel)]="reviewfood.pointfood">
+        <mat-option  *ngFor="let point of points" [value]="point.pointfood">
+          {{point.pointfood}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class = "container">
+    <mat-form-field class='full-width'>
+        <textarea  matInput placeholder='คำวิพากษ์วิจารณ์อาหาร' required name = "review" [(ngModel)]="reviewfood.review" type="text" ></textarea>
+    </mat-form-field>
+</div>
+
+
+
+  <div class = "container">
+      <mat-form-field class='full-width'>
+          <input  matInput placeholder='ชื่อร้านอาหาร'required  name = "restaurant" [(ngModel)]="reviewfood.restaurant" type="name" >
+      </mat-form-field>
+  </div>
+
+ 
+      <div class = "container">
+          <mat-form-field class='full-width'>
+              <input  matInput placeholder='เบอร์โทรศัพท์' required name = "telephone" [(ngModel)]="reviewfood.telephone" type="tel" >
+          </mat-form-field>
+      </div>
+
+
+      <div class = "container">
+        <mat-form-field class='full-width'>
+            <input  matInput placeholder='จุดเด่นร้านอาหาร' required name = "identity" [(ngModel)]="reviewfood.identity" type="text" >
+        </mat-form-field>
+    </div>
+
+      
+
+      <div class = "container">
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit"
+        
+          >บันทึก</button>&nbsp;
+          <button mat-raised-button color="warn"
+                   type="button" (click) = "clear()" type="button">ล้าง</button>&nbsp;
+          <a mat-raised-button color="accent"  routerLink="/welcome">หน้าแรก</a>
+        </mat-card-actions>
+
+      </div>
+
+
+</form>

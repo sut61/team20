@@ -1,0 +1,52 @@
+<div>
+<mat-toolbar color="primary" >
+  <div class ="center">REVIEW อาหารทั้งหมด </div>
+
+  <div class="topright">ผู้ใช้งาน<br>{{profiles.prefix.prefix}}{{profiles.name}}</div>
+
+</mat-toolbar>
+
+<mat-toolbar color="primary" >
+  <div class = 'center'>
+    <span>
+    
+
+          <button mat-raised-button color="warn"
+          type="button" routerLink="/addreviewfood" type="button">เพิ่ม REVIEW อาหาร</button>&nbsp;
+
+          <button mat-raised-button color="warn"
+          type="button" routerLink="/manu" type="button">MUNU</button>&nbsp;
+          <button mat-raised-button color="warn"
+          type="button" routerLink="/login" type="button" (click) = "Logout()">ออกจากระบบ</button>&nbsp;
+
+
+    </span>
+
+</div>
+</mat-toolbar>
+</div>
+
+
+
+
+<div class = "container">
+    <mat-list-item *ngFor="let food of foods">
+     <mat-card   >
+    <br>
+      <div class ><h4>
+        ผู้เขียน: {{food.profilesEntity.prefix.prefix}}{{food.profilesEntity.name}}
+     </h4> </div>
+
+      <a >อาหาร: {{food.food}} </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >ราคา: {{food.food}}บาท</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >คะแนนรีวิวอาหาร:  {{food.pointFood.pointfood}} คะแนน</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >คำวิพากษ์วิจารณ์: {{food.review}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >ร้านอาหาร: {{food.restaurant.restaurant}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >เบอร์โทรศัพท์: {{food.restaurant.telephonenumber}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a >จุดเด่นร้านอาหาร: {{food.restaurant.identity}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+
+
+    </mat-card>
+    </mat-list-item>
+</div>

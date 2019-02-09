@@ -22,6 +22,9 @@ import { AddNutriComponent } from "./add-nutri/add-nutri.component";
 import { ShopAdvertiseComponent } from "./shop-advertise/shop-advertise.component";
 import { GenerateSerialCodeComponent } from "./generate-serial-code/generate-serial-code.component";
 
+import { ReviewfoodComponent } from './reviewfood/reviewfood.component';
+import { AddreviewfoodComponent } from './addreviewfood/addreviewfood.component';
+
 const routes: Routes = [
   { path: "", redirectTo: "/welcome", pathMatch: "full" },
 
@@ -59,11 +62,11 @@ const routes: Routes = [
 
   { path: "business-register", component: BusinessRegisterComponent },
   { path: "promotion", component: PromotionComponent },
-
-  { path: "order", component: OrderResComponent },
-  { path: "order/food", component: OrderFoodComponent },
-  { path: "order/confirm", component: OrderConfirmComponent },
-
+  { path: 'order', component : OrderResComponent},
+  { path: 'order/food', component : OrderFoodComponent},
+  { path: 'order/confirm', component : OrderConfirmComponent},
+  { path: 'reviewfood', component : ReviewfoodComponent},
+  { path: 'addreviewfood', component : AddreviewfoodComponent},
   { path: "generate", component: GenerateSerialCodeComponent }
 ];
 

@@ -75,7 +75,15 @@ constructor(private snackBar: MatSnackBar,private loginservice: LoginService,pri
       },
       error => {
           console.log('Error', error);
-          alert(' server ผิดพลาด ลองอีกครั้ง');
+         // alert(' server ผิดพลาด ลองอีกครั้ง');
+         this.snackBar.open("server ผิดพลาด ลองอีกครั้ง", 'OK', {
+          duration: 10000,
+          verticalPosition:"top",
+          horizontalPosition: "center"
+        
+        });
+       
+         
       }
 
       );
