@@ -27,7 +27,7 @@ public class Review {
 
     @NotNull
     @Pattern(regexp = "[^0-9].+")
-    @Size(min = 2, max = 120)
+    @Size(min = 3, max = 120)
     @Column(unique=true)
     private String title;
 

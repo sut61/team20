@@ -3,6 +3,7 @@ package team20.se61.sut.wongnai.Entity;
 import lombok.*;
 import javax.persistence.*;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,13 +18,14 @@ public class ImageReview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String image;
 
     @ManyToOne
     @JsonIgnore
     private Review reviews;
 
-    protected ImageReview(){}
+    public ImageReview(){}
 
     public ImageReview(String image){
         this.image = image;
