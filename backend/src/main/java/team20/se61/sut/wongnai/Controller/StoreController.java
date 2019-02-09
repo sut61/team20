@@ -43,6 +43,11 @@ public class StoreController {
         return storeRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Store> Stores(@PathVariable Long id) {
+        return storeRepository.findById(id);
+    }
+
     @GetMapping("/numberofseat")
     public List<NumberOfSeat> NumberOfSeats() {
         return numberOfSeatRepository.findAll();
