@@ -40,9 +40,7 @@ public class SerialCodeJunitTests {
     public void serialCodeNotNull() {
         SerialCode code = new SerialCode();
         code.setSerialCode(null);
-        code.setDetail(
-                "รายละเอียดรายละเอียดรายละเอียดรายละเอียด");
-        code.setActivate(false);
+        code.setDetail("รายละเอียดรายละเอียดรายละเอียดรายละเอียด");
 
         try {
             entityManager.persist(code);
@@ -64,7 +62,6 @@ public class SerialCodeJunitTests {
         SerialCode code = new SerialCode();
         code.setSerialCode("หzหLดBSIC41t");
         code.setDetail("AOJSFOJSFOOPJPOSAJFP");
-        code.setActivate(false);
 
         try {
             entityManager.persist(code);
@@ -86,7 +83,6 @@ public class SerialCodeJunitTests {
         SerialCode code = new SerialCode();
         code.setSerialCode("DE3vI8uarnCi651");
         code.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-        code.setActivate(false);
 
         try {
             entityManager.persist(code);
@@ -107,7 +103,6 @@ public class SerialCodeJunitTests {
         SerialCode code = new SerialCode();
         code.setSerialCode("arnCi651");
         code.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-        code.setActivate(false);
 
         try {
             entityManager.persist(code);
@@ -129,12 +124,10 @@ public class SerialCodeJunitTests {
         SerialCode code1 = new SerialCode();
         code1.setSerialCode("BWCHOTV60qaK");
         code1.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-        code1.setActivate(false);
 
         SerialCode code2 = new SerialCode();
         code2.setSerialCode("BWCHOTV60qaK");
         code2.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-        code2.setActivate(false);
 
         try {
             entityManager.persist(code1);
@@ -154,7 +147,6 @@ public class SerialCodeJunitTests {
         SerialCode code = new SerialCode();
         code.setSerialCode("HuftUY78Rytz");
         code.setDetail(null);
-        code.setActivate(false);
         try {
             entityManager.persist(code);
             entityManager.flush();
@@ -174,7 +166,6 @@ public class SerialCodeJunitTests {
     public void serialCodeDetailSizeLessThan10() {
         SerialCode code = new SerialCode();
         code.setSerialCode("HuftUY78Rytz");
-        code.setActivate(false);
         code.setDetail("เอียด");
         try {
             entityManager.persist(code);
@@ -197,7 +188,6 @@ public class SerialCodeJunitTests {
         code.setSerialCode("HuftUY78Rytz");
         code.setDetail(
                 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        code.setActivate(false);
 
         try {
             entityManager.persist(code);
@@ -213,36 +203,12 @@ public class SerialCodeJunitTests {
 
     }
 
-    // Active not null
-    @Test
-    public void activeNotNull() {
-        SerialCode code = new SerialCode();
-        code.setSerialCode("HuftUY78Rytz");
-        code.setDetail(
-                "รายละเอียดรายละเอียดรายละเอียดรายละเอียด");
-        code.setActivate(null);
-
-        try {
-            entityManager.persist(code);
-            entityManager.flush();
-
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-            System.out.println("\n\n=====ActiveNotnull====" + violations + "\n\n");
-        }
-
-    }
-
     // Correct
     @Test
     public void serialCodeCorrect() {
         SerialCode code = new SerialCode();
         code.setSerialCode("ZU8YTboR69CO");
         code.setDetail("รายละเอียดของรหัส");
-        code.setActivate(false);
 
         try {
             entityManager.persist(code);
@@ -256,25 +222,5 @@ public class SerialCodeJunitTests {
             fail("Should not pass to this line");
         }
     }
-
-    // @Test(expected=javax.persistence.PersistenceException.class)
-    // public void serialCodeMustBeUnique(){
-    // SerialCode code1 = new SerialCode();
-    // code1.setSerialCode("BWCHOTV60qaK");
-    // code1.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-    // code1.setExpDate(new Date(2019, 2, 4));
-    // entityManager.persist(code1);
-    // entityManager.flush();
-
-    // SerialCode code2 = new SerialCode();
-    // code2.setSerialCode("BWCHOTV60qaK");
-    // code2.setDetail("เอียดAJDGOEOGJDFASFSFASFJ");
-    // code2.setExpDate(new Date(2019, 2, 4));
-    // System.out.println("\n\n====MustBeUnique====\n\n");
-    // entityManager.persist(code2);
-    // entityManager.flush();
-
-    // fail("Should not pass to this line");
-    // }
 
 }

@@ -37,9 +37,6 @@ public class SerialCode {
     @Pattern(regexp = "[ก-์|A-z|\\s\\d].+")
     private String detail;
 
-    @NotNull
-    private Boolean activate;
-
     @ManyToOne
     @JoinColumn(name = "storeId")
     private Store store;
