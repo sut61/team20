@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NutriService } from '../shared/nutri/nutri.service';
+import {RecipeService} from '../shared/recipe/recipe.service';
+
 @Component({
   selector: 'app-add-nutri',
   templateUrl: './add-nutri.component.html',
@@ -10,19 +12,19 @@ import { NutriService } from '../shared/nutri/nutri.service';
 export class AddNutriComponent implements OnInit {
 
   sub: Subscription;
-
+  private recipe:any={};
   private id: any;
   private fooprop :string;
-  private amount:number=0;
-  private energy:number=0;
-  private fat:number=0;
-  private saturate:number=0;
-  private sodium:number=0;
-  private sugar:number=0;
+  private amount:number;
+  private energy:number;
+  private fat:number;
+  private saturate:number;
+  private sodium:number;
+  private sugar:number;
 
 
 
-  constructor(private NutriService :NutriService ,private route: ActivatedRoute,private router: Router) { }
+  constructor(private NutriService :NutriService ,private route: ActivatedRoute,private router: Router ,private RecipeService: RecipeService) { }
   
   
   
@@ -58,7 +60,15 @@ export class AddNutriComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       if(this.id){
-          console.log('is id ',this.id);        
+          console.log('is id ',this.id);
+          this.RecipeService.getRecipe(this.id).subscribe(
+            body => {
+              this.recipe = body;
+            
+              console.log("GET Request is successful ", body);
+            },error => {console.log("Error", error);}
+          );  
+
       } 
     });
 
