@@ -65,6 +65,7 @@ import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { AddNutriComponent } from './add-nutri/add-nutri.component';
+import { ShopAdvertiseComponent } from './shop-advertise/shop-advertise.component';
 
 
 
@@ -88,7 +89,8 @@ import { AddNutriComponent } from './add-nutri/add-nutri.component';
     OrderFoodComponent,
     OrderConfirmComponent,
     PromotionComponent,
-    AddNutriComponent
+    AddNutriComponent,
+    ShopAdvertiseComponent,
   ],
 
 

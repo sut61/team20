@@ -19,6 +19,7 @@ import { OrderFoodComponent } from './order-food/order-food.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { AddNutriComponent } from './add-nutri/add-nutri.component';
+import { ShopAdvertiseComponent } from './shop-advertise/shop-advertise.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -53,6 +54,7 @@ const routes: Routes = [
 
   { path: 'report-problem', component : ReportProblemComponent},
   { path: 'show-report-problem', component : ShowReportComponent},
+  { path: 'shop-advertise', component : ShopAdvertiseComponent},
 
   { path: 'business-register', component : BusinessRegisterComponent},
   { path: 'promotion', component : PromotionComponent},

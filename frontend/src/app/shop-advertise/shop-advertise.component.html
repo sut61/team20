@@ -1,0 +1,46 @@
+<mat-card class="register-advertise">
+  <mat-card-header>
+    <mat-card-title>สมัครโฆษณาร้านค้า</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #myForm="ngForm">
+
+      <p>คำโฆษณาร้านค้า</p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="คำโฆษณาร้านค้า" name="name" [(ngModel)]="myForm.name">
+      </mat-form-field><br>
+      <p>คำอธิบาย</p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="รายละเอียด" name="detail" rows="10" [(ngModel)]="myForm.detail"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="เลือกร้านค้า" name="storeId" [(ngModel)]="myForm.storeId">
+          <div *ngFor="let store of stores">
+            <mat-option [value]="store.id" *ngIf="checkStore(store)">
+              <div>{{store.name}}</div>
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="เลือกแพ็คเกจที่ต้องการ" name="packageId" [(ngModel)]="myForm.packageId">
+          <mat-option *ngFor="let package of packages" [value]="package.id">
+            {{package.name}} {{package.price}} บาท
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>ภาพสำหรับใช้โฆษณา</p>
+      <input type="file" (change)="selectFile($event)">
+      <div>{{ uploadPercent | async }}%</div>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="register(myForm.value)">SAVE</button>
+    <button mat-raised-button color="warn" (click)="clear(myForm)">CLEAR</button>
+  </mat-card-actions>
+</mat-card>
