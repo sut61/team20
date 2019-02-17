@@ -638,8 +638,9 @@ public class NutritionJunitTests {
         entityManager.persist(rc);
         entityManager.flush();
             Nutritive_value nv = new Nutritive_value();
-            nv.setEnergy((float)-0.5);
+            nv.setEnergy(-5.5f);
             nv.setRecipe(rc);
+            nv.setAmount(100);
 			
 		try {
             entityManager.persist(nv);
@@ -887,8 +888,9 @@ public class NutritionJunitTests {
         entityManager.persist(rc);
         entityManager.flush();
             Nutritive_value nv = new Nutritive_value();
-            nv.setFat((float)-0.7);
+            nv.setFat(-5);
             nv.setRecipe(rc);
+            nv.setAmount(1);
 			
 		try {
             entityManager.persist(nv);
@@ -1012,9 +1014,9 @@ public class NutritionJunitTests {
         entityManager.persist(rc);
         entityManager.flush();
             Nutritive_value nv = new Nutritive_value();
-            nv.setSugar((float)-0.7);
+            nv.setSugar(-5);
             nv.setRecipe(rc);
-			
+            nv.setAmount(100);
 		try {
             entityManager.persist(nv);
             entityManager.flush();
@@ -1076,8 +1078,10 @@ public class NutritionJunitTests {
         entityManager.persist(rc);
         entityManager.flush();
             Nutritive_value nv = new Nutritive_value();
-            nv.setSaturates((float)-0.7);
+            nv.setSaturates(-5);
             nv.setRecipe(rc);
+            nv.setAmount(100);
+            
 			
 		try {
             entityManager.persist(nv);
@@ -1143,7 +1147,7 @@ public class NutritionJunitTests {
         entityManager.flush();
             Nutritive_value nv = new Nutritive_value();
             nv.setSaturates((float)100);
-            nv.setAmount(1);
+            nv.setAmount(100);
             nv.setRecipe(rc);
 			
 		try {
@@ -1259,7 +1263,7 @@ public class NutritionJunitTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n\n\n\n 20.Nutrition Test Null Recipe  :\n\n");
+            System.out.println("\n\n\n\n 20.Nutrition Test Null Recipe  :\n\n"+e+"\n\n");
            
         }
     }
