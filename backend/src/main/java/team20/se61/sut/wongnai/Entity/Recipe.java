@@ -25,23 +25,24 @@ public class Recipe {
                         String name;
 
                         @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif|.PNG).+")
+                        @Column(unique=true)
                         private String  urlPhoto;
 
                         @Size( max=1500, message="Howto Too long (Limit 1500 String)")
-                        private @NonNull String howto;
+                        private @NotNull String howto;
 
 
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
-    @JoinColumn(name="foodtype") private FoodType foodtype  ;
+    @JoinColumn(name="foodtype") private @NotNull FoodType foodtype  ;
 
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
-    @JoinColumn(name="mainingred") private MainIngredients mainingred ;
+    @JoinColumn(name="mainingred") private @NotNull MainIngredients mainingred ;
 
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
-    @JoinColumn(name="cookingmethod") private CookingMethod cookingmethod;
+    @JoinColumn(name="cookingmethod") private @NotNull CookingMethod cookingmethod;
 
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
-    @JoinColumn(name="profilles") private ProfilesEntity profilles;
+    @JoinColumn(name="profilles") private @NotNull ProfilesEntity profilles;
 
     // @OneToOne(cascade = CascadeType.REMOVE)
     // @JoinColumn(name = "fppid", insertable = true,unique = true)
