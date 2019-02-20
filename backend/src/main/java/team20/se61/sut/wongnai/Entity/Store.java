@@ -2,6 +2,7 @@ package team20.se61.sut.wongnai.Entity;
 
 import lombok.*;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -10,6 +11,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -23,6 +27,7 @@ public class Store {
     @NotNull
     @Size(min=2, max=20, message="Name should have atleast 2 characters or max 20 characters")
     private String name;
+    @Size(min=2)
     private String branch;
 
     @ManyToOne
@@ -31,12 +36,18 @@ public class Store {
     @ManyToOne
     private PriceRange priceRange;
 
-
+    @NonNull
+    @Size(min=5)
     private String adddress;
+    @Size(min=2)
     private String hint;
+    @Size(min=2)
     private String province;
+    @Size(min=2)
     private String district;
+    @Size(min=2)
     private String subDistrict;
+    @Size(min=2)
     private String building;
 
     @Size(min=2, max=20, message="Phone should have 10 characters")
@@ -44,6 +55,7 @@ public class Store {
     
     @Email
     private String email;
+    @Size(min=3)
     private String website;
 
     @ManyToMany
@@ -51,13 +63,15 @@ public class Store {
     inverseJoinColumns = @JoinColumn(name = "dayOfWeeks_id", referencedColumnName = "id"))
     private Set<DayOfWeek> dayOfWeeks;
     
-    private String openTime;
-    private String closeTime;
+    @DateTimeFormat
+    private Date openTime;
+    @DateTimeFormat
+    private Date closeTime;
 
     @ManyToOne
     private NumberOfSeat numberOfSeat;
 
-    @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif).+")
+    @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif|.JPG|.PNG|.GIF|.JPEG|.jpeg).+")
     private String image; // url
 
     public Store(Set<DayOfWeek> day){

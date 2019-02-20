@@ -1,5 +1,8 @@
 package team20.se61.sut.wongnai.Controller;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -95,8 +98,23 @@ public class StoreController {
             dayOfWeeks.add(dayOfWeek);
         }
         newStore.setDayOfWeeks(dayOfWeeks);
-        newStore.setOpenTime(body.get("openTime"));
-        newStore.setOpenTime(body.get("closeTime"));
+
+
+        Timestamp openTimestamp = new java.sql.Timestamp(0);
+        Timestamp closeTimestamp = new java.sql.Timestamp(0);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+
+            Date parsedDate = dateFormat.parse(body.get("openTime"));
+            openTimestamp = new java.sql.Timestamp(parsedDate.getTime());
+
+            parsedDate = dateFormat.parse(body.get("closeTime"));
+            closeTimestamp = new java.sql.Timestamp(parsedDate.getTime());
+        } catch(Exception e) { 
+            System.out.println(e.getMessage());
+        }
+        newStore.setOpenTime(openTimestamp);
+        newStore.setCloseTime(closeTimestamp);
         
         newStore.setImage(body.get("image"));
 
