@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ public class BusinessType {
     @SequenceGenerator(name="BusinessType_seq",sequenceName="BusinessType_seq")               
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BusinessType_seq")
     private Long id;
+    @NotNull
     private String name;
     public BusinessType(){}
 }
