@@ -325,4 +325,96 @@ public class BusinessJunitTests {
             fail("Should not pass to this line");
         }
     }
+
+    @Test
+    public void businessTypeNotNull(){
+        Province p = new Province();
+        p.setName("กรุงเทพ");
+
+        Business b = new Business();
+        b.setShopName("yoyoRest");
+        b.setEmail("yoyoland@email.com");
+        b.setDistrict("กกกกกกกกกกกกกกกกกกกก");
+        b.setProvince(entityManager.persist(p));
+        b.setTel("0123456789");
+        b.setType(null);
+        //b.setProfile();
+        try {
+            entityManager.persist(b);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n 10.Test businessTypeNotNull  : \n"+e+"\n\n");
+        }
+    }
+
+    @Test
+    public void provinceNameNotNull(){
+        Province p = new Province();
+        p.setName(null);
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n 11.Test provinceNameNotNull  : \n"+e+"\n\n");
+        }
+    }
+
+
+    @Test
+    public void provinceCorrect(){
+        Province p = new Province();
+        p.setName("กรุงเทพ");
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+            System.out.println("\n\n\n\n 12.Test provinceCorrect");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            fail("Should not pass to this line");
+        }
+    }
+
+    @Test
+    public void businessTypeCorrect(){
+        BusinessType bt = new BusinessType();
+        bt.setName("สถานที่ท่องเที่ยว");
+        try {
+            entityManager.persist(bt);
+            entityManager.flush();
+            System.out.println("\n\n\n\n 12.Test businessCorect");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            fail("Should not pass to this line");
+        }
+    }
+
+    @Test
+    public void businessTypeNameNotNull(){
+        BusinessType bt = new BusinessType();
+        bt.setName(null);
+        try {
+            entityManager.persist(bt);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n 12.Test businessCorect\n\n\n"+e);
+        }
+    }
 }

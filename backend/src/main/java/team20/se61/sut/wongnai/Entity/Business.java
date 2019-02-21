@@ -46,6 +46,7 @@ public class Business {
 
 
     @ManyToOne()   
-    @JoinColumn(name= "typeId")     
+    @JoinColumn(name= "typeId") 
+    @NotNull    
     private BusinessType type;
 }

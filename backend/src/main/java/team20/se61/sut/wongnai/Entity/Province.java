@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ public class Province {
     @SequenceGenerator(name="Province_seq",sequenceName="Province_seq")               
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Province_seq")
     private Long id;
+    @NotNull
     private String name;
     public Province(){}
 
