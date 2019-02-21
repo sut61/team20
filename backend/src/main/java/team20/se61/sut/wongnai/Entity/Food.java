@@ -5,21 +5,23 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "Food")
 public class Food {
     @Id
-    @SequenceGenerator(name="food_seq",sequenceName="food_seq")       
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="food_seq")      
-	@Column(name="food_id",unique = true, nullable = true)
+    @SequenceGenerator(name = "food_seq", sequenceName = "food_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "food_seq")
+    @Column(name = "food_id", unique = true, nullable = true)
     private @NonNull Long id;
     private @NonNull String Name;
     private @NonNull int Price;
     private @NonNull String Image;
-    
+
     @ManyToOne()
-    @JoinColumn(name= "storeId")
+    @JoinColumn(name = "storeId")
     private Store store;
 
-    public Food(){}
+    public Food() {
+    }
 }
