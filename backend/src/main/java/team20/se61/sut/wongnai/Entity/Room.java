@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 import lombok.*;
 
 @Entity
@@ -16,7 +18,8 @@ public class Room{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Room_seq")
     private long id;
     @Column(name="name",unique = true, nullable = true)
-    private @NonNull String name;
+    @NotNull(message = "roomName must NotNull")
+    private String name;
     
     public Room(String name){
         this.name = name;

@@ -21,14 +21,16 @@ public class ReportProblem{
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ReportProblem_seq")
     private long id;
     @Pattern(regexp = "[ก-์|A-z|\\s].+")
-    private @NotNull String title;
-    @Size(min = 10,max = 100)
+    @NotNull(message="title must notnull")
+    private String title;
+    @Size(min = 10,max = 100,message="detail size 10-100")
     private String detail;
     @Pattern(regexp = "(http(s?):).+(.jpg|.gif|.png).+")
     private String imgUrl;
 
     @ManyToOne()   
-    @JoinColumn(name= "roomId")     
+    @JoinColumn(name= "roomId")  
+    @NotNull(message="room must notnull")
     private Room room;
 
     @ManyToOne()
@@ -38,6 +40,7 @@ public class ReportProblem{
     @ManyToMany
     @JoinTable(name = "has_tag", joinColumns = @JoinColumn(name = "report_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
+    @NotNull(message="tag must notnull")
 	private Set<Tag> tags;
 
     public ReportProblem(String title, Set<Tag> tags){

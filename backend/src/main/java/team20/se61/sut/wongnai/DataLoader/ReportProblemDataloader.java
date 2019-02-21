@@ -1,8 +1,6 @@
 package team20.se61.sut.wongnai.DataLoader;
 import team20.se61.sut.wongnai.Entity.*;
 import team20.se61.sut.wongnai.Repository.*;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -34,5 +32,3 @@ public class ReportProblemDataloader implements ApplicationRunner {
 	}
     
 }
-
-//SELECT * FROM HAS_TAG ht,REPORT_PROBLEM  rp,TAG t where t.id = ht.tag_id and rp.id = ht.report_id
