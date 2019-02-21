@@ -43,7 +43,7 @@ public class ReviewTests {
     }
 
     @Test
-    public void reviewCorrect(){
+    public void reviewCorrect() {
         Review review = new Review();
         review.setTitle("สุดยอดเลยครับ");
         review.setDetail("อร่อยจังเลยครับอิอิ");
@@ -51,13 +51,16 @@ public class ReviewTests {
         try {
             entityManager.persist(review);
             entityManager.flush();
-            System.out.println("\n\n\n\n\n====Correct====\n\n\n\n\n");
-        }
-        catch(javax.validation.ConstraintViolationException e) {
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("reviewCorrect\n" + "IsCorrect");
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            fail("Should not pass to this line " + violations + "\n\n\n\n");
+            fail("\n\n\n\n\n\n\n\n\n\n\n\n\nreviewCorrect\n " + violations + "\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
@@ -76,7 +79,11 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====Must Be NotNull====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewDetialMustBeNotNull\n" + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
@@ -95,54 +102,64 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====size<10====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewDetailSizeLessthan10\n" + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
     @Test
-    public void ReviewDetailSizeMorethan120(){
+    public void ReviewDetailSizeMorethan120() {
         Review review = new Review();
         String detail = "";
-        for(int i = 0;i<121;i++)
+        for (int i = 0; i < 121; i++)
             detail += "a";
-            review.setTitle("Title");
-            review.setDetail(detail);
+        review.setTitle("Title");
+        review.setDetail(detail);
 
         try {
             entityManager.persist(review);
             entityManager.flush();
 
             fail("Should not pass to this line");
-        } catch(javax.validation.ConstraintViolationException e) {
+        } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n\n\n=====size>120===="+violations+"\n\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewDetailSizeMorethan120\n" + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
     @Test
-    public void ReviewTitleNotPattern(){
+    public void ReviewTitleNotPattern() {
         Review review = new Review();
         review.setTitle("1อร่อยจังเลยครับ");
         review.setDetail("อร่อยจังเลยครับอิอิ");
         try {
             entityManager.persist(review);
-        entityManager.flush();
-    
-                fail("Should not pass to this line");
-        }
-        catch(javax.validation.ConstraintViolationException e) {
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n\n\n====NotPatternTitle===="+violations+"\n\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewTitleNotPattern\n" + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
-    
 
-    @Test(expected=javax.persistence.PersistenceException.class)
-    public void ReviewTitleMustBeUnique(){
+    @Test(expected = javax.persistence.PersistenceException.class)
+    public void ReviewTitleMustBeUnique() {
         Review review1 = new Review();
         review1.setTitle("Title");
         review1.setDetail("abcdefghijk");
@@ -152,7 +169,11 @@ public class ReviewTests {
         Review review2 = new Review();
         review2.setTitle("Title");
         review2.setDetail("lmnopqrstuvxyz");
-        System.out.println("\n\n\n====ReviewTitleMustBeUnique====\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("----------------------------------------");
+        System.out.println("ReviewTitleMustBeUnique\n");
+        System.out.println("----------------------------------------");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         entityManager.persist(review2);
         entityManager.flush();
 
@@ -174,29 +195,37 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====size<3====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewTitleSizeLessthan3\n"  + violations );
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
     @Test
-    public void ReviewTitleSizeMorethan120(){
+    public void ReviewTitleSizeMorethan120() {
         Review review = new Review();
         String title = "";
-        for(int i = 0;i<121;i++)
+        for (int i = 0; i < 121; i++)
             title += "a";
-            review.setTitle(title);
-            review.setDetail("dfdsfdsfdsfdsfdsfsdfdsf");
+        review.setTitle(title);
+        review.setDetail("dfdsfdsfdsfdsfdsfsdfdsf");
 
         try {
             entityManager.persist(review);
             entityManager.flush();
 
             fail("Should not pass to this line");
-        } catch(javax.validation.ConstraintViolationException e) {
+        } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n\n\n=====size>120===="+violations+"\n\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ReviewTitleSizeMorethan120\n"  + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
@@ -214,7 +243,11 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====Must Be NotNull====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("PricePerHeadMustBeNotNull\n"  + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
@@ -232,7 +265,11 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====Must Be NotNull====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("RatingMustBeNotNull\n"  + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 
@@ -250,7 +287,11 @@ public class ReviewTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n=====Must Be NotNull====" + violations + "\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("ImageReviewMustBeNotNull\n"  + violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 }

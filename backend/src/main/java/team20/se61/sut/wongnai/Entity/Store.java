@@ -12,8 +12,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -36,7 +34,7 @@ public class Store {
     @ManyToOne
     private PriceRange priceRange;
 
-    @NonNull
+    @NotNull
     @Size(min=5)
     private String adddress;
     @Size(min=2)
@@ -50,7 +48,7 @@ public class Store {
     @Size(min=2)
     private String building;
 
-    @Size(min=2, max=20, message="Phone should have 10 characters")
+    @Size(min=10, max=10, message="Phone should have 10 characters")
     private String phone;
     
     @Email
@@ -63,9 +61,7 @@ public class Store {
     inverseJoinColumns = @JoinColumn(name = "dayOfWeeks_id", referencedColumnName = "id"))
     private Set<DayOfWeek> dayOfWeeks;
     
-    @DateTimeFormat
     private Date openTime;
-    @DateTimeFormat
     private Date closeTime;
 
     @ManyToOne

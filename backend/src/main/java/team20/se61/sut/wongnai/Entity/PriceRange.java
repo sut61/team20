@@ -17,7 +17,7 @@ public class PriceRange {
     @NotNull
     private String range;
 
-    protected PriceRange(){}
+    public PriceRange(){}
 
     public PriceRange(String range){
         this.range = range;
