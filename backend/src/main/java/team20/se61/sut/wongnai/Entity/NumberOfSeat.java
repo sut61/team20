@@ -17,7 +17,7 @@ public class NumberOfSeat {
     @NotNull
     private String choices;
 
-    protected NumberOfSeat(){}
+    public NumberOfSeat(){}
 
     public NumberOfSeat(String choices){
         this.choices = choices;
