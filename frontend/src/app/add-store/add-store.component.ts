@@ -148,7 +148,7 @@ export class AddStoreComponent implements OnInit {
       },
       error => {
         console.log("Error", error);
-        alert("ผิดพลาด " + error)
+        alert("ไม่สามารถบันทึกได้")
       }
 
     );

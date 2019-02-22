@@ -53,7 +53,7 @@ export class AddReviewComponent implements OnInit {
       },
       error => {
         console.log("Error", error);
-        alert("ผิดพลาด " + error)
+        //alert("ผิดพลาด " + error)
       }
 
     );
@@ -65,7 +65,7 @@ export class AddReviewComponent implements OnInit {
       },
       error => {
         console.log("Error", error);
-        alert("ผิดพลาด " + error)
+        //alert("ผิดพลาด " + error)
       }
 
     );
@@ -77,7 +77,7 @@ export class AddReviewComponent implements OnInit {
       },
       error => {
         console.log("Error", error);
-        alert("ผิดพลาด " + error)
+        //alert("ผิดพลาด " + error)
       }
 
     );
@@ -148,7 +148,7 @@ export class AddReviewComponent implements OnInit {
       error => {
         console.log("Error", error);
         this.load = false;
-        alert("ผิดพลาด " + error)
+        alert("ไม่สามารถบันทึกได้")
       }
 
     );
