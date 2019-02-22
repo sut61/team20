@@ -7,7 +7,7 @@
   opacity: 0.95;
   border-radius: 8px;
   width: 800px;
-  height: 500px;
+  height: 600px;
   /* border: 25px solid green; */
   padding: 50px;
   margin: auto;
@@ -23,6 +23,7 @@
   width: auto;
   background-image: url("..\image\welcome3.jpg");
   background-position: 50% 50%;
+  margin: auto;
 }
 
 .main {
