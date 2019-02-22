@@ -1,9 +1,11 @@
 package team20.se61.sut.wongnai.Entity;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -40,7 +42,7 @@ public class ReportProblem{
     @ManyToMany
     @JoinTable(name = "has_tag", joinColumns = @JoinColumn(name = "report_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
-    @NotNull(message="tag must notnull")
+    @NotEmpty
 	private Set<Tag> tags;
 
     public ReportProblem(String title, Set<Tag> tags){
