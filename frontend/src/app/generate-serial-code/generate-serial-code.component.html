@@ -32,8 +32,7 @@
           </mat-form-field>
           <br>
           <mat-form-field hintLabel="น้อยสุด 10 ตัวอักษร สูงสุด 300 ตัวอักษร">
-            <textarea matInput #input minlength="10" maxlength="300" placeholder="รายละเอียดรหัสส่วนลด" [(ngModel)]="genForm.detail"></textarea>
-            <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+            <textarea matInput #input maxlength="300" placeholder="รายละเอียดรหัสส่วนลด" [(ngModel)]="genForm.detail"></textarea>
           </mat-form-field>
           <br>
           <mat-form-field>
