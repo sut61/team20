@@ -49,7 +49,7 @@ export class AddreviewfoodComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    // form.email = this.profiles.email;
+    form.email = this.profiles.email;
     console.log(form);
     this.reviewfoodService.save(form).subscribe(
       data => {
