@@ -33,16 +33,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-
-
-
-
-
-
-
-
-
-
 @RunWith(SpringRunner.class)
 //@SpringBootTest
 @DataJpaTest
@@ -281,16 +271,18 @@ public class ReportProblemJunitTests {
 
 
     @Test
-    public void tagNotNull() {
+    public void tagNotEmpty() {
         Room room = new Room("เพิ่มร้านค้า");
         entityManager.persist(room);
         entityManager.flush();
+
+        Set<Tag> setTag = new HashSet<>();
 
         ReportProblem r = new ReportProblem();
         r.setTitle("เพิ่มร้านค้าไม่สำเร็จ");
         r.setDetail("เพิ่มร้านค้าไมได้");
         r.setRoom(room);
-        r.setTags(null);
+        r.setTags(setTag);
         r.setImgUrl("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548763100004_690650.jpg?alt=media&token=61e2258f-479a-43d1-b5f");
         try {
             entityManager.persist(r);
@@ -301,7 +293,7 @@ public class ReportProblemJunitTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-            System.out.println("\n\n\n\ntest 7 tag null \n"+e);
+            System.out.println("\n\n\n\ntest 7 tag NotEmpty \n"+e);
         }
     }
 
