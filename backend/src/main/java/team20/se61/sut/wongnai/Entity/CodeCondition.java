@@ -10,18 +10,21 @@ import javax.validation.constraints.*;
 import lombok.*;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @Table(name = "CodeCondition")
 public class CodeCondition {
     @Id
-    @SequenceGenerator(name="condition_seq",sequenceName="condition_seq")       
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="condition_seq")      
-    @Column(name="condition_id",unique = true, nullable = true)
+    @SequenceGenerator(name = "condition_seq", sequenceName = "condition_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "condition_seq")
+    @Column(name = "condition_id", unique = true, nullable = true)
     private long id;
 
     @NotNull
+    @Pattern(regexp = "[ก-์|A-z|\\s|\\d].+")
     private String name;
 
-    @NotNull 
+    @NotNull
+    @Pattern(regexp = "[ก-์|A-z|\\s|\\d].+")
     private String detail;
 }
