@@ -23,6 +23,7 @@ public class ImageReview {
 
     @ManyToOne
     @JsonIgnore
+    @NotNull
     private Review reviews;
 
     public ImageReview(){}
