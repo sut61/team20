@@ -43,6 +43,7 @@ public class SerialCode {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "conditionId")
+    @NotNull
     private CodeCondition codeCondition;
 
 }
