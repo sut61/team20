@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Store {
     private Business business;
 
     @ManyToOne
+    @NotNull
     private PriceRange priceRange;
 
     @NotNull
@@ -59,12 +61,16 @@ public class Store {
     @ManyToMany
     @JoinTable(name = "store_openday", joinColumns = @JoinColumn(name = "store_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "dayOfWeeks_id", referencedColumnName = "id"))
+    @NotEmpty
     private Set<DayOfWeek> dayOfWeeks;
     
+    @NotNull
     private Date openTime;
+    @NotNull
     private Date closeTime;
 
     @ManyToOne
+    @NotNull
     private NumberOfSeat numberOfSeat;
 
     @Pattern(regexp="(http(s?):).+(.jpg|.png|.gif|.JPG|.PNG|.GIF|.JPEG|.jpeg).+")

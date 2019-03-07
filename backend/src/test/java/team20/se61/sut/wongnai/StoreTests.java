@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -70,7 +71,16 @@ public class StoreTests {
         s.setCloseTime(new Date());
         s.setImage("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548775607617_Mario_(CGW).jpg?alt=media&token=f0dede82-4f84-4650-86b1-3519ef2426e1");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
 
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -98,6 +108,20 @@ public class StoreTests {
         s.setName(null);
         s.setAdddress("ABCDE");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -121,6 +145,20 @@ public class StoreTests {
         s.setName("A");
         s.setAdddress("ABCDE");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -143,6 +181,20 @@ public class StoreTests {
         Store s = new Store();
         s.setName("A123456789123456789123456789");
         s.setAdddress("ABCDE");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -170,6 +222,20 @@ public class StoreTests {
         s.setBranch("A");
         s.setAdddress("ABCDE");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -195,6 +261,20 @@ public class StoreTests {
         s.setName("AAAA");
         s.setAdddress(null);
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -217,6 +297,20 @@ public class StoreTests {
         Store s = new Store();
         s.setName("AAAA");
         s.setAdddress("ASD");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -246,6 +340,20 @@ public class StoreTests {
         s.setAdddress("AAAAAA");
         s.setHint("S");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -273,6 +381,20 @@ public class StoreTests {
         s.setAdddress("AAAAAA");
         s.setProvince("S");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -298,6 +420,20 @@ public class StoreTests {
         s.setName("AAAA");
         s.setAdddress("AAAAAA");
         s.setDistrict("S");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -325,6 +461,20 @@ public class StoreTests {
         s.setAdddress("AAAAAA");
         s.setSubDistrict("S");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -350,6 +500,20 @@ public class StoreTests {
         s.setName("AAAA");
         s.setAdddress("AAAAAA");
         s.setBuilding("S");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -377,6 +541,20 @@ public class StoreTests {
         s.setAdddress("AAAAAA");
         s.setPhone("12346789");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -402,6 +580,20 @@ public class StoreTests {
         s.setName("AAAA");
         s.setAdddress("AAAAAA");
         s.setEmail("miw");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -429,6 +621,20 @@ public class StoreTests {
         s.setAdddress("AAAAAA");
         s.setWebsite("S");
 
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
         try {
             entityManager.persist(s);
             entityManager.flush();
@@ -445,6 +651,39 @@ public class StoreTests {
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
+
+    //-----------------------------------DayOfWeek-------------------------------------
+    @Test
+    public void testStoreDayOfWeekCannotBeEmpty() {
+        Store s = new Store();
+        s.setName("AAAA");
+        s.setAdddress("AAAAAAAAAAAAAAAAAA");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        s.setDayOfWeeks(null);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("testStoreAdddressCannotBeNull\n"+ violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
+    }
+
     
      //-----------------------------------Image-------------------------------------
 
@@ -453,8 +692,21 @@ public class StoreTests {
         Store s = new Store();
         s.setName("myStore");
         s.setAdddress("ABCDE");
-        s.setImage(
-                "https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548775607617_Mario_(CGW).mp3?alt=media&token=f0dede82-4f84-4650-86b1-3519ef2426e1");
+        s.setImage("https://firebasestorage.googleapis.com/v0/b/uppictest.appspot.com/o/test%2F1548775607617_Mario_(CGW).mp3?alt=media&token=f0dede82-4f84-4650-86b1-3519ef2426e1");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
 
         try {
             entityManager.persist(s);
@@ -473,10 +725,168 @@ public class StoreTests {
         }
     }
 
-    //-----------------------------------PriceRange-------------------------------------
+    //-----------------------------------OpenTime-------------------------------------
+
+    @Test
+    public void testStoreOpenTimeCannotBeNull() {
+        Store s = new Store();
+        s.setName("AAAA");
+        s.setAdddress("AAAAAAAAAAAAAAAAAA");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(null);
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("testStoreAdddressCannotBeNull\n"+ violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
+    }
+
+    //-----------------------------------CloseTime-------------------------------------
+
+    @Test
+    public void testStoreCloseTimeCannotBeNull() {
+        Store s = new Store();
+        s.setName("AAAA");
+        s.setAdddress("AAAAAAAAAAAAAAAAAA");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(null);
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("testStoreAdddressCannotBeNull\n"+ violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
+    }
+
+
+    //-----------------------------------PriceRange in Store-------------------------------------
 
     @Test
     public void testStorePriceRangeCannotBeNull() {
+        Store s = new Store();
+        s.setName("myStore");
+        s.setAdddress("ABCDE");
+
+        s.setPriceRange(null);
+        s.setNumberOfSeat(entityManager.persist(new NumberOfSeat("มากกว่า 150 ที่นั้ง")));
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("testStoreImagePatternNotCorrect\n"+ violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
+    }
+
+    //-----------------------------------NumberOfSeat in Store-------------------------------------
+
+    @Test
+    public void testStoreNumberOfSeatCannotBeNull() {
+        Store s = new Store();
+        s.setName("myStore");
+        s.setAdddress("ABCDE");
+
+        s.setPriceRange(entityManager.persist(new PriceRange("ต่ำกว่า 100 บาท")));
+        s.setNumberOfSeat(null);
+
+        s.setOpenTime(new Date());
+        s.setCloseTime(new Date());
+
+        DayOfWeek dof = new DayOfWeek("จันทร์");
+        entityManager.persist(dof);
+        entityManager.flush();
+
+        Set<DayOfWeek> dayOfWeeks = new HashSet<>();
+        dayOfWeeks.add(dof);
+        s.setDayOfWeeks(dayOfWeeks);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("----------------------------------------");
+            System.out.println("testStoreImagePatternNotCorrect\n"+ violations);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
+    }
+
+
+    //-----------------------------------PriceRange-------------------------------------
+
+    @Test
+    public void testPriceRangeCannotBeNull() {
         PriceRange p = new PriceRange();
         p.setRange(null);
 
@@ -500,7 +910,7 @@ public class StoreTests {
     //-----------------------------------NumberOfSeat-------------------------------------
 
     @Test
-    public void testStoreNumberOfSeatCannotBeNull() {
+    public void testNumberOfSeatCannotBeNull() {
         NumberOfSeat n = new NumberOfSeat();
         n.setChoices(null);
 

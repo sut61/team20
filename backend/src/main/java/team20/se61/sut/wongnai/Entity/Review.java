@@ -36,18 +36,22 @@ public class Review {
     private String detail;
 
     @ManyToOne
+    @NotNull
     private Store store;
 
     @ManyToOne
     private ProfilesEntity profile;
 
     @OneToMany(mappedBy = "reviews")
+    @NotNull
     private List<ImageReview> imageReview = new ArrayList<>();
 
     @ManyToOne
+    @NotNull
     private PricePerHead pricePerHead;
 
     @ManyToOne
+    @NotNull
     private Rating rating;
 
 }
